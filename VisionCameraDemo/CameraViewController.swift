@@ -8,6 +8,17 @@
 
 import UIKit
 
-class CameraViewController: UIViewController {
-    
+class CameraViewController: UIViewController, Storyboarded {
+
+    // MARK:- Properties
+
+    weak var coordinator: MainCoordinator?
+
+    // MARK:- View Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Camera"
+    }
+
 }

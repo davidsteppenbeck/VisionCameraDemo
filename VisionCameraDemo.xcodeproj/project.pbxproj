@@ -15,6 +15,9 @@
 		4157247824411E7500F4B7E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4157247624411E7500F4B7E0 /* LaunchScreen.storyboard */; };
 		4157248324411E7500F4B7E0 /* VisionCameraDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157248224411E7500F4B7E0 /* VisionCameraDemoTests.swift */; };
 		41572490244128E300F4B7E0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4157248F244128E300F4B7E0 /* Colors.xcassets */; };
+		415724942441FCEC00F4B7E0 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415724932441FCEC00F4B7E0 /* Storyboarded.swift */; };
+		415724962442055100F4B7E0 /* Coordinated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415724952442055100F4B7E0 /* Coordinated.swift */; };
+		41572498244205AA00F4B7E0 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41572497244205AA00F4B7E0 /* MainCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		4157248224411E7500F4B7E0 /* VisionCameraDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionCameraDemoTests.swift; sourceTree = "<group>"; };
 		4157248424411E7500F4B7E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4157248F244128E300F4B7E0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		415724932441FCEC00F4B7E0 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		415724952442055100F4B7E0 /* Coordinated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinated.swift; sourceTree = "<group>"; };
+		41572497244205AA00F4B7E0 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,8 @@
 			isa = PBXGroup;
 			children = (
 				4157247124411E7400F4B7E0 /* Main.storyboard */,
+				415724952442055100F4B7E0 /* Coordinated.swift */,
+				41572497244205AA00F4B7E0 /* MainCoordinator.swift */,
 				4157246F24411E7400F4B7E0 /* CameraViewController.swift */,
 				4157248D24411EF800F4B7E0 /* Support Files */,
 				4157247924411E7500F4B7E0 /* Info.plist */,
@@ -101,11 +109,12 @@
 		4157248D24411EF800F4B7E0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				4157247624411E7500F4B7E0 /* LaunchScreen.storyboard */,
 				4157246B24411E7400F4B7E0 /* AppDelegate.swift */,
 				4157246D24411E7400F4B7E0 /* SceneDelegate.swift */,
 				4157247424411E7500F4B7E0 /* Assets.xcassets */,
 				4157248F244128E300F4B7E0 /* Colors.xcassets */,
-				4157247624411E7500F4B7E0 /* LaunchScreen.storyboard */,
+				415724932441FCEC00F4B7E0 /* Storyboarded.swift */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -213,8 +222,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4157247024411E7400F4B7E0 /* CameraViewController.swift in Sources */,
+				41572498244205AA00F4B7E0 /* MainCoordinator.swift in Sources */,
+				415724942441FCEC00F4B7E0 /* Storyboarded.swift in Sources */,
 				4157246C24411E7400F4B7E0 /* AppDelegate.swift in Sources */,
 				4157246E24411E7400F4B7E0 /* SceneDelegate.swift in Sources */,
+				415724962442055100F4B7E0 /* Coordinated.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
