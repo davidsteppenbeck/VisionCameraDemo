@@ -30,4 +30,12 @@ class MainCoordinator: Coordinated {
         navigationController.pushViewController(vc, animated: false)
     }
 
+    func showSettings() {
+        print("showSettings")
+    }
+    
+    func showOptions() {
+        print("showOptions")
+    }
+
 }

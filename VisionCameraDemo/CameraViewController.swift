@@ -14,11 +14,35 @@ class CameraViewController: UIViewController, Storyboarded {
 
     weak var coordinator: MainCoordinator?
 
+    private lazy var settingsBarButton: UIBarButtonItem = {
+        let image = UIImage(systemName: "gear")
+        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(settingsBarButtonTapped(_:)))
+        return button
+    }()
+
+    private lazy var optionsBarButton: UIBarButtonItem = {
+        let image = UIImage(systemName: "ellipsis")
+        let button = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(optionsBarButtonTapped(_:)))
+        return button
+    }()
+
     // MARK:- View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Camera"
+        title = "VisionCameraDemo"
+        navigationItem.leftBarButtonItem = settingsBarButton
+        navigationItem.rightBarButtonItem = optionsBarButton
+    }
+
+    // MARK:- Actions
+
+    @objc private func settingsBarButtonTapped(_ sender: UIBarButtonItem) {
+        coordinator?.showSettings()
+    }
+
+    @objc private func optionsBarButtonTapped(_ sender: UIBarButtonItem) {
+        coordinator?.showOptions()
     }
 
 }
