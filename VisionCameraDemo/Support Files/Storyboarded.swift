@@ -14,8 +14,9 @@ protocol Storyboarded: class {
 }
 
 extension Storyboarded {
-    
+
     /// Default implementation that instantiates the view controller from the storyboard.
+    /// This requires applying a Storyboard ID that is the same as the view controller class name.
     ///
     /// - Parameters:
     ///   - name: The name of the storyboard file that contains the view controller. Defaults to "Main".
