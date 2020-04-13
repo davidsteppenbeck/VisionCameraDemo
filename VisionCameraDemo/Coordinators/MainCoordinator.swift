@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainCoordinator: Coordinated {
+class MainCoordinator: Coordinated, CameraViewControllerCoordinator {
 
     // MARK:- Properties
 

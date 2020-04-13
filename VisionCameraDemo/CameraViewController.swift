@@ -12,7 +12,7 @@ class CameraViewController: UIViewController, Storyboarded {
 
     // MARK:- Properties
 
-    weak var coordinator: MainCoordinator?
+    weak var coordinator: CameraViewControllerCoordinator?
 
     private lazy var settingsBarButton: UIBarButtonItem = {
         let image = UIImage(systemName: "gear")
