@@ -8,11 +8,13 @@
 
 import UIKit
 
-class CameraViewController: UIViewController, Storyboarded {
+final class CameraViewController: UIViewController, Storyboarded {
 
     // MARK:- Properties
 
     weak var coordinator: CameraViewControllerCoordinator?
+
+    private let captureSessionManager = CaptureSessionManager()
 
     private lazy var settingsBarButton: UIBarButtonItem = {
         let image = UIImage(systemName: "gear")
@@ -30,9 +32,25 @@ class CameraViewController: UIViewController, Storyboarded {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "VisionCameraDemo"
+        title = Bundle.main.appName
         navigationItem.leftBarButtonItem = settingsBarButton
         navigationItem.rightBarButtonItem = optionsBarButton
+        view.layer.addSublayer(captureSessionManager?.preview)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        captureSessionManager?.startVideoPreview()
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        captureSessionManager?.stopVideoPreview()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        captureSessionManager?.updatePreviewFrame(view.bounds)
     }
 
     // MARK:- Actions
