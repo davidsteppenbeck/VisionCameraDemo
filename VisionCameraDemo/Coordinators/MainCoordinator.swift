@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainCoordinator: Coordinated, CameraViewControllerCoordinator {
+final class MainCoordinator: Coordinated, ErrorHandlerCoordinator, CameraViewControllerCoordinator {
 
     // MARK:- Properties
 
@@ -28,6 +28,11 @@ class MainCoordinator: Coordinated, CameraViewControllerCoordinator {
         let vc = CameraViewController.instantiate()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
+    }
+
+    func handleError(_ error: Error, fromViewController vc: UIViewController) {
+        let alert = UIAlertController.simpleAlertController(title: "Unresolved Error", message: error.localizedDescription)
+        vc.present(alert, animated: true)
     }
 
     func showSettings() {

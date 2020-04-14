@@ -13,6 +13,8 @@ final class CaptureSessionManager: NSObject {
 
     // MARK:- Properties
 
+    weak var delegate: CaptureSessionManagerDelegate?
+
     /// Keeps a strong reference to the sample buffer for snapshots.
     private (set) var sampleBuffer: CMSampleBuffer?
 
@@ -79,9 +81,14 @@ final class CaptureSessionManager: NSObject {
 
     // MARK:- Initialization
 
-    init?(preset: AVCaptureSession.Preset = .high) {
+    init?(preset: AVCaptureSession.Preset = .high, delegate: CaptureSessionManagerDelegate? = nil) {
         self.session = AVCaptureSession()
         self.preview = AVCaptureVideoPreviewLayer(session: session)
+
+        if delegate != nil {
+            self.delegate = delegate
+        }
+
         super.init()
 
         let device: AVCaptureDevice? = {
@@ -93,7 +100,7 @@ final class CaptureSessionManager: NSObject {
         }()
 
         guard device != nil else {
-            print("no device")
+            delegate?.captureSessionManager(self, didFailWithError: CaptureSessionManagerError.device)
             return nil
         }
 
@@ -117,7 +124,7 @@ final class CaptureSessionManager: NSObject {
         }
 
         guard let input = try? AVCaptureDeviceInput(device: device!), session.canAddInput(input), session.canAddOutput(output) else {
-            print("error")
+            delegate?.captureSessionManager(self, didFailWithError: CaptureSessionManagerError.device)
             return nil
         }
 

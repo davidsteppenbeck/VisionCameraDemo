@@ -12,9 +12,9 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     // MARK:- Properties
 
-    weak var coordinator: CameraViewControllerCoordinator?
+    weak var coordinator: (ErrorHandlerCoordinator & CameraViewControllerCoordinator)?
 
-    private let captureSessionManager = CaptureSessionManager()
+    private lazy var captureSessionManager = CaptureSessionManager(delegate: self)
 
     private lazy var settingsBarButton: UIBarButtonItem = {
         let image = UIImage(systemName: "gear")

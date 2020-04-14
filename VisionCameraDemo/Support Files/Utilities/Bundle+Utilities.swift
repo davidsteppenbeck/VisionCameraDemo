@@ -9,7 +9,10 @@
 import Foundation
 
 extension Bundle {
+
+    /// Provides the application name using the `infoDictionary` value for key `"CFBundleName"`.
     var appName: String? {
         return infoDictionary?["CFBundleName"] as? String
     }
+
 }

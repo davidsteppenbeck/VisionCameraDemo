@@ -9,9 +9,12 @@
 import UIKit
 
 extension CALayer {
+
+    /// Adds the sublayer if it is non `nil`.
     func addSublayer(_ layer: CALayer?) {
         if let layer = layer {
             addSublayer(layer)
         }
     }
+
 }
