@@ -146,8 +146,6 @@ final class CaptureSessionManager: NSObject {
 
 extension CaptureSessionManager: AVCaptureVideoDataOutputSampleBufferDelegate {
 
-    // MARK:- AVCaptureVideoDataOutputSampleBufferDelegate
-
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if didSnapPhoto {
             stopVideoPreview()

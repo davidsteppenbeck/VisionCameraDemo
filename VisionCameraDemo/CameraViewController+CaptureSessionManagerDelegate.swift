@@ -10,8 +10,6 @@ import Foundation
 
 extension CameraViewController: CaptureSessionManagerDelegate {
 
-    // MARK:- CaptureSessionManagerDelegate
-
     func captureSessionManager(_ captureSessionManager: CaptureSessionManager, didFailWithError error: Error) {
         coordinator?.handleError(error, fromViewController: self)
     }
