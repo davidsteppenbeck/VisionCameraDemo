@@ -27,6 +27,7 @@
 		41ADF3F224463496005426E5 /* CameraViewController+CaptureSessionManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADF3F124463496005426E5 /* CameraViewController+CaptureSessionManagerDelegate.swift */; };
 		41ADF3F424463691005426E5 /* ErrorHandlerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADF3F324463690005426E5 /* ErrorHandlerCoordinator.swift */; };
 		41ADF3F6244638FB005426E5 /* UIAlertController+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADF3F5244638FB005426E5 /* UIAlertController+Utilities.swift */; };
+		41ADF3FA24466006005426E5 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADF3F924466006005426E5 /* AuthorizationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		41ADF3F124463496005426E5 /* CameraViewController+CaptureSessionManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraViewController+CaptureSessionManagerDelegate.swift"; sourceTree = "<group>"; };
 		41ADF3F324463690005426E5 /* ErrorHandlerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlerCoordinator.swift; sourceTree = "<group>"; };
 		41ADF3F5244638FB005426E5 /* UIAlertController+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Utilities.swift"; sourceTree = "<group>"; };
+		41ADF3F924466006005426E5 /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				4157247124411E7400F4B7E0 /* Main.storyboard */,
 				4157246F24411E7400F4B7E0 /* CameraViewController.swift */,
 				41ADF3F124463496005426E5 /* CameraViewController+CaptureSessionManagerDelegate.swift */,
+				41ADF3F924466006005426E5 /* AuthorizationManager.swift */,
 				41ADF3DD2444C67B005426E5 /* CaptureSessionManager.swift */,
 				41ADF3EB24460EC8005426E5 /* CaptureSessionManagerDelegate.swift */,
 				41ADF3ED24460EF9005426E5 /* CaptureSessionManagerError.swift */,
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4157247024411E7400F4B7E0 /* CameraViewController.swift in Sources */,
+				41ADF3FA24466006005426E5 /* AuthorizationManager.swift in Sources */,
 				41ADF3DE2444C67B005426E5 /* CaptureSessionManager.swift in Sources */,
 				41ADF3E52444F4C2005426E5 /* Bundle+Utilities.swift in Sources */,
 				41572498244205AA00F4B7E0 /* MainCoordinator.swift in Sources */,

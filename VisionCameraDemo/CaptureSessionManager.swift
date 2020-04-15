@@ -15,6 +15,8 @@ final class CaptureSessionManager: NSObject {
 
     weak var delegate: CaptureSessionManagerDelegate?
 
+    private let authorizationManager = AuthorizationManager()
+
     /// Keeps a strong reference to the sample buffer for snapshots.
     private (set) var sampleBuffer: CMSampleBuffer?
 
@@ -35,22 +37,53 @@ final class CaptureSessionManager: NSObject {
     /// The object that manages capture activity and coordinates the flow of data from input devices to capture outputs.
     let session: AVCaptureSession
 
-    /// Starts the `AVCaptureSession` instance if it is not currently running
-    /// and the snapshot state is `false`.
+    /// A dedicated queue for perfroming tasks related to `AVCaptureSession`.
+    var sessionQueue = DispatchQueue(label: "com.steppenbeck.VisionCameraDemo.sessionQueue", qos: .userInteractive)
+
+    // MARK:- Methods
+
+    /// Checks user authorization for video access using `AuthorizationManager`.
+    /// If authorized, it starts the `AVCaptureSession` iff it is not currently running
+    /// and the snapshot state is `false`. Otherwise, does not start running the video.
     func startVideoPreview() {
         guard !didSnapPhoto else {
             return
         }
 
+        switch authorizationManager.status {
+        case .authorized:
+            authorizedStartVideoPreview()
+
+        case .notDetermined:
+            sessionQueue.suspend()
+            authorizationManager.requestAccess { [weak self] _ in
+                self?.sessionQueue.resume()
+                self?.startVideoPreview()
+            }
+
+        default:
+            delegate?.captureSessionManager(self, didFailWithError: CaptureSessionManagerError.authorization)
+        }
+    }
+
+    /// Starts the `AVCaptureSession` instance if it is not currently running.
+    /// - Important: This method should only be called if video access has been authorized.
+    private func authorizedStartVideoPreview() {
+        assert(authorizationManager.status == .authorized)
+
         if !session.isRunning {
-            session.startRunning()
+            sessionQueue.async {
+                self.session.startRunning()
+            }
         }
     }
 
     /// Stops the `AVCaptureSession` instance if it is currently running.
     func stopVideoPreview() {
         if session.isRunning {
-            session.stopRunning()
+            sessionQueue.async {
+                self.session.stopRunning()
+            }
         }
     }
 
@@ -104,17 +137,9 @@ final class CaptureSessionManager: NSObject {
             return nil
         }
 
-        let queue = DispatchQueue(
-            label: "com.steppenbeck.VisionCameraDemo",
-            qos: .userInteractive,
-            attributes: .concurrent,
-            autoreleaseFrequency: .inherit,
-            target: nil
-        )
-
         let output = AVCaptureVideoDataOutput()
         output.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA)]
-        output.setSampleBufferDelegate(self, queue: queue)
+        output.setSampleBufferDelegate(self, queue: sessionQueue)
         output.alwaysDiscardsLateVideoFrames = true
 
         session.beginConfiguration() // use to batch multiple configuration operations
