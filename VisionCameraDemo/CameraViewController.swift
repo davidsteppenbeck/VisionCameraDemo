@@ -38,12 +38,12 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        captureSessionManager?.startVideoPreview()
+        captureSessionManager?.startVideoSession()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        captureSessionManager?.stopVideoPreview()
+        captureSessionManager?.stopVideoSession()
     }
 
     override func viewDidLayoutSubviews() {

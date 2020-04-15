@@ -27,7 +27,7 @@ final class CaptureSessionManager: NSObject {
                 sampleBuffer = nil
             }
 
-            startVideoPreview()
+            startVideoSession()
         }
     }
 
@@ -45,20 +45,20 @@ final class CaptureSessionManager: NSObject {
     /// Checks user authorization for video access using `AuthorizationManager`.
     /// If authorized, it starts the `AVCaptureSession` iff it is not currently running
     /// and the snapshot state is `false`. Otherwise, does not start running the video.
-    func startVideoPreview() {
+    func startVideoSession() {
         guard !didSnapPhoto else {
             return
         }
 
         switch authorizationManager.status {
         case .authorized:
-            authorizedStartVideoPreview()
+            authorizedStartVideoSession()
 
         case .notDetermined:
             sessionQueue.suspend()
             authorizationManager.requestAccess { [weak self] _ in
                 self?.sessionQueue.resume()
-                self?.startVideoPreview()
+                self?.startVideoSession()
             }
 
         default:
@@ -68,7 +68,7 @@ final class CaptureSessionManager: NSObject {
 
     /// Starts the `AVCaptureSession` instance if it is not currently running.
     /// - Important: This method should only be called if video access has been authorized.
-    private func authorizedStartVideoPreview() {
+    private func authorizedStartVideoSession() {
         assert(authorizationManager.status == .authorized)
 
         if !session.isRunning {
@@ -79,7 +79,7 @@ final class CaptureSessionManager: NSObject {
     }
 
     /// Stops the `AVCaptureSession` instance if it is currently running.
-    func stopVideoPreview() {
+    func stopVideoSession() {
         if session.isRunning {
             sessionQueue.async {
                 self.session.stopRunning()
@@ -173,7 +173,7 @@ extension CaptureSessionManager: AVCaptureVideoDataOutputSampleBufferDelegate {
 
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if didSnapPhoto {
-            stopVideoPreview()
+            stopVideoSession()
             self.sampleBuffer = sampleBuffer
         }
     }
