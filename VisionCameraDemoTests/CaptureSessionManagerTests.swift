@@ -35,20 +35,11 @@ class CaptureSessionManagerTests: XCTestCase {
         XCTAssertFalse(sut.didSnapPhoto)
     }
 
-    func testStartVideoPreview() {
-        sut.stopVideoSession()
-        XCTAssertFalse(sut.session.isRunning)
-
-        sut.startVideoSession()
-        XCTAssertTrue(sut.session.isRunning)
-    }
-
-    func testStopVideoPreview() {
-        sut.stopVideoSession()
+    func testSessionRunning() {
         XCTAssertFalse(sut.session.isRunning)
     }
 
-    func updateCaptureSessionPreset() {
+    func testUpdateCaptureSessionPreset() {
         XCTAssertEqual(sut.session.sessionPreset, .high)
 
         let resultChange = sut.updateCaptureSessionPreset(.medium)
@@ -57,4 +48,5 @@ class CaptureSessionManagerTests: XCTestCase {
         let resultNoChange = sut.updateCaptureSessionPreset(.medium)
         XCTAssertFalse(resultNoChange)
     }
+
 }
