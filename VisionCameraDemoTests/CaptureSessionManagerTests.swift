@@ -36,22 +36,16 @@ class CaptureSessionManagerTests: XCTestCase {
     }
 
     func testStartVideoPreview() {
-        sut.stopVideoPreview()
+        sut.stopVideoSession()
         XCTAssertFalse(sut.session.isRunning)
 
-        sut.startVideoPreview()
+        sut.startVideoSession()
         XCTAssertTrue(sut.session.isRunning)
     }
 
     func testStopVideoPreview() {
-        sut.stopVideoPreview()
+        sut.stopVideoSession()
         XCTAssertFalse(sut.session.isRunning)
-    }
-
-    func testUpdatePreviewFrame() {
-        let frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        sut.updatePreviewFrame(frame)
-        XCTAssertEqual(sut.preview.frame, frame)
     }
 
     func updateCaptureSessionPreset() {
