@@ -10,7 +10,7 @@ import XCTest
 import AVFoundation
 @testable import VisionCameraDemo
 
-class CameraViewTests: XCTestCase {
+final class CameraViewTests: XCTestCase {
 
     var sut: CameraView!
 

@@ -9,7 +9,7 @@
 import XCTest
 @testable import VisionCameraDemo
 
-class CaptureSessionManagerTests: XCTestCase {
+final class CaptureSessionManagerTests: XCTestCase {
 
     var sut: CaptureSessionManager!
 
