@@ -14,6 +14,8 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     weak var coordinator: (ErrorHandlerCoordinator & CameraViewControllerCoordinator)?
 
+    private lazy var cameraView = CameraView(session: captureSessionManager?.session)
+
     private lazy var captureSessionManager = CaptureSessionManager(delegate: self)
 
     private lazy var settingsBarButton: UIBarButtonItem = {
@@ -28,12 +30,15 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     // MARK:- View Lifecycle
 
+    override func loadView() {
+        view = cameraView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = Bundle.main.appName
         navigationItem.leftBarButtonItem = settingsBarButton
         navigationItem.rightBarButtonItem = optionsBarButton
-        view.layer.addSublayer(captureSessionManager?.preview)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -44,11 +49,6 @@ final class CameraViewController: UIViewController, Storyboarded {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         captureSessionManager?.stopVideoSession()
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        captureSessionManager?.updatePreviewFrame(view.bounds)
     }
 
     // MARK:- Actions

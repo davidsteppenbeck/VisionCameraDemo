@@ -31,9 +31,6 @@ final class CaptureSessionManager: NSObject {
         }
     }
 
-    /// The layer that displays the video as it’s captured.
-    let preview: AVCaptureVideoPreviewLayer
-
     /// The object that manages capture activity and coordinates the flow of data from input devices to capture outputs.
     let session: AVCaptureSession
 
@@ -87,11 +84,6 @@ final class CaptureSessionManager: NSObject {
         }
     }
 
-    /// Updates the `frame` property of the `AVCaptureVideoPreviewLayer` instance.
-    func updatePreviewFrame(_ frame: CGRect) {
-        preview.frame = frame
-    }
-
     /// Updates the `sessionPreset` property of the `AVCaptureSession` instance.
     ///
     /// - Parameters:
@@ -115,13 +107,11 @@ final class CaptureSessionManager: NSObject {
     // MARK:- Initialization
 
     init?(preset: AVCaptureSession.Preset = .high, delegate: CaptureSessionManagerDelegate? = nil) {
-        self.session = AVCaptureSession()
-        self.preview = AVCaptureVideoPreviewLayer(session: session)
-
         if delegate != nil {
             self.delegate = delegate
         }
 
+        self.session = AVCaptureSession()
         super.init()
 
         let device: AVCaptureDevice? = {
@@ -159,12 +149,6 @@ final class CaptureSessionManager: NSObject {
         if session.canSetSessionPreset(preset) {
             session.sessionPreset = preset
         }
-
-        if preview.connection?.isVideoOrientationSupported == true {
-            preview.connection?.videoOrientation = .portrait
-        }
-
-        preview.videoGravity = .resizeAspectFill
     }
 
 }

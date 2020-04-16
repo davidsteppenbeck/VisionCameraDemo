@@ -28,6 +28,7 @@
 		41ADF3F424463691005426E5 /* ErrorHandlerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADF3F324463690005426E5 /* ErrorHandlerCoordinator.swift */; };
 		41ADF3F6244638FB005426E5 /* UIAlertController+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADF3F5244638FB005426E5 /* UIAlertController+Utilities.swift */; };
 		41ADF3FA24466006005426E5 /* AuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADF3F924466006005426E5 /* AuthorizationManager.swift */; };
+		41FB931A244788060097F45E /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB9319244788060097F45E /* CameraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		41ADF3F324463690005426E5 /* ErrorHandlerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandlerCoordinator.swift; sourceTree = "<group>"; };
 		41ADF3F5244638FB005426E5 /* UIAlertController+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Utilities.swift"; sourceTree = "<group>"; };
 		41ADF3F924466006005426E5 /* AuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationManager.swift; sourceTree = "<group>"; };
+		41FB9319244788060097F45E /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				4157247124411E7400F4B7E0 /* Main.storyboard */,
+				41FB9319244788060097F45E /* CameraView.swift */,
 				4157246F24411E7400F4B7E0 /* CameraViewController.swift */,
 				41ADF3F124463496005426E5 /* CameraViewController+CaptureSessionManagerDelegate.swift */,
 				41ADF3F924466006005426E5 /* AuthorizationManager.swift */,
@@ -282,6 +285,7 @@
 				41ADF3F424463691005426E5 /* ErrorHandlerCoordinator.swift in Sources */,
 				41ADF3F6244638FB005426E5 /* UIAlertController+Utilities.swift in Sources */,
 				4157246C24411E7400F4B7E0 /* AppDelegate.swift in Sources */,
+				41FB931A244788060097F45E /* CameraView.swift in Sources */,
 				41ADF3EC24460EC8005426E5 /* CaptureSessionManagerDelegate.swift in Sources */,
 				4157246E24411E7400F4B7E0 /* SceneDelegate.swift in Sources */,
 				41ADF3DC2444ADA0005426E5 /* CameraViewControllerCoordinator.swift in Sources */,
