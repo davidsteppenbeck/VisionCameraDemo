@@ -31,8 +31,10 @@ final class CaptureSessionManagerTests: XCTestCase {
         XCTAssertNil(sut.sampleBuffer)
     }
 
-    func testDidSnapPhoto() {
+    func testToggle() {
         XCTAssertFalse(sut.didSnapPhoto)
+        sut.toggle()
+        XCTAssertTrue(sut.didSnapPhoto)
     }
 
     func testSessionRunning() {

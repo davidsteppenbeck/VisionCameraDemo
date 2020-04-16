@@ -14,9 +14,15 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     weak var coordinator: (ErrorHandlerCoordinator & CameraViewControllerCoordinator)?
 
+    private lazy var captureSessionManager = CaptureSessionManager(delegate: self)
+
     private lazy var cameraView = CameraView(session: captureSessionManager?.session)
 
-    private lazy var captureSessionManager = CaptureSessionManager(delegate: self)
+    private lazy var cameraButton: CameraButton = {
+        let button = CameraButton()
+        button.addTarget(self, action: #selector(cameraButtonTapped(_:)), for: .touchDown)
+        return button
+    }()
 
     private lazy var settingsBarButton: UIBarButtonItem = {
         let image = UIImage(systemName: "gear")
@@ -39,6 +45,8 @@ final class CameraViewController: UIViewController, Storyboarded {
         title = Bundle.main.appName
         navigationItem.leftBarButtonItem = settingsBarButton
         navigationItem.rightBarButtonItem = optionsBarButton
+        cameraView.addSubview(cameraButton)
+        addViewLayoutConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -53,12 +61,27 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     // MARK:- Actions
 
+    @objc private func cameraButtonTapped(_ sender: UIControl) {
+        captureSessionManager?.toggle()
+    }
+
     @objc private func settingsBarButtonTapped(_ sender: UIBarButtonItem) {
         coordinator?.showSettings()
     }
 
     @objc private func optionsBarButtonTapped(_ sender: UIBarButtonItem) {
         coordinator?.showOptions()
+    }
+
+    // MARK:- Methods
+
+    private func addViewLayoutConstraints() {
+        NSLayoutConstraint.activate([
+            cameraButton.centerXAnchor.constraint(equalTo: cameraView.safeAreaLayoutGuide.centerXAnchor),
+            cameraButton.bottomAnchor.constraint(equalTo: cameraView.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            cameraButton.heightAnchor.constraint(equalToConstant: 60),
+            cameraButton.widthAnchor.constraint(equalToConstant: 60)
+        ])
     }
 
 }

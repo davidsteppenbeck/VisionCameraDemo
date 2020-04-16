@@ -39,6 +39,11 @@ final class CaptureSessionManager: NSObject {
 
     // MARK:- Methods
 
+    /// Toggles the snapshot state.
+    func toggle() {
+        didSnapPhoto.toggle()
+    }
+
     /// Checks user authorization for video access using `AuthorizationManager`.
     /// If authorized, it starts the `AVCaptureSession` iff it is not currently running
     /// and the snapshot state is `false`. Otherwise, does not start running the video.
