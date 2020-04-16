@@ -32,7 +32,7 @@ final class CaptureSessionManager: NSObject {
     }
 
     /// The object that manages capture activity and coordinates the flow of data from input devices to capture outputs.
-    let session: AVCaptureSession
+    let session = AVCaptureSession()
 
     /// A dedicated queue for perfroming tasks related to `AVCaptureSession`.
     var sessionQueue = DispatchQueue(label: "com.steppenbeck.VisionCameraDemo.sessionQueue", qos: .userInteractive)
@@ -107,12 +107,11 @@ final class CaptureSessionManager: NSObject {
     // MARK:- Initialization
 
     init?(preset: AVCaptureSession.Preset = .high, delegate: CaptureSessionManagerDelegate? = nil) {
+        super.init()
+
         if delegate != nil {
             self.delegate = delegate
         }
-
-        self.session = AVCaptureSession()
-        super.init()
 
         let device: AVCaptureDevice? = {
             if let device = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: .video, position: .back).devices.first {
@@ -154,12 +153,10 @@ final class CaptureSessionManager: NSObject {
 }
 
 extension CaptureSessionManager: AVCaptureVideoDataOutputSampleBufferDelegate {
-
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         if didSnapPhoto {
             stopVideoSession()
             self.sampleBuffer = sampleBuffer
         }
     }
-
 }
