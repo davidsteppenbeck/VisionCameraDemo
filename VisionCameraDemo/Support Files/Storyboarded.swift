@@ -25,7 +25,10 @@ extension Storyboarded {
     ///
     /// - Returns: A new instance of the view controller.
     static func instantiate(withStoryboardName name: String = "Main", bundle: Bundle? = nil) -> Self {
-        let id = String(describing: self) // provides a `String` version of the class name
+
+        /// Provides the class name as a `String`.
+        let id = String(describing: self)
+
         let storyboard = UIStoryboard(name: name, bundle: bundle)
         return storyboard.instantiateViewController(withIdentifier: id) as! Self
     }
