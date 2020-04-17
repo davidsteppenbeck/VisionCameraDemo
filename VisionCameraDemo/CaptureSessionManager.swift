@@ -23,7 +23,9 @@ final class CaptureSessionManager: NSObject {
     /// Keeps track of the snapshot state: `false` when the video feed is running, otherwise `true`.
     private (set) var didSnapPhoto: Bool = false {
         didSet {
-            if !didSnapPhoto {
+            if didSnapPhoto {
+                AudioSessionManager.playSound(withStyle: .cameraShutter)
+            } else {
                 sampleBuffer = nil
             }
 

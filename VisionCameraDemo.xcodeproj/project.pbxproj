@@ -33,6 +33,8 @@
 		41FB93202448CF0F0097F45E /* CGRect+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB931F2448CF0F0097F45E /* CGRect+Utilities.swift */; };
 		41FB93222448D7040097F45E /* CGRectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB93212448D7040097F45E /* CGRectTests.swift */; };
 		41FB932424490F560097F45E /* CameraButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB932324490F560097F45E /* CameraButtonTests.swift */; };
+		41FB93262449E9180097F45E /* AudioSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB93252449E9180097F45E /* AudioSessionManager.swift */; };
+		41FB93282449ED360097F45E /* AudioSessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB93272449ED360097F45E /* AudioSessionManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		41FB931F2448CF0F0097F45E /* CGRect+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Utilities.swift"; sourceTree = "<group>"; };
 		41FB93212448D7040097F45E /* CGRectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRectTests.swift; sourceTree = "<group>"; };
 		41FB932324490F560097F45E /* CameraButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButtonTests.swift; sourceTree = "<group>"; };
+		41FB93252449E9180097F45E /* AudioSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSessionManager.swift; sourceTree = "<group>"; };
+		41FB93272449ED360097F45E /* AudioSessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSessionManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,7 @@
 		4157248124411E7500F4B7E0 /* VisionCameraDemoTests */ = {
 			isa = PBXGroup;
 			children = (
+				41FB93272449ED360097F45E /* AudioSessionManagerTests.swift */,
 				41FB932324490F560097F45E /* CameraButtonTests.swift */,
 				41FB931B244894250097F45E /* CameraViewTests.swift */,
 				41ADF3E92445E95D005426E5 /* CaptureSessionManagerTests.swift */,
@@ -153,6 +158,7 @@
 				4157247624411E7500F4B7E0 /* LaunchScreen.storyboard */,
 				4157246B24411E7400F4B7E0 /* AppDelegate.swift */,
 				4157246D24411E7400F4B7E0 /* SceneDelegate.swift */,
+				41FB93252449E9180097F45E /* AudioSessionManager.swift */,
 				415724932441FCEC00F4B7E0 /* Storyboarded.swift */,
 				41ADF3E32444F360005426E5 /* Utilities */,
 				4157247424411E7500F4B7E0 /* Assets.xcassets */,
@@ -285,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41FB93262449E9180097F45E /* AudioSessionManager.swift in Sources */,
 				4157247024411E7400F4B7E0 /* CameraViewController.swift in Sources */,
 				41ADF3FA24466006005426E5 /* AuthorizationManager.swift in Sources */,
 				41ADF3DE2444C67B005426E5 /* CaptureSessionManager.swift in Sources */,
@@ -314,6 +321,7 @@
 				41FB931C244894250097F45E /* CameraViewTests.swift in Sources */,
 				41FB932424490F560097F45E /* CameraButtonTests.swift in Sources */,
 				41FB93222448D7040097F45E /* CGRectTests.swift in Sources */,
+				41FB93282449ED360097F45E /* AudioSessionManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
