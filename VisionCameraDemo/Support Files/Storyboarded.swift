@@ -20,7 +20,8 @@ extension Storyboarded {
     ///
     /// - Parameters:
     ///   - name: The name of the storyboard file that contains the view controller. Defaults to "Main".
-    ///   - bundle: The bundle containing the storyboard file and its related resources. If you specify nil, this method looks in the main bundle of the current application. Defaults to nil.
+    ///   - bundle: The bundle containing the storyboard file and its related resources. If you specify nil,
+    ///   this method looks in the main bundle of the current application. Defaults to nil.
     ///
     /// - Returns: A new instance of the view controller.
     static func instantiate(withStoryboardName name: String = "Main", bundle: Bundle? = nil) -> Self {
