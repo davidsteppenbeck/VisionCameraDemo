@@ -15,7 +15,7 @@
 		4157247824411E7500F4B7E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4157247624411E7500F4B7E0 /* LaunchScreen.storyboard */; };
 		41572490244128E300F4B7E0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4157248F244128E300F4B7E0 /* Colors.xcassets */; };
 		415724942441FCEC00F4B7E0 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415724932441FCEC00F4B7E0 /* Storyboarded.swift */; };
-		415724962442055100F4B7E0 /* Coordinated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415724952442055100F4B7E0 /* Coordinated.swift */; };
+		415724962442055100F4B7E0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415724952442055100F4B7E0 /* Coordinator.swift */; };
 		41572498244205AA00F4B7E0 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41572497244205AA00F4B7E0 /* MainCoordinator.swift */; };
 		41ADF3DC2444ADA0005426E5 /* CameraViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADF3DB2444ADA0005426E5 /* CameraViewControllerCoordinator.swift */; };
 		41ADF3DE2444C67B005426E5 /* CaptureSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADF3DD2444C67B005426E5 /* CaptureSessionManager.swift */; };
@@ -35,6 +35,12 @@
 		41FB932424490F560097F45E /* CameraButtonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB932324490F560097F45E /* CameraButtonTests.swift */; };
 		41FB93262449E9180097F45E /* AudioSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB93252449E9180097F45E /* AudioSessionManager.swift */; };
 		41FB93282449ED360097F45E /* AudioSessionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB93272449ED360097F45E /* AudioSessionManagerTests.swift */; };
+		41FB932A244A39580097F45E /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 41FB9329244A39580097F45E /* Settings.storyboard */; };
+		41FB932C244A39A00097F45E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB932B244A39A00097F45E /* SettingsTableViewController.swift */; };
+		41FB932E244A3D650097F45E /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB932D244A3D650097F45E /* SettingsCoordinator.swift */; };
+		41FB9330244A3E320097F45E /* SettingsTableViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB932F244A3E320097F45E /* SettingsTableViewControllerCoordinator.swift */; };
+		41FB9332244B76A70097F45E /* ChildCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB9331244B76A70097F45E /* ChildCoordinator.swift */; };
+		41FB9334244B77790097F45E /* ParentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB9333244B77790097F45E /* ParentCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +66,7 @@
 		4157248424411E7500F4B7E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4157248F244128E300F4B7E0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		415724932441FCEC00F4B7E0 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
-		415724952442055100F4B7E0 /* Coordinated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinated.swift; sourceTree = "<group>"; };
+		415724952442055100F4B7E0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		41572497244205AA00F4B7E0 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		41ADF3DB2444ADA0005426E5 /* CameraViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewControllerCoordinator.swift; sourceTree = "<group>"; };
 		41ADF3DD2444C67B005426E5 /* CaptureSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionManager.swift; sourceTree = "<group>"; };
@@ -81,6 +87,12 @@
 		41FB932324490F560097F45E /* CameraButtonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraButtonTests.swift; sourceTree = "<group>"; };
 		41FB93252449E9180097F45E /* AudioSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSessionManager.swift; sourceTree = "<group>"; };
 		41FB93272449ED360097F45E /* AudioSessionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioSessionManagerTests.swift; sourceTree = "<group>"; };
+		41FB9329244A39580097F45E /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		41FB932B244A39A00097F45E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		41FB932D244A3D650097F45E /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		41FB932F244A3E320097F45E /* SettingsTableViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewControllerCoordinator.swift; sourceTree = "<group>"; };
+		41FB9331244B76A70097F45E /* ChildCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCoordinator.swift; sourceTree = "<group>"; };
+		41FB9333244B77790097F45E /* ParentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				4157247124411E7400F4B7E0 /* Main.storyboard */,
+				41FB9329244A39580097F45E /* Settings.storyboard */,
 				41FB9319244788060097F45E /* CameraView.swift */,
 				41FB931D2448C9890097F45E /* CameraButton.swift */,
 				4157246F24411E7400F4B7E0 /* CameraViewController.swift */,
@@ -131,6 +144,7 @@
 				41ADF3DD2444C67B005426E5 /* CaptureSessionManager.swift */,
 				41ADF3EB24460EC8005426E5 /* CaptureSessionManagerDelegate.swift */,
 				41ADF3ED24460EF9005426E5 /* CaptureSessionManagerError.swift */,
+				41FB932B244A39A00097F45E /* SettingsTableViewController.swift */,
 				41ADF3DA2444AD45005426E5 /* Coordinators */,
 				4157248D24411EF800F4B7E0 /* Support Files */,
 				4157247924411E7500F4B7E0 /* Info.plist */,
@@ -170,10 +184,14 @@
 		41ADF3DA2444AD45005426E5 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				415724952442055100F4B7E0 /* Coordinated.swift */,
+				415724952442055100F4B7E0 /* Coordinator.swift */,
+				41FB9333244B77790097F45E /* ParentCoordinator.swift */,
+				41FB9331244B76A70097F45E /* ChildCoordinator.swift */,
 				41ADF3F324463690005426E5 /* ErrorHandlerCoordinator.swift */,
 				41ADF3DB2444ADA0005426E5 /* CameraViewControllerCoordinator.swift */,
+				41FB932F244A3E320097F45E /* SettingsTableViewControllerCoordinator.swift */,
 				41572497244205AA00F4B7E0 /* MainCoordinator.swift */,
+				41FB932D244A3D650097F45E /* SettingsCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -274,6 +292,7 @@
 				41572490244128E300F4B7E0 /* Colors.xcassets in Resources */,
 				4157247524411E7500F4B7E0 /* Assets.xcassets in Resources */,
 				4157247324411E7400F4B7E0 /* Main.storyboard in Resources */,
+				41FB932A244A39580097F45E /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,10 +310,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				41FB9334244B77790097F45E /* ParentCoordinator.swift in Sources */,
 				41FB93262449E9180097F45E /* AudioSessionManager.swift in Sources */,
 				4157247024411E7400F4B7E0 /* CameraViewController.swift in Sources */,
 				41ADF3FA24466006005426E5 /* AuthorizationManager.swift in Sources */,
 				41ADF3DE2444C67B005426E5 /* CaptureSessionManager.swift in Sources */,
+				41FB932E244A3D650097F45E /* SettingsCoordinator.swift in Sources */,
 				41ADF3E52444F4C2005426E5 /* Bundle+Utilities.swift in Sources */,
 				41572498244205AA00F4B7E0 /* MainCoordinator.swift in Sources */,
 				41ADF3EE24460EF9005426E5 /* CaptureSessionManagerError.swift in Sources */,
@@ -303,13 +324,16 @@
 				41FB93202448CF0F0097F45E /* CGRect+Utilities.swift in Sources */,
 				41ADF3F424463691005426E5 /* ErrorHandlerCoordinator.swift in Sources */,
 				41ADF3F6244638FB005426E5 /* UIAlertController+Utilities.swift in Sources */,
+				41FB9330244A3E320097F45E /* SettingsTableViewControllerCoordinator.swift in Sources */,
 				4157246C24411E7400F4B7E0 /* AppDelegate.swift in Sources */,
 				41FB931A244788060097F45E /* CameraView.swift in Sources */,
 				41FB931E2448C9890097F45E /* CameraButton.swift in Sources */,
 				41ADF3EC24460EC8005426E5 /* CaptureSessionManagerDelegate.swift in Sources */,
+				41FB932C244A39A00097F45E /* SettingsTableViewController.swift in Sources */,
 				4157246E24411E7400F4B7E0 /* SceneDelegate.swift in Sources */,
 				41ADF3DC2444ADA0005426E5 /* CameraViewControllerCoordinator.swift in Sources */,
-				415724962442055100F4B7E0 /* Coordinated.swift in Sources */,
+				415724962442055100F4B7E0 /* Coordinator.swift in Sources */,
+				41FB9332244B76A70097F45E /* ChildCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

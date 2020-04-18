@@ -8,18 +8,19 @@
 
 import UIKit
 
-final class MainCoordinator: Coordinated, ErrorHandlerCoordinator, CameraViewControllerCoordinator {
+final class MainCoordinator: NSObject, Coordinator, ParentCoordinator, ErrorHandlerCoordinator, CameraViewControllerCoordinator {
 
     // MARK:- Properties
 
     var navigationController: UINavigationController
 
-    var children = [Coordinated]()
+    var children = [Coordinator & ChildCoordinator]()
 
     // MARK:- Initialization
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        super.init()
     }
 
     // MARK:- Methods
@@ -36,9 +37,20 @@ final class MainCoordinator: Coordinated, ErrorHandlerCoordinator, CameraViewCon
     }
 
     func showSettings() {
-        print("showSettings")
+        // The settings table view controller is presented modally, so it requires its own `UINavigationController`.
+        let navigationController = UINavigationController()
+        navigationController.modalPresentationStyle = .automatic
+
+        // Create and start the child coordinator.
+        let coordinator = SettingsCoordinator(navigationController: navigationController)
+        children.append(coordinator)
+        coordinator.parent = self
+        coordinator.start()
+
+        // Present the new navigation controller modally.
+        self.navigationController.present(navigationController, animated: true)
     }
-    
+
     func showOptions() {
         print("showOptions")
     }

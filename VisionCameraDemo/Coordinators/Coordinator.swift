@@ -1,5 +1,5 @@
 //
-//  Coordinated.swift
+//  Coordinator.swift
 //  VisionCameraDemo
 //
 //  Created by David Steppenbeck on 2020/04/11.
@@ -8,8 +8,12 @@
 
 import UIKit
 
-protocol Coordinated: class {
+protocol Coordinator: class {
+
+    /// The navigation controller associated with the coordinator.
     var navigationController: UINavigationController { get set }
-    var children: [Coordinated] { get set }
+
+    /// Lets the coordinator take control of the navigation flow.
     func start()
+
 }

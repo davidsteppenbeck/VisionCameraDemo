@@ -9,6 +9,11 @@
 import Foundation
 
 protocol CameraViewControllerCoordinator: class {
+
+    /// Call to present settings table view controller.
     func showSettings()
+
+    /// Call to present options action sheet.
     func showOptions()
+
 }

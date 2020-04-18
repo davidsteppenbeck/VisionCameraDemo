@@ -20,18 +20,18 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     private lazy var cameraButton: CameraButton = {
         let button = CameraButton()
-        button.addTarget(self, action: #selector(cameraButtonTapped(_:)), for: .touchDown)
+        button.addTarget(self, action: #selector(cameraButtonAction(_:)), for: .touchDown)
         return button
     }()
 
     private lazy var settingsBarButton: UIBarButtonItem = {
         let image = UIImage(systemName: "gear")
-        return UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(settingsBarButtonTapped(_:)))
+        return UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(settingsBarButtonAction(_:)))
     }()
 
     private lazy var optionsBarButton: UIBarButtonItem = {
         let image = UIImage(systemName: "ellipsis")
-        return UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(optionsBarButtonTapped(_:)))
+        return UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(optionsBarButtonAction(_:)))
     }()
 
     // MARK:- View Lifecycle
@@ -61,15 +61,15 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     // MARK:- Actions
 
-    @objc private func cameraButtonTapped(_ sender: UIControl) {
+    @objc private func cameraButtonAction(_ sender: UIControl) {
         captureSessionManager?.toggle()
     }
 
-    @objc private func settingsBarButtonTapped(_ sender: UIBarButtonItem) {
+    @objc private func settingsBarButtonAction(_ sender: UIBarButtonItem) {
         coordinator?.showSettings()
     }
 
-    @objc private func optionsBarButtonTapped(_ sender: UIBarButtonItem) {
+    @objc private func optionsBarButtonAction(_ sender: UIBarButtonItem) {
         coordinator?.showOptions()
     }
 

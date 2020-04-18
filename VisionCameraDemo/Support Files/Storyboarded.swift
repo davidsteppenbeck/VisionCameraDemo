@@ -10,13 +10,10 @@ import UIKit
 
 /// Methods for instantiating view controllers from storyboards.
 protocol Storyboarded: class {
-    static func instantiate(withStoryboardName name: String, bundle: Bundle?) -> Self
-}
 
-extension Storyboarded {
-
-    /// Default implementation that instantiates the view controller from the storyboard.
-    /// This requires applying a Storyboard ID that is the same as the view controller class name.
+    /// Instantiates the view controller from the storyboard.
+    ///
+    /// - Important: Requires applying a Storyboard ID that is the same as the view controller class name.
     ///
     /// - Parameters:
     ///   - name: The name of the storyboard file that contains the view controller. Defaults to "Main".
@@ -24,6 +21,12 @@ extension Storyboarded {
     ///   this method looks in the main bundle of the current application. Defaults to nil.
     ///
     /// - Returns: A new instance of the view controller.
+    static func instantiate(withStoryboardName name: String, bundle: Bundle?) -> Self
+
+}
+
+extension Storyboarded {
+
     static func instantiate(withStoryboardName name: String = "Main", bundle: Bundle? = nil) -> Self {
 
         /// Provides the class name as a `String`.
