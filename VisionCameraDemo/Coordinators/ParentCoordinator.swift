@@ -14,6 +14,9 @@ protocol ParentCoordinator: class {
     var children: [Coordinator & ChildCoordinator] { get set }
 
     /// Call to remove the child coordinator from its parent once its finished with.
+    ///
+    /// - Parameters:
+    ///   - child: The child coordinator that has finished controlling the navigation flow.
     func childDidFinish(_ child: Coordinator?)
 
 }

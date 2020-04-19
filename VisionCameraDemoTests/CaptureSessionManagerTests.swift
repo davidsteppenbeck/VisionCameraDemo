@@ -41,14 +41,4 @@ final class CaptureSessionManagerTests: XCTestCase {
         XCTAssertFalse(sut.session.isRunning)
     }
 
-    func testUpdateCaptureSessionPreset() {
-        XCTAssertEqual(sut.session.sessionPreset, .high)
-
-        let resultChange = sut.updateCaptureSessionPreset(.medium)
-        XCTAssertTrue(resultChange)
-
-        let resultNoChange = sut.updateCaptureSessionPreset(.medium)
-        XCTAssertFalse(resultNoChange)
-    }
-
 }

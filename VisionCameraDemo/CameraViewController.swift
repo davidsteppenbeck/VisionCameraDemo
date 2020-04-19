@@ -16,20 +16,20 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     private lazy var captureSessionManager = CaptureSessionManager(delegate: self)
 
-    private lazy var cameraView = CameraView(session: captureSessionManager?.session)
+    private (set) lazy var cameraView = CameraView(session: captureSessionManager?.session)
 
-    private lazy var cameraButton: CameraButton = {
+    private (set) lazy var cameraButton: CameraButton = {
         let button = CameraButton()
         button.addTarget(self, action: #selector(cameraButtonAction(_:)), for: .touchDown)
         return button
     }()
 
-    private lazy var settingsBarButton: UIBarButtonItem = {
+    private (set) lazy var settingsBarButton: UIBarButtonItem = {
         let image = UIImage(systemName: "gear")
         return UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(settingsBarButtonAction(_:)))
     }()
 
-    private lazy var optionsBarButton: UIBarButtonItem = {
+    private (set) lazy var optionsBarButton: UIBarButtonItem = {
         let image = UIImage(systemName: "ellipsis")
         return UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(optionsBarButtonAction(_:)))
     }()

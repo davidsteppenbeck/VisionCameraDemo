@@ -31,11 +31,6 @@ final class MainCoordinator: NSObject, Coordinator, ParentCoordinator, ErrorHand
         navigationController.pushViewController(vc, animated: false)
     }
 
-    func handleError(_ error: Error, fromViewController vc: UIViewController) {
-        let alert = UIAlertController.simpleAlertController(title: "Unresolved Error", message: error.localizedDescription)
-        vc.present(alert, animated: true)
-    }
-
     func showSettings() {
         // The settings table view controller is presented modally, so it requires its own `UINavigationController`.
         let navigationController = UINavigationController()

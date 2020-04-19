@@ -9,7 +9,17 @@
 import Foundation
 
 extension CameraViewController: CaptureSessionManagerDelegate {
+
     func captureSessionManager(_ captureSessionManager: CaptureSessionManager, didFailWithError error: Error) {
         coordinator?.handleError(error, fromViewController: self)
     }
+
+    func captureSessionManagerWillBeginUpdates(_ captureSessionManager: CaptureSessionManager) {
+        cameraButton.isEnabled = false
+    }
+
+    func captureSessionManagerDidEndUpdates(_ captureSessionManager: CaptureSessionManager) {
+        cameraButton.isEnabled = true
+    }
+
 }

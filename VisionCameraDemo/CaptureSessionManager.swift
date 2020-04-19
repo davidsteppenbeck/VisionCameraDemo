@@ -77,7 +77,16 @@ final class CaptureSessionManager: NSObject {
 
         if !session.isRunning {
             sessionQueue.async {
+                DispatchQueue.main.sync {
+                    self.delegate?.captureSessionManagerWillBeginUpdates(self)
+                }
+
+                // This method is a blocking call that can take some time.
                 self.session.startRunning()
+
+                DispatchQueue.main.sync {
+                    self.delegate?.captureSessionManagerDidEndUpdates(self)
+                }
             }
         }
     }
@@ -86,7 +95,16 @@ final class CaptureSessionManager: NSObject {
     func stopVideoSession() {
         if session.isRunning {
             sessionQueue.async {
+                DispatchQueue.main.sync {
+                    self.delegate?.captureSessionManagerWillBeginUpdates(self)
+                }
+
+                // This method is a blocking call that can take some time.
                 self.session.stopRunning()
+
+                DispatchQueue.main.sync {
+                    self.delegate?.captureSessionManagerDidEndUpdates(self)
+                }
             }
         }
     }
@@ -99,16 +117,24 @@ final class CaptureSessionManager: NSObject {
     /// - Returns: `true` iff the `AVCaptureSession` was successfully updated; otherwise `false` if the `preset` argument
     /// is already the same as the current `sessionPreset` value, or if the `preset` argument is not supported.
     func updateCaptureSessionPreset(_ preset: AVCaptureSession.Preset) -> Bool {
-        guard preset != session.sessionPreset else {
+        guard preset != session.sessionPreset, session.canSetSessionPreset(preset) else {
             return false
         }
 
-        if session.canSetSessionPreset(preset) {
-            session.sessionPreset = preset
-            return true
-        } else {
-            return false
+        sessionQueue.async {
+            DispatchQueue.main.sync {
+                self.delegate?.captureSessionManagerWillBeginUpdates(self)
+            }
+
+            // Assignment can take some time.
+            self.session.sessionPreset = preset
+
+            DispatchQueue.main.sync {
+                self.delegate?.captureSessionManagerDidEndUpdates(self)
+            }
         }
+
+        return true
     }
 
     // MARK:- Initialization
@@ -138,9 +164,11 @@ final class CaptureSessionManager: NSObject {
         output.setSampleBufferDelegate(self, queue: sessionQueue)
         output.alwaysDiscardsLateVideoFrames = true
 
-        session.beginConfiguration() // use to batch multiple configuration operations
+        // Use to batch multiple configuration operations into an atomic update.
+        session.beginConfiguration()
 
         defer {
+            // No changes to `session` are applied until calling this.
             session.commitConfiguration()
         }
 
