@@ -19,7 +19,7 @@ enum CaptureSessionManagerError: Error, LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .device: return "Unable to set up the device camera."
+        case .device: return "Unable to find or set up the device camera."
         case .authorization: return "The app is not authorized to access the device camera."
         }
     }
