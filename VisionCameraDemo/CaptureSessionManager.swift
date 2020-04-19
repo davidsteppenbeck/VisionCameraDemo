@@ -77,14 +77,14 @@ final class CaptureSessionManager: NSObject {
 
         if !session.isRunning {
             sessionQueue.async {
-                DispatchQueue.main.sync {
+                DispatchQueue.mainSafeSync {
                     self.delegate?.captureSessionManagerWillBeginUpdates(self)
                 }
 
                 // This method is a blocking call that can take some time.
                 self.session.startRunning()
 
-                DispatchQueue.main.sync {
+                DispatchQueue.mainSafeSync {
                     self.delegate?.captureSessionManagerDidEndUpdates(self)
                 }
             }
@@ -95,14 +95,14 @@ final class CaptureSessionManager: NSObject {
     func stopVideoSession() {
         if session.isRunning {
             sessionQueue.async {
-                DispatchQueue.main.sync {
+                DispatchQueue.mainSafeSync {
                     self.delegate?.captureSessionManagerWillBeginUpdates(self)
                 }
 
                 // This method is a blocking call that can take some time.
                 self.session.stopRunning()
 
-                DispatchQueue.main.sync {
+                DispatchQueue.mainSafeSync {
                     self.delegate?.captureSessionManagerDidEndUpdates(self)
                 }
             }
@@ -122,14 +122,14 @@ final class CaptureSessionManager: NSObject {
         }
 
         sessionQueue.async {
-            DispatchQueue.main.sync {
+            DispatchQueue.mainSafeSync {
                 self.delegate?.captureSessionManagerWillBeginUpdates(self)
             }
 
             // Assignment can take some time.
             self.session.sessionPreset = preset
 
-            DispatchQueue.main.sync {
+            DispatchQueue.mainSafeSync {
                 self.delegate?.captureSessionManagerDidEndUpdates(self)
             }
         }

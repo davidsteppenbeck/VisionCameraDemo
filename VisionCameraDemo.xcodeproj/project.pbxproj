@@ -41,6 +41,7 @@
 		41FB9330244A3E320097F45E /* SettingsTableViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB932F244A3E320097F45E /* SettingsTableViewControllerCoordinator.swift */; };
 		41FB9332244B76A70097F45E /* ChildCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB9331244B76A70097F45E /* ChildCoordinator.swift */; };
 		41FB9334244B77790097F45E /* ParentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB9333244B77790097F45E /* ParentCoordinator.swift */; };
+		41FB9336244CC5960097F45E /* DispatchQueue+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41FB9335244CC5960097F45E /* DispatchQueue+Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		41FB932F244A3E320097F45E /* SettingsTableViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewControllerCoordinator.swift; sourceTree = "<group>"; };
 		41FB9331244B76A70097F45E /* ChildCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCoordinator.swift; sourceTree = "<group>"; };
 		41FB9333244B77790097F45E /* ParentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCoordinator.swift; sourceTree = "<group>"; };
+		41FB9335244CC5960097F45E /* DispatchQueue+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Utilities.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +203,7 @@
 			children = (
 				41ADF3E42444F4C2005426E5 /* Bundle+Utilities.swift */,
 				41FB931F2448CF0F0097F45E /* CGRect+Utilities.swift */,
+				41FB9335244CC5960097F45E /* DispatchQueue+Utilities.swift */,
 				41ADF3F5244638FB005426E5 /* UIAlertController+Utilities.swift */,
 			);
 			path = Utilities;
@@ -334,6 +337,7 @@
 				41ADF3DC2444ADA0005426E5 /* CameraViewControllerCoordinator.swift in Sources */,
 				415724962442055100F4B7E0 /* Coordinator.swift in Sources */,
 				41FB9332244B76A70097F45E /* ChildCoordinator.swift in Sources */,
+				41FB9336244CC5960097F45E /* DispatchQueue+Utilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
