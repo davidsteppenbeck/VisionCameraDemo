@@ -25,6 +25,8 @@ extension CGRect {
     /// - Parameters:
     ///   - center: The center point of the rectangle.
     ///   - size: The size of the rectangle.
+    ///
+    /// - Tag: CGRect.center.init
     init(center: CGPoint, size: CGSize) {
         let origin = CGPoint(x: center.x - (size.width * 0.5), y: center.y - (size.height * 0.5))
         self.init(origin: origin, size: size)
@@ -35,7 +37,8 @@ extension CGRect {
     /// - Parameters:
     ///   - scale: The scale factor applied to the rectangle size.
     ///
-    /// - Returns: A scaled rectangle with the same center point as the original.
+    /// - Returns: A scaled rectangle with the same center point as the original, created using
+    /// the [CGRect(center:size:)](x-source-tag://CGRect.center.init) initializer.
     func scaledAndCentered(_ scale: CGFloat) -> CGRect {
         let scaledSize = CGSize(width: size.width * scale, height: size.height * scale)
         return CGRect(center: center, size: scaledSize)
