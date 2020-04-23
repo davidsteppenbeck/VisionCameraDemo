@@ -13,9 +13,14 @@ final class CaptureSessionManager: NSObject {
 
     // MARK:- Properties
 
+    /// The `CaptureSessionManager` delegate object.
     weak var delegate: CaptureSessionManagerDelegate?
 
-    private let authorizationManager = AuthorizationManager()
+    /// Manages the authorization status of an `AVCaptureDevice` for video.
+    private let cameraAuthorizationManager = CameraAuthorizationManager()
+
+    /// Handles capturing images and saving them in the Photos app.
+    private let photoCaptureDelegate = PhotoCaptureDelegateObject()
 
     /// Keeps a strong reference to the sample buffer for snapshots.
     private (set) var sampleBuffer: CMSampleBuffer?
@@ -24,7 +29,7 @@ final class CaptureSessionManager: NSObject {
     private (set) var didSnapPhoto: Bool = false {
         didSet {
             if didSnapPhoto {
-                AudioSessionManager.playSound(withStyle: .cameraShutter)
+                capturePhoto()
             } else {
                 sampleBuffer = nil
             }
@@ -36,8 +41,14 @@ final class CaptureSessionManager: NSObject {
     /// The object that manages capture activity and coordinates the flow of data from input devices to capture outputs.
     let session = AVCaptureSession()
 
-    /// A dedicated queue for perfroming tasks related to `AVCaptureSession`.
-    var sessionQueue = DispatchQueue(label: "com.steppenbeck.VisionCameraDemo.sessionQueue", qos: .userInteractive)
+    /// A capture output for still images.
+    private let photoOutput = AVCapturePhotoOutput()
+
+    /// A serial queue for perfroming all tasks related to `AVCaptureSession`.
+    private let sessionQueue = DispatchQueue(label: "com.steppenbeck.VisionCameraDemo.sessionQueue")
+
+    /// A serial queue for perfroming all tasks related to `AVCaptureSession`.
+    private let sampleBufferCallbackQueue = DispatchQueue(label: "com.steppenbeck.VisionCameraDemo.sampleBufferCallbackQueue")
 
     // MARK:- Methods
 
@@ -50,17 +61,19 @@ final class CaptureSessionManager: NSObject {
     /// If authorized, it starts the `AVCaptureSession` iff it is not currently running
     /// and the snapshot state is `false`. Otherwise, does not start running the video.
     func startVideoSession() {
+        assert(Thread.isMainThread)
+
         guard !didSnapPhoto else {
             return
         }
 
-        switch authorizationManager.status {
+        switch cameraAuthorizationManager.status {
         case .authorized:
             authorizedStartVideoSession()
 
         case .notDetermined:
             sessionQueue.suspend()
-            authorizationManager.requestAccess { [weak self] _ in
+            cameraAuthorizationManager.requestAccess { [weak self] _ in
                 self?.sessionQueue.resume()
                 self?.startVideoSession()
             }
@@ -73,18 +86,18 @@ final class CaptureSessionManager: NSObject {
     /// Starts the `AVCaptureSession` instance if it is not currently running.
     /// - Important: This method should only be called if video access has been authorized.
     private func authorizedStartVideoSession() {
-        assert(authorizationManager.status == .authorized)
+        assert(cameraAuthorizationManager.status == .authorized)
 
-        if !session.isRunning {
-            sessionQueue.async {
-                DispatchQueue.mainSafeSync {
+        sessionQueue.async {
+            if !self.session.isRunning {
+                DispatchQueue.mainSyncSafe {
                     self.delegate?.captureSessionManagerWillBeginUpdates(self)
                 }
 
-                // This method is a blocking call that can take some time.
+                // This method is a blocking call that can take some time, the duration of which depends on the `AVCaptureSession.Preset` quality.
                 self.session.startRunning()
 
-                DispatchQueue.mainSafeSync {
+                DispatchQueue.mainSyncSafe {
                     self.delegate?.captureSessionManagerDidEndUpdates(self)
                 }
             }
@@ -93,16 +106,16 @@ final class CaptureSessionManager: NSObject {
 
     /// Stops the `AVCaptureSession` instance if it is currently running.
     func stopVideoSession() {
-        if session.isRunning {
-            sessionQueue.async {
-                DispatchQueue.mainSafeSync {
+        sessionQueue.async {
+            if self.session.isRunning {
+                DispatchQueue.mainSyncSafe {
                     self.delegate?.captureSessionManagerWillBeginUpdates(self)
                 }
 
-                // This method is a blocking call that can take some time.
+                // This method is a blocking call that can take some time, the duration of which depends on the `AVCaptureSession.Preset` quality.
                 self.session.stopRunning()
 
-                DispatchQueue.mainSafeSync {
+                DispatchQueue.mainSyncSafe {
                     self.delegate?.captureSessionManagerDidEndUpdates(self)
                 }
             }
@@ -116,25 +129,30 @@ final class CaptureSessionManager: NSObject {
     ///
     /// - Returns: `true` iff the `AVCaptureSession` was successfully updated; otherwise `false` if the `preset` argument
     /// is already the same as the current `sessionPreset` value, or if the `preset` argument is not supported.
-    func updateCaptureSessionPreset(_ preset: AVCaptureSession.Preset) -> Bool {
-        guard preset != session.sessionPreset, session.canSetSessionPreset(preset) else {
-            return false
-        }
-
+    func updateCaptureSessionPreset(_ preset: AVCaptureSession.Preset) {
         sessionQueue.async {
-            DispatchQueue.mainSafeSync {
+            guard preset != self.session.sessionPreset else {
+                return
+            }
+
+            DispatchQueue.mainSyncSafe {
                 self.delegate?.captureSessionManagerWillBeginUpdates(self)
             }
 
             // Assignment can take some time.
-            self.session.sessionPreset = preset
+            self.session.safeSetSessionPreset(preset)
 
-            DispatchQueue.mainSafeSync {
+            DispatchQueue.mainSyncSafe {
                 self.delegate?.captureSessionManagerDidEndUpdates(self)
             }
         }
+    }
 
-        return true
+    /// Initiates a photo capture using `AVCapturePhotoOutput`.
+    private func capturePhoto() {
+        let photoSettings = AVCapturePhotoSettings()
+        photoSettings.isHighResolutionPhotoEnabled = true
+        photoOutput.capturePhoto(with: photoSettings, delegate: photoCaptureDelegate)
     }
 
     // MARK:- Initialization
@@ -159,10 +177,16 @@ final class CaptureSessionManager: NSObject {
             return nil
         }
 
-        let output = AVCaptureVideoDataOutput()
-        output.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA)]
-        output.setSampleBufferDelegate(self, queue: sessionQueue)
-        output.alwaysDiscardsLateVideoFrames = true
+        let videoOutput = AVCaptureVideoDataOutput()
+        videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA)]
+        videoOutput.setSampleBufferDelegate(self, queue: sampleBufferCallbackQueue)
+        videoOutput.alwaysDiscardsLateVideoFrames = true
+
+        photoOutput.isHighResolutionCaptureEnabled = true
+        photoOutput.isLivePhotoCaptureEnabled = false
+        photoOutput.isDepthDataDeliveryEnabled = false
+        photoOutput.isPortraitEffectsMatteDeliveryEnabled = false
+        photoOutput.maxPhotoQualityPrioritization = .balanced
 
         // Use to batch multiple configuration operations into an atomic update.
         session.beginConfiguration()
@@ -172,26 +196,29 @@ final class CaptureSessionManager: NSObject {
             session.commitConfiguration()
         }
 
-        guard let input = try? AVCaptureDeviceInput(device: device!), session.canAddInput(input), session.canAddOutput(output) else {
+        guard let deviceInput = try? AVCaptureDeviceInput(device: device!), session.canAddInput(deviceInput), session.canAddOutput(videoOutput), session.canAddOutput(photoOutput) else {
             delegate?.captureSessionManager(self, didFailWithError: CaptureSessionManagerError.device)
             return nil
         }
 
-        session.addInput(input)
-        session.addOutput(output)
-
-        if session.canSetSessionPreset(preset) {
-            session.sessionPreset = preset
-        }
+        session.addInput(deviceInput)
+        session.addOutput(videoOutput)
+        session.addOutput(photoOutput)
+        session.safeSetSessionPreset(preset)
     }
 
 }
 
 extension CaptureSessionManager: AVCaptureVideoDataOutputSampleBufferDelegate {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        if didSnapPhoto {
-            stopVideoSession()
-            self.sampleBuffer = sampleBuffer
+        DispatchQueue.main.async {
+            if self.didSnapPhoto {
+                self.stopVideoSession()
+
+                if self.sampleBuffer == nil {
+                    self.sampleBuffer = sampleBuffer
+                }
+            }
         }
     }
 }

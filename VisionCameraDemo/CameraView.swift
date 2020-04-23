@@ -38,10 +38,8 @@ final class CameraView: UIView {
         super.init(frame: frame)
         self.session = session
         preview?.videoGravity = .resizeAspectFill
-
-        if preview?.connection?.isVideoOrientationSupported == true {
-            preview?.connection?.videoOrientation = .portrait
-        }
+        preview?.connection?.safeSetVideoOrientation(.portrait)
+        preview?.connection?.safeSetVideoStabilizationMode(.auto)
     }
 
     required init?(coder: NSCoder) {

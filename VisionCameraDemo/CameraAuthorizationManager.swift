@@ -1,5 +1,5 @@
 //
-//  AuthorizationManager.swift
+//  CameraAuthorizationManager.swift
 //  VisionCameraDemo
 //
 //  Created by David Steppenbeck on 2020/04/14.
@@ -8,8 +8,8 @@
 
 import AVFoundation
 
-/// An `AuthorizationManager` is reponsible for managing the authorization status of an `AVCaptureDevice` for video.
-struct AuthorizationManager {
+/// A `CameraAuthorizationManager` is reponsible for managing the authorization status of an `AVCaptureDevice` for video.
+struct CameraAuthorizationManager {
 
     // MARK:- Properties
 

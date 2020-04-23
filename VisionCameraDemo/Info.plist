@@ -53,6 +53,8 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>The camera is required for scanning text and is essential to the functionality of the app.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Adding to Photos is required for saving snapshots.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -18,7 +18,7 @@ extension DispatchQueue {
     ///
     /// - Parameters:
     ///   - block: The block containing the work to perform. This block has no return value and no parameters.
-    class func mainSafeSync(execute block: () -> Void) {
+    class func mainSyncSafe(execute block: () -> Void) {
         if Thread.isMainThread {
             block()
         } else {
