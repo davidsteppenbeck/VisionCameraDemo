@@ -14,6 +14,8 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
 
     weak var coordinator: SettingsTableViewControllerCoordinator?
 
+    private lazy var tableViewDelegate = SettingsTableViewDelegateObject(coordinator: coordinator)
+
     private lazy var crossBarButton: UIBarButtonItem = {
         let image = UIImage(systemName: "xmark")
         return UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(crossBarButtonAction(_:)))
@@ -26,6 +28,7 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.rightBarButtonItem = crossBarButton
+        tableView.delegate = tableViewDelegate
         title = "Settings"
     }
 
@@ -35,4 +38,7 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
         coordinator?.dismiss()
     }
 
+    deinit {
+        print("controller deinit")
+    }
 }

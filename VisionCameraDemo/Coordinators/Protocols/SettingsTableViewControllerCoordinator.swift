@@ -13,4 +13,7 @@ protocol SettingsTableViewControllerCoordinator: class {
     /// Call to dismiss the settings table view controller programatically.
     func dismiss()
 
+    /// Call to take the user out of the app and open its system settings.
+    func openSystemSettings()
+
 }

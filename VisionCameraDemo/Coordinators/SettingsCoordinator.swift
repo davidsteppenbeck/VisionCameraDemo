@@ -44,4 +44,11 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
         }
     }
 
+    func openSystemSettings() {
+        UIApplication.openSettings()
+    }
+
+    deinit {
+        print("coordinator deinit")
+    }
 }
