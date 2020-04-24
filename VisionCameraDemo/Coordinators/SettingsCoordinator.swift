@@ -18,7 +18,7 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
 
     weak var parent: ParentCoordinator?
 
-    private lazy var mailComposeDelegate = SettingsMailComposeDelegateObject()
+    private lazy var mailComposeDelegate = SettingsMailComposeDelegate()
 
     // MARK:- Initialization
 

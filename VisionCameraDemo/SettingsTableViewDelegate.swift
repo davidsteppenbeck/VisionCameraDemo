@@ -1,5 +1,5 @@
 //
-//  SettingsTableViewDelegateObject.swift
+//  SettingsTableViewDelegate.swift
 //  VisionCameraDemo
 //
 //  Created by David Steppenbeck on 2020/04/24.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-/// A `SettingsTableViewDelegateObject` is responsible for handling calls to `UITableView` delegate methods.
-final class SettingsTableViewDelegateObject: NSObject, UITableViewDelegate {
+/// A `SettingsTableViewDelegate` is responsible for handling calls to `UITableView` delegate methods.
+final class SettingsTableViewDelegate: NSObject, UITableViewDelegate {
 
     // MARK:- Properties
 

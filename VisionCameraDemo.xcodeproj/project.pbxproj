@@ -11,13 +11,13 @@
 		41376C7D2450BB2C00FB6934 /* PhotoCaptureDelegateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegateObject.swift */; };
 		41376C7F2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */; };
 		41376C812450FC7700FB6934 /* AVCaptureSession+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C802450FC7700FB6934 /* AVCaptureSession+Utilities.swift */; };
-		41376C872453333400FB6934 /* SettingsTableViewDelegateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C862453333400FB6934 /* SettingsTableViewDelegateObject.swift */; };
+		41376C872453333400FB6934 /* SettingsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C862453333400FB6934 /* SettingsTableViewDelegate.swift */; };
 		41376C892453397F00FB6934 /* UIApplication+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C882453397F00FB6934 /* UIApplication+Utilities.swift */; };
 		41376C8B24533F9800FB6934 /* SocialMediaURLType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C8A24533F9800FB6934 /* SocialMediaURLType.swift */; };
 		41376C8D24533FDA00FB6934 /* TwitterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C8C24533FDA00FB6934 /* TwitterManager.swift */; };
 		41376C902453428600FB6934 /* SocialMediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C8F2453428600FB6934 /* SocialMediaManager.swift */; };
 		41376C92245344DC00FB6934 /* TwitterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C91245344DC00FB6934 /* TwitterManagerTests.swift */; };
-		41376C942453759E00FB6934 /* SettingsMailComposeDelegateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C932453759E00FB6934 /* SettingsMailComposeDelegateObject.swift */; };
+		41376C942453759E00FB6934 /* SettingsMailComposeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C932453759E00FB6934 /* SettingsMailComposeDelegate.swift */; };
 		4157246C24411E7400F4B7E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157246B24411E7400F4B7E0 /* AppDelegate.swift */; };
 		4157246E24411E7400F4B7E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157246D24411E7400F4B7E0 /* SceneDelegate.swift */; };
 		4157247024411E7400F4B7E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157246F24411E7400F4B7E0 /* CameraViewController.swift */; };
@@ -70,13 +70,13 @@
 		41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegateObject.swift; sourceTree = "<group>"; };
 		41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureConnection+Utilities.swift"; sourceTree = "<group>"; };
 		41376C802450FC7700FB6934 /* AVCaptureSession+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+Utilities.swift"; sourceTree = "<group>"; };
-		41376C862453333400FB6934 /* SettingsTableViewDelegateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDelegateObject.swift; sourceTree = "<group>"; };
+		41376C862453333400FB6934 /* SettingsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDelegate.swift; sourceTree = "<group>"; };
 		41376C882453397F00FB6934 /* UIApplication+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Utilities.swift"; sourceTree = "<group>"; };
 		41376C8A24533F9800FB6934 /* SocialMediaURLType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaURLType.swift; sourceTree = "<group>"; };
 		41376C8C24533FDA00FB6934 /* TwitterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterManager.swift; sourceTree = "<group>"; };
 		41376C8F2453428600FB6934 /* SocialMediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaManager.swift; sourceTree = "<group>"; };
 		41376C91245344DC00FB6934 /* TwitterManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterManagerTests.swift; sourceTree = "<group>"; };
-		41376C932453759E00FB6934 /* SettingsMailComposeDelegateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMailComposeDelegateObject.swift; sourceTree = "<group>"; };
+		41376C932453759E00FB6934 /* SettingsMailComposeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMailComposeDelegate.swift; sourceTree = "<group>"; };
 		4157246824411E7400F4B7E0 /* VisionCameraDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionCameraDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4157246B24411E7400F4B7E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4157246D24411E7400F4B7E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -193,8 +193,8 @@
 				41ADF3ED24460EF9005426E5 /* CaptureSessionManagerError.swift */,
 				41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegateObject.swift */,
 				41FB932B244A39A00097F45E /* SettingsTableViewController.swift */,
-				41376C862453333400FB6934 /* SettingsTableViewDelegateObject.swift */,
-				41376C932453759E00FB6934 /* SettingsMailComposeDelegateObject.swift */,
+				41376C862453333400FB6934 /* SettingsTableViewDelegate.swift */,
+				41376C932453759E00FB6934 /* SettingsMailComposeDelegate.swift */,
 				41ADF3DA2444AD45005426E5 /* Coordinators */,
 				4157248D24411EF800F4B7E0 /* Support Files */,
 				4157247924411E7500F4B7E0 /* Info.plist */,
@@ -374,9 +374,9 @@
 				41376C7D2450BB2C00FB6934 /* PhotoCaptureDelegateObject.swift in Sources */,
 				41ADF3E52444F4C2005426E5 /* Bundle+Utilities.swift in Sources */,
 				41572498244205AA00F4B7E0 /* MainCoordinator.swift in Sources */,
-				41376C942453759E00FB6934 /* SettingsMailComposeDelegateObject.swift in Sources */,
+				41376C942453759E00FB6934 /* SettingsMailComposeDelegate.swift in Sources */,
 				41ADF3EE24460EF9005426E5 /* CaptureSessionManagerError.swift in Sources */,
-				41376C872453333400FB6934 /* SettingsTableViewDelegateObject.swift in Sources */,
+				41376C872453333400FB6934 /* SettingsTableViewDelegate.swift in Sources */,
 				415724942441FCEC00F4B7E0 /* Storyboarded.swift in Sources */,
 				41ADF3F224463496005426E5 /* CameraViewController+CaptureSessionManagerDelegate.swift in Sources */,
 				41FB93202448CF0F0097F45E /* CGRect+Utilities.swift in Sources */,

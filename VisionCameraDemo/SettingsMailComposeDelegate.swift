@@ -1,5 +1,5 @@
 //
-//  SettingsMailComposeDelegateObject.swift
+//  SettingsMailComposeDelegate.swift
 //  VisionCameraDemo
 //
 //  Created by David Steppenbeck on 2020/04/24.
@@ -8,8 +8,8 @@
 
 import MessageUI
 
-/// A `SettingsMailComposeDelegateObject` is responsible for handling results from `MFMailComposeViewController`.
-final class SettingsMailComposeDelegateObject: NSObject, MFMailComposeViewControllerDelegate {
+/// A `SettingsMailComposeDelegate` is responsible for handling results from `MFMailComposeViewController`.
+final class SettingsMailComposeDelegate: NSObject, MFMailComposeViewControllerDelegate {
 
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         if result == .sent {
