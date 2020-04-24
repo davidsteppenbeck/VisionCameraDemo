@@ -12,6 +12,8 @@ final class SettingsTableViewDelegateObject: NSObject, UITableViewDelegate {
 
     // MARK:- Properties
 
+    weak var tableViewController: SettingsTableViewController?
+
     weak var coordinator: SettingsTableViewControllerCoordinator?
 
     // MARK:- UITableViewDelegate
@@ -28,7 +30,7 @@ final class SettingsTableViewDelegateObject: NSObject, UITableViewDelegate {
         case "save": break
         case "resolution": break
         case "appearance": break
-        case "twitter": break
+        case "twitter": coordinator?.openTwitter(from: tableViewController)
         case "feedback": break
         case "system": coordinator?.openSystemSettings()
         default: break
@@ -37,7 +39,13 @@ final class SettingsTableViewDelegateObject: NSObject, UITableViewDelegate {
 
     // MARK:- Initialization
 
-    init(coordinator: SettingsTableViewControllerCoordinator?) {
+    /// - Parameters:
+    ///   - coordinator: The `SettingsTableViewControllerCoordinator` object that the delegate will communicate with.
+    ///   The delegate only keeps a `weak` reference to `coordinator`.
+    ///   - tableViewController: The `SettingsTableViewController` object that the delegate will communicate with.
+    ///   The delegate only keeps a `weak` reference to `tableViewController`.
+    init(coordinator: SettingsTableViewControllerCoordinator?, tableViewController: SettingsTableViewController?) {
+        self.tableViewController = tableViewController
         self.coordinator = coordinator
         super.init()
     }

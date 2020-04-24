@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDelegate, Coordinator, ChildCoordinator, SettingsTableViewControllerCoordinator {
 
@@ -41,6 +42,17 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
     func dismiss() {
         navigationController.presentingViewController?.dismiss(animated: true) {
             self.parent?.childDidFinish(self)
+        }
+    }
+
+    func openTwitter(from vc: UIViewController?) {
+        let twitter = TwitterManager()
+
+        if let url = twitter.url(for: .app), UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.open(url, options: [:])
+        } else if let url = twitter.url(for: .web) {
+            let safari = SFSafariViewController(url: url)
+            vc?.present(safari, animated: true)
         }
     }
 

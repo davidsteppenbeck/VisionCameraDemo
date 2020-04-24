@@ -14,7 +14,7 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
 
     weak var coordinator: SettingsTableViewControllerCoordinator?
 
-    private lazy var tableViewDelegate = SettingsTableViewDelegateObject(coordinator: coordinator)
+    private lazy var tableViewDelegate = SettingsTableViewDelegateObject(coordinator: coordinator, tableViewController: self)
 
     private lazy var crossBarButton: UIBarButtonItem = {
         let image = UIImage(systemName: "xmark")
