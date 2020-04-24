@@ -8,6 +8,7 @@
 
 import AVFoundation
 
+/// An `AudioSessionManager` is responsible for playing system sounds.
 struct AudioSessionManager {
 
     // MARK:- Types
@@ -17,6 +18,9 @@ struct AudioSessionManager {
 
         /// The sound ID used for the camera shutter effect.
         case cameraShutter = 1119
+
+        /// The sound ID used for the sent mail effect.
+        case sentMail = 1001
 
     }
 

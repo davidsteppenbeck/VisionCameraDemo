@@ -17,4 +17,9 @@ final class AudioSessionManagerTests: XCTestCase {
         XCTAssertEqual(AudioSessionManager.Style.cameraShutter.rawValue, expected)
     }
 
+    func testSentMail() {
+        let expected: SystemSoundID = 1001
+        XCTAssertEqual(AudioSessionManager.Style.sentMail.rawValue, expected)
+    }
+
 }

@@ -16,6 +16,9 @@ protocol SettingsTableViewControllerCoordinator: class {
     /// Call to take the user out of the app and open the developer's Twitter page.
     func openTwitter(from vc: UIViewController?)
 
+    /// Call to show the email composer that allows the user to provide feedback to the developer.
+    func provideFeedback(from vc: UIViewController?)
+
     /// Call to take the user out of the app and open its system settings.
     func openSystemSettings()
 

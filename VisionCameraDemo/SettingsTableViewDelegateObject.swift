@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A `SettingsTableViewDelegateObject` is responsible for handling calls to `UITableView` delegate methods.
 final class SettingsTableViewDelegateObject: NSObject, UITableViewDelegate {
 
     // MARK:- Properties
@@ -31,7 +32,7 @@ final class SettingsTableViewDelegateObject: NSObject, UITableViewDelegate {
         case "resolution": break
         case "appearance": break
         case "twitter": coordinator?.openTwitter(from: tableViewController)
-        case "feedback": break
+        case "feedback": coordinator?.provideFeedback(from: tableViewController)
         case "system": coordinator?.openSystemSettings()
         default: break
         }

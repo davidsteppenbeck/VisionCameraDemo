@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 import SafariServices
 
 final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDelegate, Coordinator, ChildCoordinator, SettingsTableViewControllerCoordinator {
@@ -16,6 +17,8 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
     var navigationController: UINavigationController
 
     weak var parent: ParentCoordinator?
+
+    private lazy var mailComposeDelegate = SettingsMailComposeDelegateObject()
 
     // MARK:- Initialization
 
@@ -54,6 +57,24 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
             let safari = SFSafariViewController(url: url)
             vc?.present(safari, animated: true)
         }
+    }
+
+    func provideFeedback(from vc: UIViewController?) {
+        guard MFMailComposeViewController.canSendMail() else {
+            let alert = UIAlertController.simpleAlertController(title: "Unable To Compose Mail", message: "The device is not configured to send email from this app.")
+            vc?.present(alert, animated: true)
+            return
+        }
+
+        // Create the mail composer.
+        let mailVC = MFMailComposeViewController()
+        mailVC.mailComposeDelegate = mailComposeDelegate
+        mailVC.setToRecipients(["LazyCatApps+VisionCameraDemo@gmail.com"])
+        mailVC.setSubject("VisionCameraDemo feedback")
+        mailVC.setMessageBody("We'd love to know what you think of the demo!", isHTML: false)
+
+        // Present the new navigation controller modally.
+        navigationController.present(mailVC, animated: true)
     }
 
     func openSystemSettings() {
