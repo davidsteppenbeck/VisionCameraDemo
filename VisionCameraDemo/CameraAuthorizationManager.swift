@@ -9,7 +9,7 @@
 import AVFoundation
 
 /// A `CameraAuthorizationManager` is reponsible for managing the authorization status of an `AVCaptureDevice` for video.
-struct CameraAuthorizationManager {
+struct CameraAuthorizationManager: MediaAuthorizationManager {
 
     // MARK:- Properties
 
@@ -20,7 +20,7 @@ struct CameraAuthorizationManager {
 
     // MARK:- Methods
 
-    /// Requests permission for `AVCaptureDevice` video access.
+    /// Requests permission for access to the `AVCaptureDevice`.
     ///
     /// - Parameters:
     ///   - completion: A block to be called once permission is granted or denied. The block is called on the main thread.

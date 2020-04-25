@@ -17,7 +17,7 @@ final class CaptureSessionManager: NSObject {
     weak var delegate: CaptureSessionManagerDelegate?
 
     /// Manages the authorization status of an `AVCaptureDevice` for video.
-    private let cameraAuthorizationManager = CameraAuthorizationManager()
+    private let cameraAuthorizationManager: MediaAuthorizationManager = CameraAuthorizationManager()
 
     /// Handles capturing images and saving them in the Photos app.
     private let photoCaptureDelegate = PhotoCaptureDelegateObject()

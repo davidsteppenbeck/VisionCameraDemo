@@ -18,6 +18,7 @@
 		41376C902453428600FB6934 /* SocialMediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C8F2453428600FB6934 /* SocialMediaManager.swift */; };
 		41376C92245344DC00FB6934 /* TwitterManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C91245344DC00FB6934 /* TwitterManagerTests.swift */; };
 		41376C942453759E00FB6934 /* SettingsMailComposeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C932453759E00FB6934 /* SettingsMailComposeDelegate.swift */; };
+		41376C962454CEB700FB6934 /* MediaAuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C952454CEB700FB6934 /* MediaAuthorizationManager.swift */; };
 		4157246C24411E7400F4B7E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157246B24411E7400F4B7E0 /* AppDelegate.swift */; };
 		4157246E24411E7400F4B7E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157246D24411E7400F4B7E0 /* SceneDelegate.swift */; };
 		4157247024411E7400F4B7E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157246F24411E7400F4B7E0 /* CameraViewController.swift */; };
@@ -77,6 +78,7 @@
 		41376C8F2453428600FB6934 /* SocialMediaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaManager.swift; sourceTree = "<group>"; };
 		41376C91245344DC00FB6934 /* TwitterManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterManagerTests.swift; sourceTree = "<group>"; };
 		41376C932453759E00FB6934 /* SettingsMailComposeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMailComposeDelegate.swift; sourceTree = "<group>"; };
+		41376C952454CEB700FB6934 /* MediaAuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAuthorizationManager.swift; sourceTree = "<group>"; };
 		4157246824411E7400F4B7E0 /* VisionCameraDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionCameraDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4157246B24411E7400F4B7E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4157246D24411E7400F4B7E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				41FB931D2448C9890097F45E /* CameraButton.swift */,
 				4157246F24411E7400F4B7E0 /* CameraViewController.swift */,
 				41ADF3F124463496005426E5 /* CameraViewController+CaptureSessionManagerDelegate.swift */,
+				41376C952454CEB700FB6934 /* MediaAuthorizationManager.swift */,
 				41ADF3F924466006005426E5 /* CameraAuthorizationManager.swift */,
 				41ADF3DD2444C67B005426E5 /* CaptureSessionManager.swift */,
 				41ADF3EB24460EC8005426E5 /* CaptureSessionManagerDelegate.swift */,
@@ -364,6 +367,7 @@
 			files = (
 				41FB9334244B77790097F45E /* ParentCoordinator.swift in Sources */,
 				41376C8B24533F9800FB6934 /* SocialMediaURLType.swift in Sources */,
+				41376C962454CEB700FB6934 /* MediaAuthorizationManager.swift in Sources */,
 				41FB93262449E9180097F45E /* AudioSessionManager.swift in Sources */,
 				41376C812450FC7700FB6934 /* AVCaptureSession+Utilities.swift in Sources */,
 				4157247024411E7400F4B7E0 /* CameraViewController.swift in Sources */,
