@@ -15,7 +15,7 @@ final class TwitterManagerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        sut = TwitterManager()
+        sut = TwitterManager.shared
     }
 
     override func tearDown() {
@@ -24,19 +24,11 @@ final class TwitterManagerTests: XCTestCase {
     }
 
     func testScreenName() {
-        XCTAssertFalse(TwitterManager.screenName.isEmpty)
+        XCTAssertFalse(sut.screenName.isEmpty)
     }
 
     func testHandle() {
-        XCTAssertEqual(TwitterManager.handle, "@" + TwitterManager.screenName)
-    }
-
-    func testUrlString() {
-        let appUrlString = sut.urlString[.app]
-        XCTAssertNotNil(appUrlString)
-
-        let webUrlString = sut.urlString[.web]
-        XCTAssertNotNil(webUrlString)
+        XCTAssertEqual(sut.handle, "@" + sut.screenName)
     }
 
     func testUrl() {

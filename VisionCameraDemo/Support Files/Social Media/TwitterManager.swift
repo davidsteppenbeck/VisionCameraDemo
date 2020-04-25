@@ -11,17 +11,17 @@ import Foundation
 /// A manager that handles linking to and opening the developer's Twitter account.
 struct TwitterManager: SocialMediaManager {
 
-    // MARK:- Static Properties
+    // MARK:- Properties
 
-    static var screenName = "dsteppenbeck"
+    static let shared = TwitterManager()
 
-    static var handle: String {
+    let screenName = "dsteppenbeck"
+
+    var handle: String {
         return "@" + screenName
     }
 
-    // MARK:- Properties
-
-    let urlString: [SocialMediaUrlType: String] = [
+    private let urlString: [SocialMediaUrlType: String] = [
         .app: "twitter://user?screen_name=",
         .web: "https://twitter.com/"
     ]
@@ -29,7 +29,7 @@ struct TwitterManager: SocialMediaManager {
     // MARK:- Methods
 
     func url(for type: SocialMediaUrlType) -> URL? {
-        if let urlString = urlString[type], let url = URL(string: urlString + TwitterManager.screenName) {
+        if let urlString = urlString[type], let url = URL(string: urlString + screenName) {
             return url
         } else {
             return nil

@@ -49,11 +49,9 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
     }
 
     func openTwitter(from vc: UIViewController?) {
-        let twitter = TwitterManager()
-
-        if let url = twitter.url(for: .app), UIApplication.shared.canOpenURL(url) {
+        if let url = TwitterManager.shared.url(for: .app), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:])
-        } else if let url = twitter.url(for: .web) {
+        } else if let url = TwitterManager.shared.url(for: .web) {
             let safari = SFSafariViewController(url: url)
             vc?.present(safari, animated: true)
         }

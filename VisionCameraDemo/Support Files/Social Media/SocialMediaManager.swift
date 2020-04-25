@@ -11,13 +11,10 @@ import Foundation
 protocol SocialMediaManager {
 
     /// The social media account screen name.
-    static var screenName: String { get set }
+    var screenName: String { get }
 
     /// The social media account handle.
-    static var handle: String { get }
-
-    /// Provides the URL string for a given `SocialMediaUrlType`.
-    var urlString: [SocialMediaUrlType: String] { get }
+    var handle: String { get }
 
     /// Provides the URL for a given `SocialMediaUrlType`.
     ///
