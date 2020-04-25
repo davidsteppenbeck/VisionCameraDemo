@@ -20,7 +20,7 @@ final class CaptureSessionManager: NSObject {
     private let cameraAuthorizationManager: MediaAuthorizationManager = CameraAuthorizationManager()
 
     /// Handles capturing images and saving them in the Photos app.
-    private let photoCaptureDelegate = PhotoCaptureDelegateObject()
+    private let photoCaptureDelegate: AVCapturePhotoCaptureDelegate = PhotoCaptureDelegate()
 
     /// Keeps a strong reference to the sample buffer for snapshots.
     private (set) var sampleBuffer: CMSampleBuffer?

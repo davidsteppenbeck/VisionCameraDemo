@@ -1,5 +1,5 @@
 //
-//  PhotoCaptureDelegateObject.swift
+//  PhotoCaptureDelegate.swift
 //  VisionCameraDemo
 //
 //  Created by David Steppenbeck on 2020/04/22.
@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 /// An object that confroms to protocol `AVCapturePhotoCaptureDelegate` and handles saving images in the Photos app.
-final class PhotoCaptureDelegateObject: NSObject, AVCapturePhotoCaptureDelegate {
+final class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
 
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         DispatchQueue.global().async {

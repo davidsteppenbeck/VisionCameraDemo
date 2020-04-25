@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		41376C79244F86BC00FB6934 /* BundleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C78244F86BC00FB6934 /* BundleTests.swift */; };
-		41376C7D2450BB2C00FB6934 /* PhotoCaptureDelegateObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegateObject.swift */; };
+		41376C7D2450BB2C00FB6934 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */; };
 		41376C7F2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */; };
 		41376C812450FC7700FB6934 /* AVCaptureSession+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C802450FC7700FB6934 /* AVCaptureSession+Utilities.swift */; };
 		41376C872453333400FB6934 /* SettingsTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C862453333400FB6934 /* SettingsTableViewDelegate.swift */; };
@@ -68,7 +68,7 @@
 
 /* Begin PBXFileReference section */
 		41376C78244F86BC00FB6934 /* BundleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTests.swift; sourceTree = "<group>"; };
-		41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegateObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegateObject.swift; sourceTree = "<group>"; };
+		41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureConnection+Utilities.swift"; sourceTree = "<group>"; };
 		41376C802450FC7700FB6934 /* AVCaptureSession+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureSession+Utilities.swift"; sourceTree = "<group>"; };
 		41376C862453333400FB6934 /* SettingsTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewDelegate.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 				41ADF3DD2444C67B005426E5 /* CaptureSessionManager.swift */,
 				41ADF3EB24460EC8005426E5 /* CaptureSessionManagerDelegate.swift */,
 				41ADF3ED24460EF9005426E5 /* CaptureSessionManagerError.swift */,
-				41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegateObject.swift */,
+				41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */,
 				41FB932B244A39A00097F45E /* SettingsTableViewController.swift */,
 				41376C862453333400FB6934 /* SettingsTableViewDelegate.swift */,
 				41376C932453759E00FB6934 /* SettingsMailComposeDelegate.swift */,
@@ -375,7 +375,7 @@
 				41ADF3FA24466006005426E5 /* CameraAuthorizationManager.swift in Sources */,
 				41ADF3DE2444C67B005426E5 /* CaptureSessionManager.swift in Sources */,
 				41FB932E244A3D650097F45E /* SettingsCoordinator.swift in Sources */,
-				41376C7D2450BB2C00FB6934 /* PhotoCaptureDelegateObject.swift in Sources */,
+				41376C7D2450BB2C00FB6934 /* PhotoCaptureDelegate.swift in Sources */,
 				41ADF3E52444F4C2005426E5 /* Bundle+Utilities.swift in Sources */,
 				41572498244205AA00F4B7E0 /* MainCoordinator.swift in Sources */,
 				41376C942453759E00FB6934 /* SettingsMailComposeDelegate.swift in Sources */,
