@@ -31,6 +31,8 @@ final class MainCoordinator: NSObject, Coordinator, ParentCoordinator, ErrorHand
         navigationController.pushViewController(vc, animated: false)
     }
 
+    // MARK:- CameraViewControllerCoordinator
+
     func showSettings() {
         // The settings table view controller is presented modally, so it requires its own `UINavigationController`.
         let navigationController = UINavigationController()
