@@ -42,6 +42,8 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
         navigationController.pushViewController(vc, animated: false)
     }
 
+    // MARK:- SettingsTableViewControllerCoordinator
+
     func dismiss() {
         navigationController.presentingViewController?.dismiss(animated: true) {
             self.parent?.childDidFinish(self)
