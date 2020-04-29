@@ -48,24 +48,24 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
         }
     }
 
-    func openTwitter(from vc: UIViewController?) {
+    func openTwitter(from vc: UIViewController) {
         if let url = TwitterManager.shared.url(for: .app), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:])
         } else if let url = TwitterManager.shared.url(for: .web) {
             let safari = SFSafariViewController(url: url)
-            vc?.present(safari, animated: true)
+            vc.present(safari, animated: true)
         }
     }
 
-    func provideFeedback(from vc: UIViewController?) {
+    func provideFeedback(from vc: UIViewController) {
         guard let mailVC = MFMailComposeViewController.makeForFeedback(mailComposeDelegate: mailComposeDelegate) else {
             let alert = UIAlertController.simpleAlertController(title: "Unable To Compose Mail", message: "The device is not configured to send email from this app.")
-            vc?.present(alert, animated: true)
+            vc.present(alert, animated: true)
             return
         }
 
         // Must present the mail navigation controller modally.
-        vc?.present(mailVC, animated: true)
+        vc.present(mailVC, animated: true)
     }
 
     func openSystemSettings() {
