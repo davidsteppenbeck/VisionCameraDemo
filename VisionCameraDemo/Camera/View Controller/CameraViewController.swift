@@ -14,7 +14,7 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     weak var coordinator: (ErrorHandlerCoordinator & CameraViewControllerCoordinator)?
 
-    private lazy var captureSessionManager = CaptureSessionManager(delegate: self)
+    private lazy var captureSessionManager = CaptureSessionManager(saveSnapshots: UserDefaults.saveSnapshots, delegate: self)
 
     private (set) lazy var cameraView = CameraView(session: captureSessionManager?.session)
 

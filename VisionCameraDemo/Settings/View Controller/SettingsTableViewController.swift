@@ -10,9 +10,20 @@ import UIKit
 
 final class SettingsTableViewController: UITableViewController, Storyboarded {
 
+    // MARK:- IBOutlets
+
+    @IBOutlet private weak var saveSnapshotsSwitch: UISwitch! {
+        didSet {
+            saveSnapshotsSwitch.addTarget(self, action: #selector(saveSnapshotsSwitchValueChanged(_:)), for: .valueChanged)
+            saveSnapshotsSwitch.isOn = viewModel.isSaveSnapshotsSwitchOn
+        }
+    }
+
     // MARK:- Properties
 
     weak var coordinator: SettingsTableViewControllerCoordinator?
+
+    private var viewModel = SettingsViewModel()
 
     private lazy var crossBarButton: UIBarButtonItem = {
         let image = UIImage(systemName: "xmark")
@@ -35,8 +46,13 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
         coordinator?.dismiss()
     }
 
+    @objc private func saveSnapshotsSwitchValueChanged(_ sender: UISwitch) {
+        viewModel.isSaveSnapshotsSwitchOn = sender.isOn
+    }
+
     deinit {
         // TODO: Delete deinit
         print("controller deinit")
     }
+
 }

@@ -17,7 +17,7 @@ struct AudioSessionManager {
     enum Style: SystemSoundID {
 
         /// The sound ID used for the camera shutter effect.
-        case cameraShutter = 1119
+        case cameraShutter = 1108
 
         /// The sound ID used for the sent mail effect.
         case sentMail = 1001

@@ -299,6 +299,9 @@
                             <outlet property="delegate" destination="8DC-Kb-1xf" id="a24-IH-IF9"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="saveSnapshotsSwitch" destination="EmG-tD-Dkd" id="7r8-DZ-Prn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HYs-sg-wkx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -13,7 +13,7 @@ import AVFoundation
 final class AudioSessionManagerTests: XCTestCase {
 
     func testCameraShutterID() {
-        let expected: SystemSoundID = 1119
+        let expected: SystemSoundID = 1108
         XCTAssertEqual(AudioSessionManager.Style.cameraShutter.rawValue, expected)
     }
 

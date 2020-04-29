@@ -16,6 +16,10 @@ final class CaptureSessionManager: NSObject {
     /// The `CaptureSessionManager` delegate object.
     weak var delegate: CaptureSessionManagerDelegate?
 
+    /// Whether snapshots will be persisted using `AVCapturePhotoOutput`.
+    /// Value is controlled by user settings.
+    private var saveSnapshots: Bool
+
     /// Manages the authorization status of an `AVCaptureDevice` for video.
     private let cameraAuthorizationManager: MediaAuthorizationManager = CameraAuthorizationManager()
 
@@ -150,14 +154,32 @@ final class CaptureSessionManager: NSObject {
 
     /// Initiates a photo capture using `AVCapturePhotoOutput`.
     private func capturePhoto() {
+        guard saveSnapshots else {
+            // Play sound manually because `AVCapturePhotoOutput` is denied.
+            AudioSessionManager.playSound(withStyle: .cameraShutter)
+            return
+        }
+
         let photoSettings = AVCapturePhotoSettings()
         photoSettings.isHighResolutionPhotoEnabled = true
         photoOutput.capturePhoto(with: photoSettings, delegate: photoCaptureDelegate)
     }
 
+    /// Add `NotificationCenter` observers.
+    private func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateSaveSnapshots(_:)), name: .saveSnapshots, object: nil)
+    }
+
+    @objc private func updateSaveSnapshots(_ notification: Notification) {
+        if let saveSnapshots = notification.userInfo?[Notification.Name.saveSnapshots] as? Bool {
+            self.saveSnapshots = saveSnapshots
+        }
+    }
+
     // MARK:- Initialization
 
-    init?(preset: AVCaptureSession.Preset = .high, delegate: CaptureSessionManagerDelegate? = nil) {
+    init?(preset: AVCaptureSession.Preset = .high, saveSnapshots: Bool = true, delegate: CaptureSessionManagerDelegate? = nil) {
+        self.saveSnapshots = saveSnapshots
         super.init()
 
         if delegate != nil {
@@ -205,6 +227,9 @@ final class CaptureSessionManager: NSObject {
         session.addOutput(videoOutput)
         session.addOutput(photoOutput)
         session.safeSetSessionPreset(preset)
+
+        // Add notification center observers because setup was successful.
+        addObservers()
     }
 
 }
