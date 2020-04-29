@@ -30,7 +30,7 @@
 		41572490244128E300F4B7E0 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4157248F244128E300F4B7E0 /* Colors.xcassets */; };
 		415724942441FCEC00F4B7E0 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415724932441FCEC00F4B7E0 /* Storyboarded.swift */; };
 		415724962442055100F4B7E0 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 415724952442055100F4B7E0 /* Coordinator.swift */; };
-		41572498244205AA00F4B7E0 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41572497244205AA00F4B7E0 /* MainCoordinator.swift */; };
+		41572498244205AA00F4B7E0 /* CameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41572497244205AA00F4B7E0 /* CameraCoordinator.swift */; };
 		41ADF3DC2444ADA0005426E5 /* CameraViewControllerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADF3DB2444ADA0005426E5 /* CameraViewControllerCoordinator.swift */; };
 		41ADF3DE2444C67B005426E5 /* CaptureSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADF3DD2444C67B005426E5 /* CaptureSessionManager.swift */; };
 		41ADF3E52444F4C2005426E5 /* Bundle+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41ADF3E42444F4C2005426E5 /* Bundle+Utilities.swift */; };
@@ -96,7 +96,7 @@
 		4157248F244128E300F4B7E0 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		415724932441FCEC00F4B7E0 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		415724952442055100F4B7E0 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		41572497244205AA00F4B7E0 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		41572497244205AA00F4B7E0 /* CameraCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCoordinator.swift; sourceTree = "<group>"; };
 		41ADF3DB2444ADA0005426E5 /* CameraViewControllerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewControllerCoordinator.swift; sourceTree = "<group>"; };
 		41ADF3DD2444C67B005426E5 /* CaptureSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionManager.swift; sourceTree = "<group>"; };
 		41ADF3E42444F4C2005426E5 /* Bundle+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Utilities.swift"; sourceTree = "<group>"; };
@@ -247,7 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				41376C69244E10A800FB6934 /* Protocols */,
-				41572497244205AA00F4B7E0 /* MainCoordinator.swift */,
+				41572497244205AA00F4B7E0 /* CameraCoordinator.swift */,
 				41FB932D244A3D650097F45E /* SettingsCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -383,7 +383,7 @@
 				41FB932E244A3D650097F45E /* SettingsCoordinator.swift in Sources */,
 				41376C7D2450BB2C00FB6934 /* PhotoCaptureDelegate.swift in Sources */,
 				41ADF3E52444F4C2005426E5 /* Bundle+Utilities.swift in Sources */,
-				41572498244205AA00F4B7E0 /* MainCoordinator.swift in Sources */,
+				41572498244205AA00F4B7E0 /* CameraCoordinator.swift in Sources */,
 				41376C942453759E00FB6934 /* SettingsMailComposeDelegate.swift in Sources */,
 				41ADF3EE24460EF9005426E5 /* CaptureSessionManagerError.swift in Sources */,
 				415724942441FCEC00F4B7E0 /* Storyboarded.swift in Sources */,

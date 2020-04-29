@@ -1,5 +1,5 @@
 //
-//  MainCoordinator.swift
+//  CameraCoordinator.swift
 //  VisionCameraDemo
 //
 //  Created by David Steppenbeck on 2020/04/11.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class MainCoordinator: NSObject, Coordinator, ParentCoordinator, ErrorHandlerCoordinator, CameraViewControllerCoordinator {
+final class CameraCoordinator: NSObject, Coordinator, ParentCoordinator, ErrorHandlerCoordinator, CameraViewControllerCoordinator {
 
     // MARK:- Properties
 
