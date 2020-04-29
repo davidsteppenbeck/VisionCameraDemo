@@ -143,19 +143,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		41376C69244E10A800FB6934 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				415724952442055100F4B7E0 /* Coordinator.swift */,
-				41FB9333244B77790097F45E /* ParentCoordinator.swift */,
-				41FB9331244B76A70097F45E /* ChildCoordinator.swift */,
-				41ADF3F324463690005426E5 /* ErrorHandlerCoordinator.swift */,
-				41ADF3DB2444ADA0005426E5 /* CameraViewControllerCoordinator.swift */,
-				41FB932F244A3E320097F45E /* SettingsTableViewControllerCoordinator.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		41376C8E2453400600FB6934 /* Social Media */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +151,103 @@
 				41376C8C24533FDA00FB6934 /* TwitterManager.swift */,
 			);
 			path = "Social Media";
+			sourceTree = "<group>";
+		};
+		414622932459B5DE001F2F73 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				414622962459B69F001F2F73 /* Coordinator */,
+				414622942459B685001F2F73 /* View */,
+				414622952459B691001F2F73 /* View Controller */,
+				414622972459B6C7001F2F73 /* Support Files */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		414622942459B685001F2F73 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				41FB9329244A39580097F45E /* Settings.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		414622952459B691001F2F73 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				41FB932B244A39A00097F45E /* SettingsTableViewController.swift */,
+				41376CCF2459AD6800FB6934 /* SettingsTableViewController+UITableViewDelegate.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		414622962459B69F001F2F73 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				41FB932D244A3D650097F45E /* SettingsCoordinator.swift */,
+				41FB932F244A3E320097F45E /* SettingsTableViewControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		414622972459B6C7001F2F73 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				41376CCD2459A38E00FB6934 /* MFMailComposeViewControllerFactory.swift */,
+				41376C932453759E00FB6934 /* SettingsMailComposeDelegate.swift */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		414622982459B77B001F2F73 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				414622992459B7AB001F2F73 /* Coordinator */,
+				4146229A2459B7CF001F2F73 /* View */,
+				4146229B2459B7ED001F2F73 /* View Controller */,
+				4146229C2459B80B001F2F73 /* Support Files */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		414622992459B7AB001F2F73 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				41572497244205AA00F4B7E0 /* CameraCoordinator.swift */,
+				41ADF3DB2444ADA0005426E5 /* CameraViewControllerCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		4146229A2459B7CF001F2F73 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				41FB9319244788060097F45E /* CameraView.swift */,
+				41FB931D2448C9890097F45E /* CameraButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4146229B2459B7ED001F2F73 /* View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4157246F24411E7400F4B7E0 /* CameraViewController.swift */,
+				41ADF3F124463496005426E5 /* CameraViewController+CaptureSessionManagerDelegate.swift */,
+			);
+			path = "View Controller";
+			sourceTree = "<group>";
+		};
+		4146229C2459B80B001F2F73 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				41376C952454CEB700FB6934 /* MediaAuthorizationManager.swift */,
+				41ADF3F924466006005426E5 /* CameraAuthorizationManager.swift */,
+				41ADF3DD2444C67B005426E5 /* CaptureSessionManager.swift */,
+				41ADF3EB24460EC8005426E5 /* CaptureSessionManagerDelegate.swift */,
+				41ADF3ED24460EF9005426E5 /* CaptureSessionManagerError.swift */,
+				41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */,
+			);
+			path = "Support Files";
 			sourceTree = "<group>";
 		};
 		4157245F24411E7400F4B7E0 = {
@@ -188,22 +272,9 @@
 			isa = PBXGroup;
 			children = (
 				4157247124411E7400F4B7E0 /* Main.storyboard */,
-				41FB9329244A39580097F45E /* Settings.storyboard */,
-				41FB9319244788060097F45E /* CameraView.swift */,
-				41FB931D2448C9890097F45E /* CameraButton.swift */,
-				4157246F24411E7400F4B7E0 /* CameraViewController.swift */,
-				41ADF3F124463496005426E5 /* CameraViewController+CaptureSessionManagerDelegate.swift */,
-				41376C952454CEB700FB6934 /* MediaAuthorizationManager.swift */,
-				41ADF3F924466006005426E5 /* CameraAuthorizationManager.swift */,
-				41ADF3DD2444C67B005426E5 /* CaptureSessionManager.swift */,
-				41ADF3EB24460EC8005426E5 /* CaptureSessionManagerDelegate.swift */,
-				41ADF3ED24460EF9005426E5 /* CaptureSessionManagerError.swift */,
-				41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */,
-				41FB932B244A39A00097F45E /* SettingsTableViewController.swift */,
-				41376CCF2459AD6800FB6934 /* SettingsTableViewController+UITableViewDelegate.swift */,
-				41376C932453759E00FB6934 /* SettingsMailComposeDelegate.swift */,
-				41376CCD2459A38E00FB6934 /* MFMailComposeViewControllerFactory.swift */,
 				41ADF3DA2444AD45005426E5 /* Coordinators */,
+				414622982459B77B001F2F73 /* Camera */,
+				414622932459B5DE001F2F73 /* Settings */,
 				4157248D24411EF800F4B7E0 /* Support Files */,
 				4157247924411E7500F4B7E0 /* Info.plist */,
 			);
@@ -246,9 +317,10 @@
 		41ADF3DA2444AD45005426E5 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				41376C69244E10A800FB6934 /* Protocols */,
-				41572497244205AA00F4B7E0 /* CameraCoordinator.swift */,
-				41FB932D244A3D650097F45E /* SettingsCoordinator.swift */,
+				415724952442055100F4B7E0 /* Coordinator.swift */,
+				41FB9333244B77790097F45E /* ParentCoordinator.swift */,
+				41FB9331244B76A70097F45E /* ChildCoordinator.swift */,
+				41ADF3F324463690005426E5 /* ErrorHandlerCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
