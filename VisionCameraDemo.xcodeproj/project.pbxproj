@@ -20,6 +20,7 @@
 		41376C942453759E00FB6934 /* SettingsMailComposeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C932453759E00FB6934 /* SettingsMailComposeDelegate.swift */; };
 		41376C962454CEB700FB6934 /* MediaAuthorizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C952454CEB700FB6934 /* MediaAuthorizationManager.swift */; };
 		41376C982454D37D00FB6934 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C972454D37D00FB6934 /* UserDefaults.swift */; };
+		41376CCE2459A38E00FB6934 /* MFMailComposeViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376CCD2459A38E00FB6934 /* MFMailComposeViewControllerFactory.swift */; };
 		4157246C24411E7400F4B7E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157246B24411E7400F4B7E0 /* AppDelegate.swift */; };
 		4157246E24411E7400F4B7E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157246D24411E7400F4B7E0 /* SceneDelegate.swift */; };
 		4157247024411E7400F4B7E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157246F24411E7400F4B7E0 /* CameraViewController.swift */; };
@@ -81,6 +82,7 @@
 		41376C932453759E00FB6934 /* SettingsMailComposeDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsMailComposeDelegate.swift; sourceTree = "<group>"; };
 		41376C952454CEB700FB6934 /* MediaAuthorizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaAuthorizationManager.swift; sourceTree = "<group>"; };
 		41376C972454D37D00FB6934 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		41376CCD2459A38E00FB6934 /* MFMailComposeViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MFMailComposeViewControllerFactory.swift; sourceTree = "<group>"; };
 		4157246824411E7400F4B7E0 /* VisionCameraDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionCameraDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4157246B24411E7400F4B7E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4157246D24411E7400F4B7E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 				41FB932B244A39A00097F45E /* SettingsTableViewController.swift */,
 				41376C862453333400FB6934 /* SettingsTableViewDelegate.swift */,
 				41376C932453759E00FB6934 /* SettingsMailComposeDelegate.swift */,
+				41376CCD2459A38E00FB6934 /* MFMailComposeViewControllerFactory.swift */,
 				41ADF3DA2444AD45005426E5 /* Coordinators */,
 				4157248D24411EF800F4B7E0 /* Support Files */,
 				4157247924411E7500F4B7E0 /* Info.plist */,
@@ -400,6 +403,7 @@
 				4157246E24411E7400F4B7E0 /* SceneDelegate.swift in Sources */,
 				41ADF3DC2444ADA0005426E5 /* CameraViewControllerCoordinator.swift in Sources */,
 				415724962442055100F4B7E0 /* Coordinator.swift in Sources */,
+				41376CCE2459A38E00FB6934 /* MFMailComposeViewControllerFactory.swift in Sources */,
 				41376C982454D37D00FB6934 /* UserDefaults.swift in Sources */,
 				41376C8D24533FDA00FB6934 /* TwitterManager.swift in Sources */,
 				41FB9332244B76A70097F45E /* ChildCoordinator.swift in Sources */,

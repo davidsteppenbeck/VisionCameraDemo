@@ -39,6 +39,7 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
     }
 
     deinit {
+        // TODO: Delete deinit
         print("controller deinit")
     }
 }

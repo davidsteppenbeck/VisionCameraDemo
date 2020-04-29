@@ -58,21 +58,14 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
     }
 
     func provideFeedback(from vc: UIViewController?) {
-        guard MFMailComposeViewController.canSendMail() else {
+        guard let mailVC = MFMailComposeViewController.makeForFeedback(mailComposeDelegate: mailComposeDelegate) else {
             let alert = UIAlertController.simpleAlertController(title: "Unable To Compose Mail", message: "The device is not configured to send email from this app.")
             vc?.present(alert, animated: true)
             return
         }
 
-        // Create the mail composer.
-        let mailVC = MFMailComposeViewController()
-        mailVC.mailComposeDelegate = mailComposeDelegate
-        mailVC.setToRecipients(["LazyCatApps+VisionCameraDemo@gmail.com"])
-        mailVC.setSubject("VisionCameraDemo feedback")
-        mailVC.setMessageBody("We'd love to know what you think of the demo!", isHTML: false)
-
-        // Present the new navigation controller modally.
-        navigationController.present(mailVC, animated: true)
+        // Must present the mail navigation controller modally.
+        vc?.present(mailVC, animated: true)
     }
 
     func openSystemSettings() {
@@ -80,6 +73,7 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
     }
 
     deinit {
+        // TODO: Delete deinit
         print("coordinator deinit")
     }
 }

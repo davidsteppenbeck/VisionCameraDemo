@@ -52,6 +52,7 @@ final class SettingsTableViewDelegate: NSObject, UITableViewDelegate {
     }
 
     deinit {
+        // TODO: Delete deinit
         print("delegate deinit")
     }
 }
