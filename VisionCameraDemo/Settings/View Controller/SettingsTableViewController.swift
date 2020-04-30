@@ -25,10 +25,7 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
 
     private var viewModel = SettingsViewModel()
 
-    private lazy var crossBarButton: UIBarButtonItem = {
-        let image = UIImage(systemName: "xmark")
-        return UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(crossBarButtonAction(_:)))
-    }()
+    private lazy var crossBarButton = UIBarButtonItem.makeForSystemImage("xmark", target: self, action: #selector(crossBarButtonAction(_:)))
 
     // MARK:- View Lifecycle
 

@@ -26,15 +26,9 @@ final class CameraViewController: UIViewController, Storyboarded {
         return button
     }()
 
-    private (set) lazy var settingsBarButton: UIBarButtonItem = {
-        let image = UIImage(systemName: "gear")
-        return UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(settingsBarButtonAction(_:)))
-    }()
+    private (set) lazy var settingsBarButton = UIBarButtonItem.makeForSystemImage("gear", target: self, action: #selector(settingsBarButtonAction(_:)))
 
-    private (set) lazy var optionsBarButton: UIBarButtonItem = {
-        let image = UIImage(systemName: "ellipsis")
-        return UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(optionsBarButtonAction(_:)))
-    }()
+    private (set) lazy var optionsBarButton = UIBarButtonItem.makeForSystemImage("ellipsis", target: self, action: #selector(optionsBarButtonAction(_:)))
 
     // MARK:- View Lifecycle
 

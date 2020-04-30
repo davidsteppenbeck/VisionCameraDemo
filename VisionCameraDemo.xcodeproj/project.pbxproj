@@ -12,6 +12,7 @@
 		410FF640245A3796003747DF /* ComparableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FF63F245A3796003747DF /* ComparableTests.swift */; };
 		410FF642245B2CAC003747DF /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FF641245B2CAC003747DF /* UIView+Utilities.swift */; };
 		410FF644245B4967003747DF /* UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FF643245B4967003747DF /* UIViewTests.swift */; };
+		410FF646245B4DDF003747DF /* UIBarButtonItem+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410FF645245B4DDF003747DF /* UIBarButtonItem+Utilities.swift */; };
 		41376C79244F86BC00FB6934 /* BundleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C78244F86BC00FB6934 /* BundleTests.swift */; };
 		41376C7D2450BB2C00FB6934 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */; };
 		41376C7F2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */; };
@@ -81,6 +82,7 @@
 		410FF63F245A3796003747DF /* ComparableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparableTests.swift; sourceTree = "<group>"; };
 		410FF641245B2CAC003747DF /* UIView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
 		410FF643245B4967003747DF /* UIViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewTests.swift; sourceTree = "<group>"; };
+		410FF645245B4DDF003747DF /* UIBarButtonItem+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Utilities.swift"; sourceTree = "<group>"; };
 		41376C78244F86BC00FB6934 /* BundleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTests.swift; sourceTree = "<group>"; };
 		41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureConnection+Utilities.swift"; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				41A83DDA2459ECD3005128E0 /* Notification+Utilities.swift */,
 				41ADF3F5244638FB005426E5 /* UIAlertController+Utilities.swift */,
 				41376C882453397F00FB6934 /* UIApplication+Utilities.swift */,
+				410FF645245B4DDF003747DF /* UIBarButtonItem+Utilities.swift */,
 				410FF641245B2CAC003747DF /* UIView+Utilities.swift */,
 			);
 			path = Utilities;
@@ -475,6 +478,7 @@
 				41FB9334244B77790097F45E /* ParentCoordinator.swift in Sources */,
 				41376C8B24533F9800FB6934 /* SocialMediaURLType.swift in Sources */,
 				41376C962454CEB700FB6934 /* MediaAuthorizationManager.swift in Sources */,
+				410FF646245B4DDF003747DF /* UIBarButtonItem+Utilities.swift in Sources */,
 				41FB93262449E9180097F45E /* AudioSessionManager.swift in Sources */,
 				41376C812450FC7700FB6934 /* AVCaptureSession+Utilities.swift in Sources */,
 				41A83DD82459DAE5005128E0 /* SettingsViewModel.swift in Sources */,
