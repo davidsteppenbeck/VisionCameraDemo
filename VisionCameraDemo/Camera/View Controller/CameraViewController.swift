@@ -18,6 +18,8 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     private (set) lazy var cameraView = CameraView(session: captureSessionManager?.session)
 
+    private (set) lazy var gridView = GridView()
+
     private (set) lazy var cameraButton: CameraButton = {
         let button = CameraButton()
         button.addTarget(self, action: #selector(cameraButtonAction(_:)), for: .touchDown)
@@ -45,8 +47,9 @@ final class CameraViewController: UIViewController, Storyboarded {
         title = Bundle.main.appName
         navigationItem.leftBarButtonItem = settingsBarButton
         navigationItem.rightBarButtonItem = optionsBarButton
+        cameraView.addSubview(gridView)
         cameraView.addSubview(cameraButton)
-        addViewLayoutConstraints()
+        addLayoutConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +78,14 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     // MARK:- Methods
 
-    private func addViewLayoutConstraints() {
+    private func addLayoutConstraints() {
+        NSLayoutConstraint.activate([
+            gridView.topAnchor.constraint(equalTo: cameraView.topAnchor),
+            gridView.bottomAnchor.constraint(equalTo: cameraView.bottomAnchor),
+            gridView.leadingAnchor.constraint(equalTo: cameraView.leadingAnchor),
+            gridView.trailingAnchor.constraint(equalTo: cameraView.trailingAnchor)
+        ])
+
         NSLayoutConstraint.activate([
             cameraButton.centerXAnchor.constraint(equalTo: cameraView.safeAreaLayoutGuide.centerXAnchor),
             cameraButton.bottomAnchor.constraint(equalTo: cameraView.safeAreaLayoutGuide.bottomAnchor, constant: -20),
