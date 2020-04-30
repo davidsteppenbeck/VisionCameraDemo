@@ -18,8 +18,6 @@ extension SettingsTableViewController {
         }
 
         switch reuseIdentifier {
-        case "grid": break
-        case "save": break
         case "resolution": break
         case "appearance": break
         case "twitter": coordinator?.openTwitter(from: self)
