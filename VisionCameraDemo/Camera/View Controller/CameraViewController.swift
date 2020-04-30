@@ -47,9 +47,8 @@ final class CameraViewController: UIViewController, Storyboarded {
         title = Bundle.main.appName
         navigationItem.leftBarButtonItem = settingsBarButton
         navigationItem.rightBarButtonItem = optionsBarButton
-        cameraView.addSubview(gridView)
-        cameraView.addSubview(cameraButton)
-        addLayoutConstraints()
+        gridView.embed(in: cameraView)
+        cameraButton.embed(in: cameraView, using: cameraView.safeAreaLayoutGuide, insets: UIView.EmbedInsets(bottom: 20), width: 60, height: 60, centerXOffset: 0)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -74,24 +73,6 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     @objc private func optionsBarButtonAction(_ sender: UIBarButtonItem) {
         coordinator?.showOptions()
-    }
-
-    // MARK:- Methods
-
-    private func addLayoutConstraints() {
-        NSLayoutConstraint.activate([
-            gridView.topAnchor.constraint(equalTo: cameraView.topAnchor),
-            gridView.bottomAnchor.constraint(equalTo: cameraView.bottomAnchor),
-            gridView.leadingAnchor.constraint(equalTo: cameraView.leadingAnchor),
-            gridView.trailingAnchor.constraint(equalTo: cameraView.trailingAnchor)
-        ])
-
-        NSLayoutConstraint.activate([
-            cameraButton.centerXAnchor.constraint(equalTo: cameraView.safeAreaLayoutGuide.centerXAnchor),
-            cameraButton.bottomAnchor.constraint(equalTo: cameraView.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            cameraButton.heightAnchor.constraint(equalToConstant: 60),
-            cameraButton.widthAnchor.constraint(equalToConstant: 60)
-        ])
     }
 
 }
