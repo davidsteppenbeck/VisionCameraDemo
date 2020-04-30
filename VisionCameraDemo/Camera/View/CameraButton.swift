@@ -143,6 +143,11 @@ final class CameraButton: UIControl {
         self.init(frame: .zero)
     }
 
+    convenience init(target: Any?, action: Selector, for controlEvents: UIControl.Event) {
+        self.init(frame: .zero)
+        self.addTarget(target, action: action, for: controlEvents)
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         initSetup()

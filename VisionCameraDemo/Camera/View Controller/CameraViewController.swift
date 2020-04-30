@@ -20,11 +20,7 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     private (set) lazy var gridView = GridView()
 
-    private (set) lazy var cameraButton: CameraButton = {
-        let button = CameraButton()
-        button.addTarget(self, action: #selector(cameraButtonAction(_:)), for: .touchDown)
-        return button
-    }()
+    private (set) lazy var cameraButton = CameraButton(target: self, action: #selector(cameraButtonAction(_:)), for: .touchDown)
 
     private (set) lazy var settingsBarButton = UIBarButtonItem.makeForSystemImage("gear", target: self, action: #selector(settingsBarButtonAction(_:)))
 
