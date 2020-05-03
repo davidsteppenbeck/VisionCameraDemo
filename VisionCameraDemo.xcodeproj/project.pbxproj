@@ -223,6 +223,15 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		41259436245F76F1004BEB05 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				415724932441FCEC00F4B7E0 /* Storyboarded.swift */,
+				41259433245F7515004BEB05 /* TitleConvertible.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		41376C8E2453400600FB6934 /* Social Media */ = {
 			isa = PBXGroup;
 			children = (
@@ -385,12 +394,11 @@
 			children = (
 				4157247624411E7500F4B7E0 /* LaunchScreen.storyboard */,
 				41FB93252449E9180097F45E /* AudioSessionManager.swift */,
-				415724932441FCEC00F4B7E0 /* Storyboarded.swift */,
-				41259433245F7515004BEB05 /* TitleConvertible.swift */,
 				41376C972454D37D00FB6934 /* UserDefaults.swift */,
 				4157247424411E7500F4B7E0 /* Assets.xcassets */,
 				4157248F244128E300F4B7E0 /* Colors.xcassets */,
 				41259435245F7559004BEB05 /* Delegates */,
+				41259436245F76F1004BEB05 /* Protocols */,
 				41376C8E2453400600FB6934 /* Social Media */,
 				41ADF3E32444F360005426E5 /* Utilities */,
 			);
