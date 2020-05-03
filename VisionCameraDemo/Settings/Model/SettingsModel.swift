@@ -9,9 +9,8 @@
 import Foundation
 
 /// Data model for `SettingsTableViewController`.
-final class SettingsModel {
+final class SettingsModel: TitleConvertible {
 
-    /// The title to display to the user.
     let title: String
 
     /// Controls the state of the camera grid switch.
