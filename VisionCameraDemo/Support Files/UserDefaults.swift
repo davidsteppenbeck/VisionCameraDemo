@@ -11,8 +11,10 @@ import Foundation
 @propertyWrapper
 struct UserDefault<T> {
 
+    /// The `UserDefaults` key.
     let key: String
 
+    /// The default value to use when no key-value pair is available in `UserDefaults`.
     let defaultValue: T
 
     var wrappedValue: T {
@@ -28,10 +30,10 @@ struct UserDefault<T> {
 
 extension UserDefaults {
 
-    @UserDefault(key: "showCameraGrid", defaultValue: true)
+    @UserDefault(key: "show_camera_grid", defaultValue: true)
     static var showCameraGrid: Bool
 
-    @UserDefault(key: "saveSnapshots", defaultValue: true)
+    @UserDefault(key: "save_snapshots", defaultValue: true)
     static var saveSnapshots: Bool
 
 }

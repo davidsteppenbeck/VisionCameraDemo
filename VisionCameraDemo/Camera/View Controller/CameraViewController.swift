@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 final class CameraViewController: UIViewController, Storyboarded {
 
@@ -14,17 +15,22 @@ final class CameraViewController: UIViewController, Storyboarded {
 
     weak var coordinator: (ErrorHandlerCoordinator & CameraViewControllerCoordinator)?
 
-    private lazy var captureSessionManager = CaptureSessionManager(saveSnapshots: UserDefaults.saveSnapshots, delegate: self)
+    private(set) lazy var captureSessionManager = CaptureSessionManager.makeForUserDefaults(delegate: self)
 
-    private (set) lazy var cameraView = CameraView(session: captureSessionManager?.session)
+    private(set) lazy var cameraView = CameraView(session: captureSessionManager?.session)
 
-    private (set) lazy var gridView = GridView()
+    private(set) lazy var cameraGridView = CameraGridView()
 
-    private (set) lazy var cameraButton = CameraButton(target: self, action: #selector(cameraButtonAction(_:)), for: .touchDown)
+    private(set) lazy var cameraButton = CameraButton(target: self, action: #selector(cameraButtonAction(_:)), for: .touchDown)
 
-    private (set) lazy var settingsBarButton = UIBarButtonItem.makeForSystemImage("gear", target: self, action: #selector(settingsBarButtonAction(_:)))
+    private(set) lazy var settingsBarButton = UIBarButtonItem.makeForSystemImage("gear", target: self, action: #selector(settingsBarButtonAction(_:)))
 
-    private (set) lazy var optionsBarButton = UIBarButtonItem.makeForSystemImage("ellipsis", target: self, action: #selector(optionsBarButtonAction(_:)))
+    private(set) lazy var optionsBarButton = UIBarButtonItem.makeForSystemImage("ellipsis", target: self, action: #selector(optionsBarButtonAction(_:)))
+
+    private(set) var viewModel = CameraViewModel.makeForUserDefaults()
+
+    /// An array to keep references to `AnyCancellable` subscribers.
+    private var tokens = [AnyCancellable]()
 
     // MARK:- View Lifecycle
 
@@ -37,8 +43,9 @@ final class CameraViewController: UIViewController, Storyboarded {
         title = Bundle.main.appName
         navigationItem.leftBarButtonItem = settingsBarButton
         navigationItem.rightBarButtonItem = optionsBarButton
-        gridView.embed(in: cameraView)
+        cameraGridView.embed(in: cameraView)
         cameraButton.embed(in: cameraView, using: cameraView.safeAreaLayoutGuide, insets: UIView.EmbedInsets(bottom: 20), width: 60, height: 60, centerXOffset: 0)
+        addViewModelSubscribers()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +56,12 @@ final class CameraViewController: UIViewController, Storyboarded {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         captureSessionManager?.stopVideoSession()
+    }
+
+    // MARK:- Methods
+
+    private func addViewModelSubscribers() {
+        tokens += viewModel.$isCameraGridViewHidden.assign(to: \.isHidden, on: cameraGridView)
     }
 
     // MARK:- Actions

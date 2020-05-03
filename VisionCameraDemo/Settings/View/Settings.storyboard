@@ -301,6 +301,7 @@
                     </tableView>
                     <connections>
                         <outlet property="saveSnapshotsSwitch" destination="EmG-tD-Dkd" id="7r8-DZ-Prn"/>
+                        <outlet property="showCameraGridSwitch" destination="ldi-XQ-i72" id="NZ1-Iw-UEB"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HYs-sg-wkx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

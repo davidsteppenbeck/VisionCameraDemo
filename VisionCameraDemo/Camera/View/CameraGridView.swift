@@ -1,5 +1,5 @@
 //
-//  GridView.swift
+//  CameraGridView.swift
 //  VisionCameraDemo
 //
 //  Created by David Steppenbeck on 2020/04/29.
@@ -9,7 +9,7 @@
 import UIKit
 
 /// Renders a simple and configurable grid.
-final class GridView: UIView {
+final class CameraGridView: UIView {
 
     // MARK:- Properties
 
@@ -83,7 +83,6 @@ final class GridView: UIView {
 
     /// Initial setup code. Should only be called at initialization.
     private func initSetup() {
-        isHidden = false
         isOpaque = false
         backgroundColor = nil
         isUserInteractionEnabled = false

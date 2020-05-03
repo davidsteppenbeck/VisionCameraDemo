@@ -12,6 +12,13 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
 
     // MARK:- IBOutlets
 
+    @IBOutlet weak var showCameraGridSwitch: UISwitch! {
+        didSet {
+            showCameraGridSwitch.addTarget(self, action: #selector(showCameraGridSwitchValueChanged(_:)), for: .valueChanged)
+            showCameraGridSwitch.isOn = viewModel.isShowCameraGridSwitchOn
+        }
+    }
+
     @IBOutlet private weak var saveSnapshotsSwitch: UISwitch! {
         didSet {
             saveSnapshotsSwitch.addTarget(self, action: #selector(saveSnapshotsSwitchValueChanged(_:)), for: .valueChanged)
@@ -23,7 +30,7 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
 
     weak var coordinator: SettingsTableViewControllerCoordinator?
 
-    private var viewModel = SettingsViewModel()
+    private var viewModel = SettingsViewModel.makeForUserDefaults()
 
     private lazy var crossBarButton = UIBarButtonItem.makeForSystemImage("xmark", target: self, action: #selector(crossBarButtonAction(_:)))
 
@@ -34,13 +41,17 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.rightBarButtonItem = crossBarButton
-        title = "Settings"
+        title = viewModel.title
     }
 
     // MARK:- Actions
 
     @objc private func crossBarButtonAction(_ sender: UIBarButtonItem) {
         coordinator?.dismiss()
+    }
+
+    @objc private func showCameraGridSwitchValueChanged(_ sender: UISwitch) {
+        viewModel.isShowCameraGridSwitchOn = sender.isOn
     }
 
     @objc private func saveSnapshotsSwitchValueChanged(_ sender: UISwitch) {

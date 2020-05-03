@@ -10,7 +10,10 @@ import Foundation
 
 extension Notification.Name {
 
-    /// Use to communicate changes that occur in the user's preference to persist photos.
-    static let saveSnapshots = Notification.Name("saveSnapshots")
+    /// Use to communicate changes that occur in the user's preference to show the camera grid.
+    static let showCameraGrid = Notification.Name("show_camera_grid")
+
+    /// Use to communicate changes that occur in the user's preference to save photos.
+    static let saveSnapshots = Notification.Name("save_snapshots")
 
 }

@@ -16,8 +16,7 @@ final class CaptureSessionManager: NSObject {
     /// The `CaptureSessionManager` delegate object.
     weak var delegate: CaptureSessionManagerDelegate?
 
-    /// Whether snapshots will be persisted using `AVCapturePhotoOutput`.
-    /// Value is controlled by user settings.
+    /// Whether snapshots will be persisted using `AVCapturePhotoOutput`. The value is controlled by user settings.
     private var saveSnapshots: Bool
 
     /// Manages the authorization status of an `AVCaptureDevice` for video.
@@ -165,13 +164,26 @@ final class CaptureSessionManager: NSObject {
         photoOutput.capturePhoto(with: photoSettings, delegate: photoCaptureDelegate)
     }
 
-    /// Add `NotificationCenter` observers.
-    private func addObservers() {
+    /// Adds `NotificationCenter` observers.
+    func addNotificationCenterObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateSaveSnapshots(_:)), name: .saveSnapshots, object: nil)
     }
 
+    /// Removes `NotificationCenter` observers.
+    func removeNotificationCenterObservers() {
+        NotificationCenter.default.removeObserver(self, name: .saveSnapshots, object: nil)
+    }
+
+    // MARK:- Actions
+
     @objc private func updateSaveSnapshots(_ notification: Notification) {
-        if let saveSnapshots = notification.userInfo?[Notification.Name.saveSnapshots] as? Bool {
+
+        // Uses the notification name as the dictionary key.
+        guard let saveSnapshots = notification.userInfo?[notification.name] as? Bool else {
+            return
+        }
+
+        if saveSnapshots != self.saveSnapshots {
             self.saveSnapshots = saveSnapshots
         }
     }
@@ -228,8 +240,14 @@ final class CaptureSessionManager: NSObject {
         session.addOutput(photoOutput)
         session.safeSetSessionPreset(preset)
 
-        // Add notification center observers because setup was successful.
-        addObservers()
+        // Add notification center observers because the setup was successful.
+        addNotificationCenterObservers()
+    }
+
+    // MARK:- Deinitialization
+
+    deinit {
+        removeNotificationCenterObservers()
     }
 
 }
