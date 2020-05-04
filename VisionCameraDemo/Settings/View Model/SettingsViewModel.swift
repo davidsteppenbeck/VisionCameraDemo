@@ -18,7 +18,7 @@ final class SettingsViewModel {
     private let dataPersistenceManager: SettingsDataPersistenceManager
 
     /// An array to keep references to `AnyCancellable` subscribers.
-    private var tokens = [AnyCancellable]()
+    private var subscriptions = [AnyCancellable]()
 
     /// A formatted title to display to the user.
     var title: String {
@@ -48,12 +48,12 @@ final class SettingsViewModel {
     // MARK:- Methods
 
     private func addModelSubscribers() {
-        tokens += model.$showCameraGrid.sink { [weak self] showCameraGrid in
+        subscriptions += model.$showCameraGrid.sink { [weak self] showCameraGrid in
             NotificationCenter.default.post(name: .showCameraGrid, object: self, value: showCameraGrid)
             self?.dataPersistenceManager.storeShowCameraGridSetting(showCameraGrid)
         }
 
-        tokens += model.$saveSnapshots.sink { [weak self] saveSnapshots in
+        subscriptions += model.$saveSnapshots.sink { [weak self] saveSnapshots in
             NotificationCenter.default.post(name: .saveSnapshots, object: self, value: saveSnapshots)
             self?.dataPersistenceManager.storeSaveSnapshotsSetting(saveSnapshots)
         }

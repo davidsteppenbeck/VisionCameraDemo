@@ -20,12 +20,12 @@ final class CameraViewModel {
     @Published var isCameraGridViewHidden: Bool
 
     /// An array to keep references to `AnyCancellable` subscribers.
-    private var tokens = [AnyCancellable]()
+    private var subscriptions = [AnyCancellable]()
 
     // MARK:- Methods
 
     private func addModelSubscribers() {
-        tokens += model.$showCameraGrid
+        subscriptions += model.$showCameraGrid
             .map { !$0 }
             .assign(to: \.isCameraGridViewHidden, on: self)
     }

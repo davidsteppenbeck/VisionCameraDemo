@@ -30,7 +30,7 @@ final class CameraViewController: UIViewController {
     private(set) lazy var optionsBarButton = UIBarButtonItem.makeForSystemImage("ellipsis", target: self, action: #selector(optionsBarButtonAction(_:)))
 
     /// An array to keep references to `AnyCancellable` subscribers.
-    private var tokens = [AnyCancellable]()
+    private var subscriptions = [AnyCancellable]()
 
     // MARK:- View Lifecycle
 
@@ -61,7 +61,7 @@ final class CameraViewController: UIViewController {
     // MARK:- Methods
 
     private func addViewModelSubscribers() {
-        tokens += viewModel.$isCameraGridViewHidden.assign(to: \.isHidden, on: cameraGridView)
+        subscriptions += viewModel.$isCameraGridViewHidden.assign(to: \.isHidden, on: cameraGridView)
     }
 
     // MARK:- Actions
