@@ -26,7 +26,7 @@ final class CameraCoordinator: NSObject, Coordinator, ParentCoordinator, ErrorHa
     // MARK:- Methods
 
     func start() {
-        let vc = CameraViewController.instantiate()
+        let vc = CameraViewController()
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }
