@@ -15,11 +15,11 @@ extension CameraViewController: CaptureSessionManagerDelegate {
     }
 
     func captureSessionManagerWillBeginUpdates(_ captureSessionManager: CaptureSessionManager) {
-        cameraButton.isEnabled = false
+        cameraButton.isEnabled = false // TODO: Replace with Combine solution.
     }
 
     func captureSessionManagerDidEndUpdates(_ captureSessionManager: CaptureSessionManager) {
-        cameraButton.isEnabled = true
+        cameraButton.isEnabled = true // TODO: Replace with Combine solution.
     }
 
 }
