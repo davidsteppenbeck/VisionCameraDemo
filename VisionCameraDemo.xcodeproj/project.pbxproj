@@ -28,6 +28,12 @@
 		41259432245DFC34004BEB05 /* CaptureSessionManagerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41259431245DFC34004BEB05 /* CaptureSessionManagerFactory.swift */; };
 		41259434245F7515004BEB05 /* TitleConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41259433245F7515004BEB05 /* TitleConvertible.swift */; };
 		4125943F24608944004BEB05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4125943D24608944004BEB05 /* Main.storyboard */; };
+		412594412460BAF0004BEB05 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594402460BAF0004BEB05 /* Appearance.swift */; };
+		412594432460BBC5004BEB05 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594422460BBC5004BEB05 /* AppearanceManager.swift */; };
+		4125944524619F4A004BEB05 /* UIAlertViewController+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4125944424619F4A004BEB05 /* UIAlertViewController+Utilities.swift */; };
+		412594472461A428004BEB05 /* UIAlertControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594462461A428004BEB05 /* UIAlertControllerTests.swift */; };
+		412594492461A6A3004BEB05 /* UIAlertAction+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594482461A6A3004BEB05 /* UIAlertAction+Utilities.swift */; };
+		4125944B2461A76C004BEB05 /* UIAlertActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4125944A2461A76C004BEB05 /* UIAlertActionTests.swift */; };
 		41376C79244F86BC00FB6934 /* BundleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C78244F86BC00FB6934 /* BundleTests.swift */; };
 		41376C7D2450BB2C00FB6934 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */; };
 		41376C7F2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */; };
@@ -112,6 +118,12 @@
 		41259431245DFC34004BEB05 /* CaptureSessionManagerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionManagerFactory.swift; sourceTree = "<group>"; };
 		41259433245F7515004BEB05 /* TitleConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleConvertible.swift; sourceTree = "<group>"; };
 		4125943E24608944004BEB05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		412594402460BAF0004BEB05 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		412594422460BBC5004BEB05 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
+		4125944424619F4A004BEB05 /* UIAlertViewController+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertViewController+Utilities.swift"; sourceTree = "<group>"; };
+		412594462461A428004BEB05 /* UIAlertControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerTests.swift; sourceTree = "<group>"; };
+		412594482461A6A3004BEB05 /* UIAlertAction+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Utilities.swift"; sourceTree = "<group>"; };
+		4125944A2461A76C004BEB05 /* UIAlertActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertActionTests.swift; sourceTree = "<group>"; };
 		41376C78244F86BC00FB6934 /* BundleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTests.swift; sourceTree = "<group>"; };
 		41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureConnection+Utilities.swift"; sourceTree = "<group>"; };
@@ -382,6 +394,8 @@
 				41FB93212448D7040097F45E /* CGRectTests.swift */,
 				410FF63F245A3796003747DF /* ComparableTests.swift */,
 				41376C91245344DC00FB6934 /* TwitterManagerTests.swift */,
+				4125944A2461A76C004BEB05 /* UIAlertActionTests.swift */,
+				412594462461A428004BEB05 /* UIAlertControllerTests.swift */,
 				410FF643245B4967003747DF /* UIViewTests.swift */,
 				4157248424411E7500F4B7E0 /* Info.plist */,
 				41ADF3E82445E95D005426E5 /* VisionCameraDemoTests-Bridging-Header.h */,
@@ -393,6 +407,8 @@
 			isa = PBXGroup;
 			children = (
 				4157247624411E7500F4B7E0 /* LaunchScreen.storyboard */,
+				412594402460BAF0004BEB05 /* Appearance.swift */,
+				412594422460BBC5004BEB05 /* AppearanceManager.swift */,
 				41FB93252449E9180097F45E /* AudioSessionManager.swift */,
 				41376C972454D37D00FB6934 /* UserDefaults.swift */,
 				4157247424411E7500F4B7E0 /* Assets.xcassets */,
@@ -445,7 +461,9 @@
 				41FB9335244CC5960097F45E /* DispatchQueue+Utilities.swift */,
 				41A83DDA2459ECD3005128E0 /* Notification+Utilities.swift */,
 				4125942D245DE6C3004BEB05 /* NotificationCenter+Utilities.swift */,
+				412594482461A6A3004BEB05 /* UIAlertAction+Utilities.swift */,
 				41ADF3F5244638FB005426E5 /* UIAlertController+Utilities.swift */,
+				4125944424619F4A004BEB05 /* UIAlertViewController+Utilities.swift */,
 				41376C882453397F00FB6934 /* UIApplication+Utilities.swift */,
 				410FF645245B4DDF003747DF /* UIBarButtonItem+Utilities.swift */,
 				410FF641245B2CAC003747DF /* UIView+Utilities.swift */,
@@ -561,6 +579,7 @@
 				410FF652245B8983003747DF /* SettingsModel.swift in Sources */,
 				41FB9334244B77790097F45E /* ParentCoordinator.swift in Sources */,
 				41376C8B24533F9800FB6934 /* SocialMediaURLType.swift in Sources */,
+				4125944524619F4A004BEB05 /* UIAlertViewController+Utilities.swift in Sources */,
 				41376C962454CEB700FB6934 /* MediaAuthorizationManager.swift in Sources */,
 				410FF646245B4DDF003747DF /* UIBarButtonItem+Utilities.swift in Sources */,
 				41FB93262449E9180097F45E /* AudioSessionManager.swift in Sources */,
@@ -572,6 +591,7 @@
 				41ADF3FA24466006005426E5 /* CameraAuthorizationManager.swift in Sources */,
 				41ADF3DE2444C67B005426E5 /* CaptureSessionManager.swift in Sources */,
 				41FB932E244A3D650097F45E /* SettingsCoordinator.swift in Sources */,
+				412594432460BBC5004BEB05 /* AppearanceManager.swift in Sources */,
 				41376C7D2450BB2C00FB6934 /* PhotoCaptureDelegate.swift in Sources */,
 				41259434245F7515004BEB05 /* TitleConvertible.swift in Sources */,
 				41ADF3E52444F4C2005426E5 /* Bundle+Utilities.swift in Sources */,
@@ -591,6 +611,7 @@
 				410FF64B245B728F003747DF /* CameraModel.swift in Sources */,
 				41FB9330244A3E320097F45E /* SettingsTableViewControllerCoordinator.swift in Sources */,
 				4157246C24411E7400F4B7E0 /* AppDelegate.swift in Sources */,
+				412594412460BAF0004BEB05 /* Appearance.swift in Sources */,
 				41FB931A244788060097F45E /* CameraView.swift in Sources */,
 				410FF648245B6B06003747DF /* CameraViewModel.swift in Sources */,
 				41376C902453428600FB6934 /* SocialMediaManager.swift in Sources */,
@@ -613,6 +634,7 @@
 				41259422245C6F62004BEB05 /* SettingsViewModelFactory.swift in Sources */,
 				41FB9332244B76A70097F45E /* ChildCoordinator.swift in Sources */,
 				41FB9336244CC5960097F45E /* DispatchQueue+Utilities.swift in Sources */,
+				412594492461A6A3004BEB05 /* UIAlertAction+Utilities.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,11 +644,13 @@
 			files = (
 				41376C79244F86BC00FB6934 /* BundleTests.swift in Sources */,
 				410FF640245A3796003747DF /* ComparableTests.swift in Sources */,
+				4125944B2461A76C004BEB05 /* UIAlertActionTests.swift in Sources */,
 				410FF644245B4967003747DF /* UIViewTests.swift in Sources */,
 				41ADF3EA2445E95D005426E5 /* CaptureSessionManagerTests.swift in Sources */,
 				41FB931C244894250097F45E /* CameraViewTests.swift in Sources */,
 				41259428245DA3A3004BEB05 /* ArrayTests.swift in Sources */,
 				41376C92245344DC00FB6934 /* TwitterManagerTests.swift in Sources */,
+				412594472461A428004BEB05 /* UIAlertControllerTests.swift in Sources */,
 				41FB932424490F560097F45E /* CameraButtonTests.swift in Sources */,
 				41FB93222448D7040097F45E /* CGRectTests.swift in Sources */,
 				41FB93282449ED360097F45E /* AudioSessionManagerTests.swift in Sources */,

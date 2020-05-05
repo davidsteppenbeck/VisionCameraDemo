@@ -13,11 +13,14 @@ protocol SettingsTableViewControllerCoordinator: class {
     /// Call to dismiss the settings table view controller programatically.
     func dismiss()
 
+    /// Presents selectable user interface style options to the user.
+    func showAppearanceOptions(from vc: SettingsTableViewController)
+
     /// Call to take the user out of the app and open the developer's Twitter page.
-    func openTwitter(from vc: UIViewController)
+    func openTwitter(from vc: SettingsTableViewController)
 
     /// Call to show the email composer that allows the user to provide feedback to the developer.
-    func provideFeedback(from vc: UIViewController)
+    func provideFeedback(from vc: SettingsTableViewController)
 
     /// Call to take the user out of the app and open its system settings.
     func openSystemSettings()

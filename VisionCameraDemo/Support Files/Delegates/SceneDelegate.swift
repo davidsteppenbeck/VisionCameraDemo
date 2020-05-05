@@ -10,7 +10,11 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
-    var window: UIWindow?
+    var window: UIWindow? {
+        didSet {
+            AppearanceManager.updateUserInterfaceStyle(for: UserDefaults.appearance)
+        }
+    }
 
     var coordinator: CameraCoordinator?
 

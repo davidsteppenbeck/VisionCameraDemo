@@ -300,6 +300,7 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="appearanceOptionLabel" destination="kzc-5G-57h" id="LA8-jB-HZz"/>
                         <outlet property="saveSnapshotsSwitch" destination="EmG-tD-Dkd" id="7r8-DZ-Prn"/>
                         <outlet property="showCameraGridSwitch" destination="ldi-XQ-i72" id="NZ1-Iw-UEB"/>
                     </connections>

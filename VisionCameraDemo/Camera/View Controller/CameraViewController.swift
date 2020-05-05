@@ -61,7 +61,9 @@ final class CameraViewController: UIViewController {
     // MARK:- Methods
 
     private func addViewModelSubscribers() {
-        subscriptions += viewModel.$isCameraGridViewHidden.assign(to: \.isHidden, on: cameraGridView)
+        viewModel.$isCameraGridViewHidden
+            .assign(to: \.isHidden, on: cameraGridView)
+            .store(in: &subscriptions)
     }
 
     // MARK:- Actions

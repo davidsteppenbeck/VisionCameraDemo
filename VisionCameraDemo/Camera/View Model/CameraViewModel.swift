@@ -25,14 +25,17 @@ final class CameraViewModel {
     // MARK:- Methods
 
     private func addModelSubscribers() {
-        subscriptions += model.$showCameraGrid
-            .map { !$0 }
+        model.$showCameraGrid
+            .map { showCameraGrid in
+                return !showCameraGrid
+            }
             .assign(to: \.isCameraGridViewHidden, on: self)
+            .store(in: &subscriptions)
     }
 
     /// Adds `NotificationCenter` observers.
     func addNotificationCenterObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateShowCameraGrid(_:)), name: .showCameraGrid, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateShowCameraGrid(_:)), name: .showCameraGrid, object: nil) // TODO: Use Combine publisher.
     }
 
     /// Removes `NotificationCenter` observers.

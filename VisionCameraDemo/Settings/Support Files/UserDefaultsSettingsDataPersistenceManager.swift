@@ -12,7 +12,7 @@ import Foundation
 struct UserDefaultsSettingsDataPersistenceManager: SettingsDataPersistenceManager {
 
     func storeShowCameraGridSetting(_ value: Bool) {
-        if value != UserDefaults.showCameraGrid {
+        if value != UserDefaults.showCameraGrid { // TODO: Perform this check inside UserDefaults.
             UserDefaults.showCameraGrid = value
         }
     }
@@ -20,6 +20,12 @@ struct UserDefaultsSettingsDataPersistenceManager: SettingsDataPersistenceManage
     func storeSaveSnapshotsSetting(_ value: Bool) {
         if value != UserDefaults.saveSnapshots {
             UserDefaults.saveSnapshots = value
+        }
+    }
+
+    func storeAppearanceSetting(_ value: Appearance) {
+        if value != UserDefaults.appearance {
+            UserDefaults.appearance = value
         }
     }
 

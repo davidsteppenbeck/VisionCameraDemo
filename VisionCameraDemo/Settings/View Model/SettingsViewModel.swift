@@ -20,29 +20,26 @@ final class SettingsViewModel {
     /// An array to keep references to `AnyCancellable` subscribers.
     private var subscriptions = [AnyCancellable]()
 
+    @Published var appearanceOptionText: String?
+
     /// A formatted title to display to the user.
     var title: String {
         return model.title.capitalized
     }
 
-    // The switch states are computed properties because the view controller does not need
-    // to observe their values. `UISwitch` automatically updates itself when tapped.
     var isShowCameraGridSwitchOn: Bool {
-        get {
-            return model.showCameraGrid
-        }
-        set {
-            model.showCameraGrid = newValue
-        }
+        get { return model.showCameraGrid }
+        set { model.showCameraGrid = newValue }
     }
 
     var isSaveSnapshotsSwitchOn: Bool {
-        get {
-            return model.saveSnapshots
-        }
-        set {
-            model.saveSnapshots = newValue
-        }
+        get { return model.saveSnapshots }
+        set { model.saveSnapshots = newValue }
+    }
+
+    var appearance: Appearance {
+        get { return model.appearance }
+        set { model.appearance = newValue }
     }
 
     // MARK:- Methods
@@ -56,6 +53,20 @@ final class SettingsViewModel {
         subscriptions += model.$saveSnapshots.sink { [weak self] saveSnapshots in
             NotificationCenter.default.post(name: .saveSnapshots, object: self, value: saveSnapshots)
             self?.dataPersistenceManager.storeSaveSnapshotsSetting(saveSnapshots)
+        }
+
+        subscriptions += model.$appearance.sink { [weak self] appearance in
+            var appearanceOptionText: String {
+                switch appearance {
+                case .dark: return "Dark"
+                case .light: return "Light"
+                case .system: return "System"
+                }
+            }
+
+            self?.appearanceOptionText = appearanceOptionText
+            AppearanceManager.updateUserInterfaceStyle(for: appearance)
+            self?.dataPersistenceManager.storeAppearanceSetting(appearance)
         }
     }
 

@@ -50,7 +50,26 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
         }
     }
 
-    func openTwitter(from vc: UIViewController) {
+    func showAppearanceOptions(from vc: SettingsTableViewController) {
+        let alert = UIAlertController.makeForActionSheet()
+
+        alert += UIAlertAction(title: "Always Dark", style: .default) { _ in
+            vc.viewModel.appearance = .dark
+        }
+
+        alert += UIAlertAction(title: "Always Light", style: .default) { _ in
+            vc.viewModel.appearance = .light
+        }
+
+        alert += UIAlertAction(title: "Match System Style", style: .default) { _ in
+            vc.viewModel.appearance = .system
+        }
+
+        alert += UIAlertAction.makeForCancel()
+        vc.present(alert, animated: true)
+    }
+
+    func openTwitter(from vc: SettingsTableViewController) {
         if let url = TwitterManager.shared.url(for: .app), UIApplication.shared.canOpenURL(url) {
             UIApplication.shared.open(url, options: [:])
         } else if let url = TwitterManager.shared.url(for: .web) {
@@ -59,7 +78,7 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
         }
     }
 
-    func provideFeedback(from vc: UIViewController) {
+    func provideFeedback(from vc: SettingsTableViewController) {
         guard let mailVC = MFMailComposeViewController.makeForFeedback(mailComposeDelegate: mailComposeDelegate) else {
             let alert = UIAlertController.simpleAlertController(title: "Unable To Compose Mail", message: "The device is not configured to send email from this app.")
             vc.present(alert, animated: true)

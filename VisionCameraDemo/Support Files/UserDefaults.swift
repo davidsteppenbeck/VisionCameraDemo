@@ -11,10 +11,7 @@ import Foundation
 @propertyWrapper
 struct UserDefault<T> {
 
-    /// The `UserDefaults` key.
     let key: String
-
-    /// The default value to use when no key-value pair is available in `UserDefaults`.
     let defaultValue: T
 
     var wrappedValue: T {
@@ -22,7 +19,27 @@ struct UserDefault<T> {
             return UserDefaults.standard.value(forKey: key) as? T ?? defaultValue
         }
         set {
+            // TODO: Check against current value.
             UserDefaults.standard.set(newValue, forKey: key)
+        }
+    }
+
+}
+
+@propertyWrapper
+struct RawRepresentableUserDefault<T: RawRepresentable> {
+
+    let key: String
+    let defaultValue: T
+
+    var wrappedValue: T {
+        get {
+            guard let rawValue = UserDefaults.standard.value(forKey: key) as? T.RawValue, let value = T(rawValue: rawValue) else { return defaultValue }
+            return value
+        }
+        set {
+            // TODO: Check against current value.
+            UserDefaults.standard.set(newValue.rawValue, forKey: key)
         }
     }
 
@@ -35,5 +52,8 @@ extension UserDefaults {
 
     @UserDefault(key: "save_snapshots", defaultValue: true)
     static var saveSnapshots: Bool
+
+    @RawRepresentableUserDefault(key: "appearance", defaultValue: .system)
+    static var appearance: Appearance
 
 }

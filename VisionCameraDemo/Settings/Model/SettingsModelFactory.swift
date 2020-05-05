@@ -12,7 +12,12 @@ extension SettingsModel {
 
     /// Creates and returns an instance of `SettingsModel` by loading parameters from `UserDefaults`.
     static func makeForUserDefaults(title: String = "Settings") -> SettingsModel {
-        return SettingsModel(title: title, showCameraGrid: UserDefaults.showCameraGrid, saveSnapshots: UserDefaults.saveSnapshots)
+        return SettingsModel(
+            title: title,
+            showCameraGrid: UserDefaults.showCameraGrid,
+            saveSnapshots: UserDefaults.saveSnapshots,
+            appearance: UserDefaults.appearance
+        )
     }
 
 }

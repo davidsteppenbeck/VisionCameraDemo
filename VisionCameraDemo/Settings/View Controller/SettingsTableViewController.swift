@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import Combine
 
 final class SettingsTableViewController: UITableViewController, Storyboarded {
 
     // MARK:- IBOutlets
 
-    @IBOutlet weak var showCameraGridSwitch: UISwitch! {
+    @IBOutlet private weak var showCameraGridSwitch: UISwitch! {
         didSet {
             showCameraGridSwitch.addTarget(self, action: #selector(showCameraGridSwitchValueChanged(_:)), for: .valueChanged)
             showCameraGridSwitch.isOn = viewModel.isShowCameraGridSwitchOn
@@ -26,13 +27,18 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
         }
     }
 
+    @IBOutlet private weak var appearanceOptionLabel: UILabel!
+
     // MARK:- Properties
 
     weak var coordinator: SettingsTableViewControllerCoordinator?
 
-    private var viewModel = SettingsViewModel.makeForUserDefaults()
+    private(set) var viewModel = SettingsViewModel.makeForUserDefaults()
 
     private lazy var crossBarButton = UIBarButtonItem.makeForSystemImage("xmark", target: self, action: #selector(crossBarButtonAction(_:)))
+
+    /// An array to keep references to `AnyCancellable` subscribers.
+    private var subscriptions = [AnyCancellable]()
 
     // MARK:- View Lifecycle
 
@@ -42,6 +48,15 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
         navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.rightBarButtonItem = crossBarButton
         title = viewModel.title
+        addViewModelSubscribers()
+    }
+
+    // MARK:- Methods
+
+    private func addViewModelSubscribers() {
+        viewModel.$appearanceOptionText
+            .assign(to: \.text, on: appearanceOptionLabel)
+            .store(in: &subscriptions)
     }
 
     // MARK:- Actions

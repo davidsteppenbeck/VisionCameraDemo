@@ -19,10 +19,14 @@ final class SettingsModel: TitleConvertible {
     /// Controls the state of the save snapshots switch.
     @Published var saveSnapshots: Bool
 
-    init(title: String, showCameraGrid: Bool, saveSnapshots: Bool) {
+    /// Controls the state of the app's appearance.
+    @Published var appearance: Appearance
+
+    init(title: String, showCameraGrid: Bool, saveSnapshots: Bool, appearance: Appearance) {
         self.title = title
         self.showCameraGrid = showCameraGrid
         self.saveSnapshots = saveSnapshots
+        self.appearance = appearance
     }
 
     deinit {
