@@ -8,8 +8,21 @@
 
 import Foundation
 
+protocol UserDefaultPropertyWrapper {
+
+    /// The generic type to store in `UserDefaults`.
+    associatedtype T
+
+    /// The key used to store values in `UserDefaults`.
+    var key: String { get }
+
+    /// The default value that is provided when no `UserDefaults` stored value is available.
+    var defaultValue: T { get }
+
+}
+
 @propertyWrapper
-struct UserDefault<T> where T: Equatable {
+struct UserDefault<T>: UserDefaultPropertyWrapper where T: Equatable {
 
     let key: String
     let defaultValue: T
@@ -28,7 +41,7 @@ struct UserDefault<T> where T: Equatable {
 }
 
 @propertyWrapper
-struct RawRepresentableUserDefault<T: RawRepresentable> where T: Equatable {
+struct RawRepresentableUserDefault<T: RawRepresentable>: UserDefaultPropertyWrapper where T: Equatable {
 
     let key: String
     let defaultValue: T
