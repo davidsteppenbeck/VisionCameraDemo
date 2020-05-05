@@ -21,3 +21,11 @@ enum Appearance: String {
     case system
 
 }
+
+extension Appearance: CustomStringConvertible {
+
+    var description: String {
+        return rawValue
+    }
+
+}

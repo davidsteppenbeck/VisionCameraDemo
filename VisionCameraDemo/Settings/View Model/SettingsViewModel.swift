@@ -56,16 +56,8 @@ final class SettingsViewModel {
         }
 
         subscriptions += model.$appearance.sink { [weak self] appearance in
-            var appearanceOptionText: String {
-                switch appearance {
-                case .dark: return "Dark"
-                case .light: return "Light"
-                case .system: return "System"
-                }
-            }
-
-            self?.appearanceOptionText = appearanceOptionText
             AppearanceManager.updateUserInterfaceStyle(for: appearance)
+            self?.appearanceOptionText = appearance.description.capitalized
             self?.dataPersistenceManager.storeAppearanceSetting(appearance)
         }
     }
