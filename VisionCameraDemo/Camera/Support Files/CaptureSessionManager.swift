@@ -125,32 +125,6 @@ final class CaptureSessionManager: NSObject {
         }
     }
 
-    /// Updates the `sessionPreset` property of the `AVCaptureSession` instance.
-    ///
-    /// - Parameters:
-    ///   - preset: The value to update the `sessionPreset` property of the `AVCaptureSession` instance to.
-    ///
-    /// - Returns: `true` iff the `AVCaptureSession` was successfully updated; otherwise `false` if the `preset` argument
-    /// is already the same as the current `sessionPreset` value, or if the `preset` argument is not supported.
-    func updateCaptureSessionPreset(_ preset: AVCaptureSession.Preset) {
-        sessionQueue.async {
-            guard preset != self.session.sessionPreset else {
-                return
-            }
-
-            DispatchQueue.mainSyncSafe {
-                self.delegate?.captureSessionManagerWillBeginUpdates(self)
-            }
-
-            // Assignment can take some time.
-            self.session.safeSetSessionPreset(preset)
-
-            DispatchQueue.mainSyncSafe {
-                self.delegate?.captureSessionManagerDidEndUpdates(self)
-            }
-        }
-    }
-
     /// Initiates a photo capture using `AVCapturePhotoOutput`.
     private func capturePhoto() {
         guard saveSnapshots else {
@@ -167,15 +141,18 @@ final class CaptureSessionManager: NSObject {
     /// Adds `NotificationCenter` observers.
     func addNotificationCenterObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(updateSaveSnapshots(_:)), name: .saveSnapshots, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateCaptureSessionPreset(_:)), name: .videoResolution, object: nil)
     }
 
     /// Removes `NotificationCenter` observers.
     func removeNotificationCenterObservers() {
         NotificationCenter.default.removeObserver(self, name: .saveSnapshots, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .videoResolution, object: nil)
     }
 
     // MARK:- Actions
 
+    /// Updates the `saveSnapshots` property.
     @objc private func updateSaveSnapshots(_ notification: Notification) {
 
         // Uses the notification name as the dictionary key.
@@ -188,9 +165,31 @@ final class CaptureSessionManager: NSObject {
         }
     }
 
+    /// Updates the `sessionPreset` property of the `AVCaptureSession` instance.
+    @objc func updateCaptureSessionPreset(_ notification: Notification) {
+
+        // Uses the notification name as the dictionary key.
+        guard let videoResolution = notification.userInfo?[notification.name] as? VideoResolution else {
+            return
+        }
+
+        sessionQueue.async {
+            DispatchQueue.mainSyncSafe {
+                self.delegate?.captureSessionManagerWillBeginUpdates(self)
+            }
+
+            // Assignment can take some time.
+            self.session.safeSetSessionPreset(videoResolution.preset)
+
+            DispatchQueue.mainSyncSafe {
+                self.delegate?.captureSessionManagerDidEndUpdates(self)
+            }
+        }
+    }
+
     // MARK:- Initialization
 
-    init?(preset: AVCaptureSession.Preset = .high, saveSnapshots: Bool = true, delegate: CaptureSessionManagerDelegate? = nil) {
+    init?(videoResolution: VideoResolution, saveSnapshots: Bool, delegate: CaptureSessionManagerDelegate? = nil) {
         self.saveSnapshots = saveSnapshots
         super.init()
 
@@ -238,7 +237,7 @@ final class CaptureSessionManager: NSObject {
         session.addInput(deviceInput)
         session.addOutput(videoOutput)
         session.addOutput(photoOutput)
-        session.safeSetSessionPreset(preset)
+        session.safeSetSessionPreset(videoResolution.preset)
 
         // Add notification center observers because the setup was successful.
         addNotificationCenterObservers()

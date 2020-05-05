@@ -17,6 +17,9 @@ protocol SettingsDataPersistenceManager {
     /// Writes the user setting for saving snapshots.
     func storeSaveSnapshotsSetting(_ value: Bool)
 
+    /// Writes the user setting for the video resolution.
+    func storeVideoResolutionSetting(_ value: VideoResolution)
+
     /// Writes the user setting for the app's appearance.
     func storeAppearanceSetting(_ value: Appearance)
 

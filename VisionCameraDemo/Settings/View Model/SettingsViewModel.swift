@@ -20,6 +20,10 @@ final class SettingsViewModel {
     /// An array to keep references to `AnyCancellable` subscribers.
     private var subscriptions = [AnyCancellable]()
 
+    /// Formatted text for the video resolution option label.
+    @Published var videoResolutionOptionText: String?
+
+    /// Formatted text for the appearance option label.
     @Published var appearanceOptionText: String?
 
     /// A formatted title to display to the user.
@@ -28,18 +32,47 @@ final class SettingsViewModel {
     }
 
     var isShowCameraGridSwitchOn: Bool {
-        get { return model.showCameraGrid }
-        set { model.showCameraGrid = newValue }
+        get {
+            return model.showCameraGrid
+        }
+        set {
+            if newValue != model.showCameraGrid {
+                model.showCameraGrid = newValue
+            }
+        }
     }
 
     var isSaveSnapshotsSwitchOn: Bool {
-        get { return model.saveSnapshots }
-        set { model.saveSnapshots = newValue }
+        get {
+            return model.saveSnapshots
+        }
+        set {
+            if newValue != model.saveSnapshots {
+                model.saveSnapshots = newValue
+            }
+        }
+    }
+
+    var videoResolution: VideoResolution {
+        get {
+            return model.videoResolution
+        }
+        set {
+            if newValue != model.videoResolution {
+                model.videoResolution = newValue
+            }
+        }
     }
 
     var appearance: Appearance {
-        get { return model.appearance }
-        set { model.appearance = newValue }
+        get {
+            return model.appearance
+        }
+        set {
+            if newValue != model.appearance {
+                model.appearance = newValue
+            }
+        }
     }
 
     // MARK:- Methods
@@ -53,6 +86,12 @@ final class SettingsViewModel {
         subscriptions += model.$saveSnapshots.sink { [weak self] saveSnapshots in
             NotificationCenter.default.post(name: .saveSnapshots, object: self, value: saveSnapshots)
             self?.dataPersistenceManager.storeSaveSnapshotsSetting(saveSnapshots)
+        }
+
+        subscriptions += model.$videoResolution.sink { [weak self] videoResolution in
+            NotificationCenter.default.post(name: .videoResolution, object: self, value: videoResolution)
+            self?.videoResolutionOptionText = videoResolution.description.capitalized
+            self?.dataPersistenceManager.storeVideoResolutionSetting(videoResolution)
         }
 
         subscriptions += model.$appearance.sink { [weak self] appearance in

@@ -34,6 +34,7 @@
 		412594472461A428004BEB05 /* UIAlertControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594462461A428004BEB05 /* UIAlertControllerTests.swift */; };
 		412594492461A6A3004BEB05 /* UIAlertAction+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594482461A6A3004BEB05 /* UIAlertAction+Utilities.swift */; };
 		4125944B2461A76C004BEB05 /* UIAlertActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4125944A2461A76C004BEB05 /* UIAlertActionTests.swift */; };
+		4125944D2461DD20004BEB05 /* VideoResolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4125944C2461DD20004BEB05 /* VideoResolution.swift */; };
 		41376C79244F86BC00FB6934 /* BundleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C78244F86BC00FB6934 /* BundleTests.swift */; };
 		41376C7D2450BB2C00FB6934 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */; };
 		41376C7F2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */; };
@@ -124,6 +125,7 @@
 		412594462461A428004BEB05 /* UIAlertControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerTests.swift; sourceTree = "<group>"; };
 		412594482461A6A3004BEB05 /* UIAlertAction+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Utilities.swift"; sourceTree = "<group>"; };
 		4125944A2461A76C004BEB05 /* UIAlertActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertActionTests.swift; sourceTree = "<group>"; };
+		4125944C2461DD20004BEB05 /* VideoResolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResolution.swift; sourceTree = "<group>"; };
 		41376C78244F86BC00FB6934 /* BundleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTests.swift; sourceTree = "<group>"; };
 		41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureConnection+Utilities.swift"; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 				412594422460BBC5004BEB05 /* AppearanceManager.swift */,
 				41FB93252449E9180097F45E /* AudioSessionManager.swift */,
 				41376C972454D37D00FB6934 /* UserDefaults.swift */,
+				4125944C2461DD20004BEB05 /* VideoResolution.swift */,
 				4157247424411E7500F4B7E0 /* Assets.xcassets */,
 				4157248F244128E300F4B7E0 /* Colors.xcassets */,
 				41259435245F7559004BEB05 /* Delegates */,
@@ -627,6 +630,7 @@
 				41259424245C7090004BEB05 /* SettingsModelFactory.swift in Sources */,
 				41376CCE2459A38E00FB6934 /* MFMailComposeViewControllerFactory.swift in Sources */,
 				41259430245DF768004BEB05 /* CameraViewModelFactory.swift in Sources */,
+				4125944D2461DD20004BEB05 /* VideoResolution.swift in Sources */,
 				41376CD02459AD6800FB6934 /* SettingsTableViewController+UITableViewDelegate.swift in Sources */,
 				41259420245C4C72004BEB05 /* UserDefaultsSettingsDataPersistenceManager.swift in Sources */,
 				41376C982454D37D00FB6934 /* UserDefaults.swift in Sources */,

@@ -19,13 +19,17 @@ final class SettingsModel: TitleConvertible {
     /// Controls the state of the save snapshots switch.
     @Published var saveSnapshots: Bool
 
+    /// Controls the state of the preferred video resolution.
+    @Published var videoResolution: VideoResolution
+
     /// Controls the state of the app's appearance.
     @Published var appearance: Appearance
 
-    init(title: String, showCameraGrid: Bool, saveSnapshots: Bool, appearance: Appearance) {
+    init(title: String, showCameraGrid: Bool, saveSnapshots: Bool, videoResolution: VideoResolution, appearance: Appearance) {
         self.title = title
         self.showCameraGrid = showCameraGrid
         self.saveSnapshots = saveSnapshots
+        self.videoResolution = videoResolution
         self.appearance = appearance
     }
 

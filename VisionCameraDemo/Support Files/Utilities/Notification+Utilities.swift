@@ -16,4 +16,7 @@ extension Notification.Name {
     /// Use to communicate changes that occur in the user's preference to save photos.
     static let saveSnapshots = Notification.Name("save_snapshots")
 
+    /// Use to communicate changes that occur in the user's video resolution preference.
+    static let videoResolution = Notification.Name("video_resolution")
+
 }

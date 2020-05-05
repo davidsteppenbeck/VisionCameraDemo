@@ -13,6 +13,9 @@ protocol SettingsTableViewControllerCoordinator: class {
     /// Call to dismiss the settings table view controller programatically.
     func dismiss()
 
+    /// Presents selectable video resolution options to the user.
+    func showVideoResolutionOptions(from vc: SettingsTableViewController)
+
     /// Presents selectable user interface style options to the user.
     func showAppearanceOptions(from vc: SettingsTableViewController)
 

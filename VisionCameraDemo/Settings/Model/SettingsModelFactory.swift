@@ -16,6 +16,7 @@ extension SettingsModel {
             title: title,
             showCameraGrid: UserDefaults.showCameraGrid,
             saveSnapshots: UserDefaults.saveSnapshots,
+            videoResolution: UserDefaults.videoResolution,
             appearance: UserDefaults.appearance
         )
     }

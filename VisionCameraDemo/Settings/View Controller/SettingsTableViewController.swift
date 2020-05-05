@@ -27,6 +27,8 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
         }
     }
 
+    @IBOutlet private weak var videoResolutionOptionLabel: UILabel!
+
     @IBOutlet private weak var appearanceOptionLabel: UILabel!
 
     // MARK:- Properties
@@ -54,6 +56,10 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
     // MARK:- Methods
 
     private func addViewModelSubscribers() {
+        viewModel.$videoResolutionOptionText
+            .assign(to: \.text, on: videoResolutionOptionLabel)
+            .store(in: &subscriptions)
+
         viewModel.$appearanceOptionText
             .assign(to: \.text, on: appearanceOptionLabel)
             .store(in: &subscriptions)

@@ -19,6 +19,10 @@ struct UserDefaultsSettingsDataPersistenceManager: SettingsDataPersistenceManage
         UserDefaults.saveSnapshots = value
     }
 
+    func storeVideoResolutionSetting(_ value: VideoResolution) {
+        UserDefaults.videoResolution = value
+    }
+
     func storeAppearanceSetting(_ value: Appearance) {
         UserDefaults.appearance = value
     }

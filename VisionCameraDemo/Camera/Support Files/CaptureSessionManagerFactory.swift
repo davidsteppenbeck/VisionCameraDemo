@@ -11,7 +11,11 @@ import Foundation
 extension CaptureSessionManager {
 
     static func makeForUserDefaults(delegate: CaptureSessionManagerDelegate? = nil) -> CaptureSessionManager? {
-        return CaptureSessionManager(saveSnapshots: UserDefaults.saveSnapshots, delegate: delegate)
+        return CaptureSessionManager(
+            videoResolution: UserDefaults.videoResolution,
+            saveSnapshots: UserDefaults.saveSnapshots,
+            delegate: delegate
+        )
     }
 
 }

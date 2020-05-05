@@ -50,22 +50,29 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
         }
     }
 
+    func showVideoResolutionOptions(from vc: SettingsTableViewController) {
+        let alert = UIAlertController.makeForActionSheet(title: "Preferred Video Resolution")
+
+        for videoResolution in VideoResolution.allCases {
+            alert += UIAlertAction(title: videoResolution.title, style: .default) { _ in
+                vc.viewModel.videoResolution = videoResolution
+            }
+        }
+
+        // TODO: anchor point
+        vc.present(alert, animated: true)
+    }
+
     func showAppearanceOptions(from vc: SettingsTableViewController) {
         let alert = UIAlertController.makeForActionSheet()
 
-        alert += UIAlertAction(title: "Always Dark", style: .default) { _ in
-            vc.viewModel.appearance = .dark
+        for appearance in Appearance.allCases {
+            alert += UIAlertAction(title: appearance.title, style: .default) { _ in
+                vc.viewModel.appearance = appearance
+            }
         }
 
-        alert += UIAlertAction(title: "Always Light", style: .default) { _ in
-            vc.viewModel.appearance = .light
-        }
-
-        alert += UIAlertAction(title: "Match System Style", style: .default) { _ in
-            vc.viewModel.appearance = .system
-        }
-
-        alert += UIAlertAction.makeForCancel()
+        // TODO: anchor point
         vc.present(alert, animated: true)
     }
 

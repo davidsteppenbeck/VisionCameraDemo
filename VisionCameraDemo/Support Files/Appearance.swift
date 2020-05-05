@@ -8,8 +8,8 @@
 
 import Foundation
 
-/// Provides options for the app's appearance.
-enum Appearance: String {
+/// Provides options for the app's appearance setting.
+enum Appearance: String, CaseIterable {
 
     /// Use dark mode irrespective of the system setting.
     case dark
@@ -19,6 +19,18 @@ enum Appearance: String {
 
     /// Match the system setting.
     case system
+
+}
+
+extension Appearance: TitleConvertible {
+
+    var title: String {
+        switch self {
+        case .dark: return "Always Dark"
+        case .light: return "Always Light"
+        case .system: return "Match System Style"
+        }
+    }
 
 }
 

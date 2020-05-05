@@ -68,6 +68,9 @@ extension UserDefaults {
     @UserDefault(key: "save_snapshots", defaultValue: true)
     static var saveSnapshots: Bool
 
+    @RawRepresentableUserDefault(key: "video_resolution", defaultValue: .defaultValue)
+    static var videoResolution: VideoResolution
+
     @RawRepresentableUserDefault(key: "appearance", defaultValue: .system)
     static var appearance: Appearance
 

@@ -18,7 +18,7 @@ extension SettingsTableViewController {
         }
 
         switch reuseIdentifier {
-        case "resolution": break
+        case "resolution": coordinator?.showVideoResolutionOptions(from: self)
         case "appearance": coordinator?.showAppearanceOptions(from: self)
         case "twitter": coordinator?.openTwitter(from: self)
         case "feedback": coordinator?.provideFeedback(from: self)
