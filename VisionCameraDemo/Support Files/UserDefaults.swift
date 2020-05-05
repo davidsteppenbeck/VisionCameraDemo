@@ -9,7 +9,7 @@
 import Foundation
 
 @propertyWrapper
-struct UserDefault<T> {
+struct UserDefault<T> where T: Equatable {
 
     let key: String
     let defaultValue: T
@@ -19,15 +19,16 @@ struct UserDefault<T> {
             return UserDefaults.standard.value(forKey: key) as? T ?? defaultValue
         }
         set {
-            // TODO: Check against current value.
-            UserDefaults.standard.set(newValue, forKey: key)
+            if newValue != wrappedValue {
+                UserDefaults.standard.set(newValue, forKey: key)
+            }
         }
     }
 
 }
 
 @propertyWrapper
-struct RawRepresentableUserDefault<T: RawRepresentable> {
+struct RawRepresentableUserDefault<T: RawRepresentable> where T: Equatable {
 
     let key: String
     let defaultValue: T
@@ -38,8 +39,9 @@ struct RawRepresentableUserDefault<T: RawRepresentable> {
             return value
         }
         set {
-            // TODO: Check against current value.
-            UserDefaults.standard.set(newValue.rawValue, forKey: key)
+            if newValue != wrappedValue {
+                UserDefaults.standard.set(newValue.rawValue, forKey: key)
+            }
         }
     }
 
