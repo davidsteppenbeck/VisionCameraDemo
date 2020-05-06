@@ -19,7 +19,7 @@ extension UIAlertController {
     ///   - message: Descriptive text that provides additional details about the reason for the alert. Defaults to `nil`.
     ///   - addCancelAction: Whether a standard cancel action should be added. Defaults to `true`.
     ///
-    /// Returns: An initialized action sheet style alert controller object.
+    /// - Returns: An initialized action sheet style alert controller object.
     static func makeForActionSheet(title: String? = nil, message: String? = nil, addingCancelAction addCancelAction: Bool = true) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
 
@@ -37,24 +37,6 @@ extension UIAlertController {
     ///   - rhs: The alert action to add.
     static func += (_ lhs: UIAlertController, _ rhs: UIAlertAction) {
         lhs.addAction(rhs)
-    }
-
-    /// Configures the alert's popover presentation controller.
-    ///
-    /// - Parameters:
-    ///   - sourceView: The view containing the anchor rectangle for the popover.
-    ///   - sourceRect: The rectangle in the specified view in which to anchor the popover. If the parameter is `nil`,
-    ///   then the `sourceView`'s bounds will be used. Defaults to `nil`.
-    ///   - permittedArrowDirections: The arrow directions that you allow for the popover. Defaults to `UIPopoverArrowDirection.any`.
-    func configurePopover(sourceView: UIView, sourceRect: CGRect? = nil, permittedArrowDirections: UIPopoverArrowDirection = .any) {
-        guard let popover = popoverPresentationController else {
-            return
-        }
-
-        popover.sourceView = sourceView
-        popover.sourceRect = sourceRect ?? sourceView.bounds
-        popover.permittedArrowDirections = permittedArrowDirections
-        popover.canOverlapSourceViewRect = true
     }
 
 }

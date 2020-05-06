@@ -87,7 +87,7 @@ final class CameraViewController: UIViewController {
     }
 
     @objc private func optionsBarButtonAction(_ sender: UIBarButtonItem) {
-        coordinator?.showOptions()
+        coordinator?.showOptions(from: self, anchor: sender)
     }
 
 }

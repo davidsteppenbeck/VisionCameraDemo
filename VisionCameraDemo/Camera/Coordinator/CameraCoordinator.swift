@@ -48,9 +48,22 @@ final class CameraCoordinator: NSObject, Coordinator, ParentCoordinator, ErrorHa
         self.navigationController.present(navigationController, animated: true)
     }
 
-    func showOptions() {
-        // TODO
-        print("showOptions")
+    func showOptions(from vc: UIViewController, anchor: UIBarButtonItem) {
+        let alert = UIAlertController.makeForActionSheet()
+        alert.configurePopover(anchor: anchor)
+
+        alert += UIAlertAction(title: "Share GitHub Repo Via…", style: .default) { [weak self] _ in
+            self?.shareGitHubRepoURL(from: vc, anchor: anchor)
+        }
+
+        vc.present(alert, animated: true)
+    }
+
+    private func shareGitHubRepoURL(from vc: UIViewController, anchor: UIBarButtonItem) {
+        let activityItems = [URL(string: "https://github.com/davidsteppenbeck/VisionCameraDemo")!]
+        let activity = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        activity.configurePopover(anchor: anchor)
+        vc.present(activity, animated: true)
     }
 
 }
