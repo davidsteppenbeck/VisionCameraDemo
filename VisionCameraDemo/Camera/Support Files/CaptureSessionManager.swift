@@ -7,6 +7,7 @@
 //
 
 import AVFoundation
+import Combine
 
 /// A `CaptureSessionManager` is reponsible for setting up and managing the flow of an `AVCaptureSession` instance.
 final class CaptureSessionManager: NSObject {
@@ -52,6 +53,9 @@ final class CaptureSessionManager: NSObject {
 
     /// A serial queue for perfroming all tasks related to `AVCaptureSession`.
     private let sampleBufferCallbackQueue = DispatchQueue(label: "com.steppenbeck.VisionCameraDemo.sampleBufferCallbackQueue")
+
+    /// An array to keep references to `AnyCancellable` subscribers.
+    private var subscriptions = [AnyCancellable]()
 
     // MARK:- Methods
 
@@ -138,48 +142,37 @@ final class CaptureSessionManager: NSObject {
         photoOutput.capturePhoto(with: photoSettings, delegate: photoCaptureDelegate)
     }
 
-    /// Adds `NotificationCenter` observers.
-    func addNotificationCenterObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateSaveSnapshots(_:)), name: .saveSnapshots, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(updateCaptureSessionPreset(_:)), name: .videoResolution, object: nil)
-    }
+    /// Adds subscribers to `NotificationCenter` publishers.
+    func addNotificationCenterSubscribers() {
+        NotificationCenter.Publisher(center: .default, name: .saveSnapshots)
+            .compactMap { (notification) -> Bool? in
+                return notification.userInfo?[notification.name] as? Bool
+            }
+            .assign(to: \.saveSnapshots, on: self)
+            .store(in: &subscriptions)
 
-    /// Removes `NotificationCenter` observers.
-    func removeNotificationCenterObservers() {
-        NotificationCenter.default.removeObserver(self, name: .saveSnapshots, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .videoResolution, object: nil)
-    }
-
-    // MARK:- Actions
-
-    /// Updates the `saveSnapshots` property.
-    @objc private func updateSaveSnapshots(_ notification: Notification) {
-
-        // Uses the notification name as the dictionary key.
-        guard let saveSnapshots = notification.userInfo?[notification.name] as? Bool else {
-            return
-        }
-
-        if saveSnapshots != self.saveSnapshots {
-            self.saveSnapshots = saveSnapshots
-        }
+        NotificationCenter.Publisher(center: .default, name: .videoResolution)
+            .compactMap { (notification) -> VideoResolution? in
+                return notification.userInfo?[notification.name] as? VideoResolution
+            }
+            .map { videoResolution in
+                return videoResolution.preset
+            }
+            .sink { [weak self] preset in
+                self?.updateCaptureSessionPreset(preset)
+            }
+            .store(in: &subscriptions)
     }
 
     /// Updates the `sessionPreset` property of the `AVCaptureSession` instance.
-    @objc func updateCaptureSessionPreset(_ notification: Notification) {
-
-        // Uses the notification name as the dictionary key.
-        guard let videoResolution = notification.userInfo?[notification.name] as? VideoResolution else {
-            return
-        }
-
+    private func updateCaptureSessionPreset(_ preset: AVCaptureSession.Preset) {
         sessionQueue.async {
             DispatchQueue.mainSyncSafe {
                 self.delegate?.captureSessionManagerWillBeginUpdates(self)
             }
 
             // Assignment can take some time.
-            self.session.safeSetSessionPreset(videoResolution.preset)
+            self.session.safeSetSessionPreset(preset)
 
             DispatchQueue.mainSyncSafe {
                 self.delegate?.captureSessionManagerDidEndUpdates(self)
@@ -239,14 +232,8 @@ final class CaptureSessionManager: NSObject {
         session.addOutput(photoOutput)
         session.safeSetSessionPreset(videoResolution.preset)
 
-        // Add notification center observers because the setup was successful.
-        addNotificationCenterObservers()
-    }
-
-    // MARK:- Deinitialization
-
-    deinit {
-        removeNotificationCenterObservers()
+        // Add notification center subscribers because the setup was successful.
+        addNotificationCenterSubscribers()
     }
 
 }

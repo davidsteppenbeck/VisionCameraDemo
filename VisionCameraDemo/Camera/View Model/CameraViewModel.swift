@@ -24,6 +24,7 @@ final class CameraViewModel {
 
     // MARK:- Methods
 
+    /// Adds subscribers to model property publishers.
     private func addModelSubscribers() {
         model.$showCameraGrid
             .map { showCameraGrid in
@@ -33,28 +34,18 @@ final class CameraViewModel {
             .store(in: &subscriptions)
     }
 
-    /// Adds `NotificationCenter` observers.
-    func addNotificationCenterObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(updateShowCameraGrid(_:)), name: .showCameraGrid, object: nil) // TODO: Use Combine publisher.
-    }
-
-    /// Removes `NotificationCenter` observers.
-    func removeNotificationCenterObservers() {
-        NotificationCenter.default.removeObserver(self, name: .showCameraGrid, object: nil)
-    }
-
-    // MARK:- Actions
-
-    @objc private func updateShowCameraGrid(_ notification: Notification) {
-
-        // Uses the notification name as the dictionary key.
-        guard let showCameraGrid = notification.userInfo?[notification.name] as? Bool else {
-            return
-        }
-
-        if showCameraGrid != model.showCameraGrid {
-            model.showCameraGrid = showCameraGrid
-        }
+    /// Adds subscribers to `NotificationCenter` publishers.
+    private func addNotificationCenterSubscribers() {
+        NotificationCenter.Publisher(center: .default, name: .showCameraGrid)
+            .compactMap { (notification) -> Bool? in
+                return notification.userInfo?[notification.name] as? Bool
+            }
+            .sink { [weak self] showCameraGrid in
+                if showCameraGrid != self?.model.showCameraGrid {
+                    self?.model.showCameraGrid = showCameraGrid
+                }
+            }
+            .store(in: &subscriptions)
     }
 
     // MARK:- Initialization
@@ -63,13 +54,7 @@ final class CameraViewModel {
         self.model = model
         self.isCameraGridViewHidden = !model.showCameraGrid
         addModelSubscribers()
-        addNotificationCenterObservers()
-    }
-
-    // MARK:- Deinitialization
-
-    deinit {
-        removeNotificationCenterObservers()
+        addNotificationCenterSubscribers()
     }
 
 }
