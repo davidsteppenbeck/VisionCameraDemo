@@ -14,10 +14,10 @@ protocol SettingsTableViewControllerCoordinator: class {
     func dismiss()
 
     /// Presents selectable video resolution options to the user.
-    func showVideoResolutionOptions(from vc: SettingsTableViewController)
+    func showVideoResolutionOptions(from vc: SettingsTableViewController, sourceView: UIView, sourceRect: CGRect?)
 
     /// Presents selectable user interface style options to the user.
-    func showAppearanceOptions(from vc: SettingsTableViewController)
+    func showAppearanceOptions(from vc: SettingsTableViewController, sourceView: UIView, sourceRect: CGRect?)
 
     /// Call to take the user out of the app and open the developer's Twitter page.
     func openTwitter(from vc: SettingsTableViewController)

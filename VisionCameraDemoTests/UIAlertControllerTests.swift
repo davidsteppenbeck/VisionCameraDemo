@@ -11,8 +11,10 @@ import XCTest
 
 final class UIAlertControllerTests: XCTestCase {
 
+    var sut: UIAlertController!
+
     func testMakeForActionSheet() {
-        let sut = UIAlertController.makeForActionSheet()
+        sut = UIAlertController.makeForActionSheet()
         XCTAssertNil(sut.title)
         XCTAssertNil(sut.message)
         XCTAssertEqual(sut.preferredStyle, UIAlertController.Style.actionSheet)

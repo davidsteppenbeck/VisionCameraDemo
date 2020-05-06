@@ -16,7 +16,7 @@ final class CameraViewTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        let session = CaptureSessionManager()?.session
+        let session = CaptureSessionManager(videoResolution: .high, saveSnapshots: true)?.session
         sut = CameraView(session: session)
     }
 
@@ -26,7 +26,7 @@ final class CameraViewTests: XCTestCase {
     }
 
     func testSession() {
-        XCTAssertNotNil(sut.session)
+        XCTAssertNotNil(sut.session, "Run the tests on a real device with a camera.")
     }
 
     func testPreview() {
@@ -45,7 +45,7 @@ final class CameraViewTests: XCTestCase {
 
     func testVideoOrientation() {
         let expected = AVCaptureVideoOrientation.portrait
-        XCTAssertEqual(sut.preview?.connection?.videoOrientation, expected)
+        XCTAssertEqual(sut.preview?.connection?.videoOrientation, expected, "Run the tests on a real device with a camera.")
     }
 
 }

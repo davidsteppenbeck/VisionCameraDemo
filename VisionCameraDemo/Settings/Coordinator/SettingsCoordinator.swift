@@ -50,8 +50,9 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
         }
     }
 
-    func showVideoResolutionOptions(from vc: SettingsTableViewController) {
+    func showVideoResolutionOptions(from vc: SettingsTableViewController, sourceView: UIView, sourceRect: CGRect?) {
         let alert = UIAlertController.makeForActionSheet(title: "Preferred Video Resolution")
+        alert.configurePopover(sourceView: sourceView, sourceRect: sourceRect)
 
         for videoResolution in VideoResolution.allCases {
             alert += UIAlertAction(title: videoResolution.title, style: .default) { _ in
@@ -59,12 +60,12 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
             }
         }
 
-        // TODO: anchor point
         vc.present(alert, animated: true)
     }
 
-    func showAppearanceOptions(from vc: SettingsTableViewController) {
+    func showAppearanceOptions(from vc: SettingsTableViewController, sourceView: UIView, sourceRect: CGRect?) {
         let alert = UIAlertController.makeForActionSheet()
+        alert.configurePopover(sourceView: sourceView, sourceRect: sourceRect)
 
         for appearance in Appearance.allCases {
             alert += UIAlertAction(title: appearance.title, style: .default) { _ in
@@ -72,7 +73,6 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
             }
         }
 
-        // TODO: anchor point
         vc.present(alert, animated: true)
     }
 

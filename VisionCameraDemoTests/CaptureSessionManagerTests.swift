@@ -15,7 +15,7 @@ final class CaptureSessionManagerTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        sut = CaptureSessionManager()
+        sut = CaptureSessionManager(videoResolution: .high, saveSnapshots: true)
     }
 
     override func tearDown() {
@@ -24,7 +24,7 @@ final class CaptureSessionManagerTests: XCTestCase {
     }
 
     func testCaptureSessionManager() {
-        XCTAssertNotNil(sut, "The `CaptureSessionManager` object should not be nil. Run the tests on a real device with a camera.")
+        XCTAssertNotNil(sut, "Run the tests on a real device with a camera.")
     }
 
     func testSampleBuffer() {
