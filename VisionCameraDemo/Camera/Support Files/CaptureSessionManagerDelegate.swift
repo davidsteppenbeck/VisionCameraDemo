@@ -17,19 +17,4 @@ protocol CaptureSessionManagerDelegate: class {
     ///   - error: The error that occurred.
     func captureSessionManager(_ captureSessionManager: CaptureSessionManager, didFailWithError error: Error)
 
-    /// Called before changes to `AVCaptureSession` are applied.
-    ///
-    /// - Parameters:
-    ///   - captureSessionManager: The `CaptureSessionManager` in which the updates will occur.
-    ///
-    /// Changes to `AVCaptureSession` can take some time, so use this method to disble related UI
-    /// elements to prevent changing the state of `AVCaptureSession` while it's already in the process of being updated.
-    func captureSessionManagerWillBeginUpdates(_ captureSessionManager: CaptureSessionManager)
-
-    /// Called after changes to `AVCaptureSession` are finished.
-    ///
-    /// - Parameters:
-    ///   - captureSessionManager: The `CaptureSessionManager` in which the updates occurred.
-    func captureSessionManagerDidEndUpdates(_ captureSessionManager: CaptureSessionManager)
-
 }

@@ -14,12 +14,4 @@ extension CameraViewController: CaptureSessionManagerDelegate {
         coordinator?.handleError(error, fromViewController: self)
     }
 
-    func captureSessionManagerWillBeginUpdates(_ captureSessionManager: CaptureSessionManager) {
-        cameraButton.isEnabled = false // TODO: Replace with Combine solution.
-    }
-
-    func captureSessionManagerDidEndUpdates(_ captureSessionManager: CaptureSessionManager) {
-        cameraButton.isEnabled = true // TODO: Replace with Combine solution.
-    }
-
 }

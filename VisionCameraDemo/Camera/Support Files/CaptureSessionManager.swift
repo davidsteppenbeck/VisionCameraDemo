@@ -43,7 +43,7 @@ final class CaptureSessionManager: NSObject {
     }
 
     /// The object that manages capture activity and coordinates the flow of data from input devices to capture outputs.
-    let session = AVCaptureSession()
+    let captureSession = CameraCaptureSession()
 
     /// A capture output for still images.
     private let photoOutput = AVCapturePhotoOutput()
@@ -96,16 +96,16 @@ final class CaptureSessionManager: NSObject {
         assert(cameraAuthorizationManager.status == .authorized)
 
         sessionQueue.async {
-            if !self.session.isRunning {
+            if !self.captureSession.isRunning {
                 DispatchQueue.mainSyncSafe {
-                    self.delegate?.captureSessionManagerWillBeginUpdates(self)
+                    self.captureSession.isUpdatingSession = true
                 }
 
                 // This method is a blocking call that can take some time, the duration of which depends on the `AVCaptureSession.Preset` quality.
-                self.session.startRunning()
+                self.captureSession.startRunning()
 
                 DispatchQueue.mainSyncSafe {
-                    self.delegate?.captureSessionManagerDidEndUpdates(self)
+                    self.captureSession.isUpdatingSession = false
                 }
             }
         }
@@ -114,16 +114,16 @@ final class CaptureSessionManager: NSObject {
     /// Stops the `AVCaptureSession` instance if it is currently running.
     func stopVideoSession() {
         sessionQueue.async {
-            if self.session.isRunning {
+            if self.captureSession.isRunning {
                 DispatchQueue.mainSyncSafe {
-                    self.delegate?.captureSessionManagerWillBeginUpdates(self)
+                    self.captureSession.isUpdatingSession = true
                 }
 
                 // This method is a blocking call that can take some time, the duration of which depends on the `AVCaptureSession.Preset` quality.
-                self.session.stopRunning()
+                self.captureSession.stopRunning()
 
                 DispatchQueue.mainSyncSafe {
-                    self.delegate?.captureSessionManagerDidEndUpdates(self)
+                    self.captureSession.isUpdatingSession = false
                 }
             }
         }
@@ -168,14 +168,14 @@ final class CaptureSessionManager: NSObject {
     private func updateCaptureSessionPreset(_ preset: AVCaptureSession.Preset) {
         sessionQueue.async {
             DispatchQueue.mainSyncSafe {
-                self.delegate?.captureSessionManagerWillBeginUpdates(self)
+                self.captureSession.isUpdatingSession = true
             }
 
             // Assignment can take some time.
-            self.session.safeSetSessionPreset(preset)
+            self.captureSession.safeSetSessionPreset(preset)
 
             DispatchQueue.mainSyncSafe {
-                self.delegate?.captureSessionManagerDidEndUpdates(self)
+                self.captureSession.isUpdatingSession = false
             }
         }
     }
@@ -215,22 +215,22 @@ final class CaptureSessionManager: NSObject {
         photoOutput.maxPhotoQualityPrioritization = .balanced
 
         // Use to batch multiple configuration operations into an atomic update.
-        session.beginConfiguration()
+        captureSession.beginConfiguration()
 
         defer {
-            // No changes to `session` are applied until calling this.
-            session.commitConfiguration()
+            // No changes to `captureSession` are applied until calling this.
+            captureSession.commitConfiguration()
         }
 
-        guard let deviceInput = try? AVCaptureDeviceInput(device: device!), session.canAddInput(deviceInput), session.canAddOutput(videoOutput), session.canAddOutput(photoOutput) else {
+        guard let deviceInput = try? AVCaptureDeviceInput(device: device!), captureSession.canAddInput(deviceInput), captureSession.canAddOutput(videoOutput), captureSession.canAddOutput(photoOutput) else {
             delegate?.captureSessionManager(self, didFailWithError: CaptureSessionManagerError.device)
             return nil
         }
 
-        session.addInput(deviceInput)
-        session.addOutput(videoOutput)
-        session.addOutput(photoOutput)
-        session.safeSetSessionPreset(videoResolution.preset)
+        captureSession.addInput(deviceInput)
+        captureSession.addOutput(videoOutput)
+        captureSession.addOutput(photoOutput)
+        captureSession.safeSetSessionPreset(videoResolution.preset)
 
         // Add notification center subscribers because the setup was successful.
         addNotificationCenterSubscribers()

@@ -35,6 +35,7 @@
 		412594492461A6A3004BEB05 /* UIAlertAction+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594482461A6A3004BEB05 /* UIAlertAction+Utilities.swift */; };
 		4125944B2461A76C004BEB05 /* UIAlertActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4125944A2461A76C004BEB05 /* UIAlertActionTests.swift */; };
 		4125944D2461DD20004BEB05 /* VideoResolution.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4125944C2461DD20004BEB05 /* VideoResolution.swift */; };
+		4125944F24630D3E004BEB05 /* CameraCaptureSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4125944E24630D3E004BEB05 /* CameraCaptureSession.swift */; };
 		41376C79244F86BC00FB6934 /* BundleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C78244F86BC00FB6934 /* BundleTests.swift */; };
 		41376C7D2450BB2C00FB6934 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */; };
 		41376C7F2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */; };
@@ -126,6 +127,7 @@
 		412594482461A6A3004BEB05 /* UIAlertAction+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Utilities.swift"; sourceTree = "<group>"; };
 		4125944A2461A76C004BEB05 /* UIAlertActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertActionTests.swift; sourceTree = "<group>"; };
 		4125944C2461DD20004BEB05 /* VideoResolution.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResolution.swift; sourceTree = "<group>"; };
+		4125944E24630D3E004BEB05 /* CameraCaptureSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCaptureSession.swift; sourceTree = "<group>"; };
 		41376C78244F86BC00FB6934 /* BundleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTests.swift; sourceTree = "<group>"; };
 		41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureConnection+Utilities.swift"; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 			children = (
 				41376C952454CEB700FB6934 /* MediaAuthorizationManager.swift */,
 				41ADF3F924466006005426E5 /* CameraAuthorizationManager.swift */,
+				4125944E24630D3E004BEB05 /* CameraCaptureSession.swift */,
 				41ADF3DD2444C67B005426E5 /* CaptureSessionManager.swift */,
 				41ADF3EB24460EC8005426E5 /* CaptureSessionManagerDelegate.swift */,
 				41ADF3ED24460EF9005426E5 /* CaptureSessionManagerError.swift */,
@@ -626,6 +629,7 @@
 				4157246E24411E7400F4B7E0 /* SceneDelegate.swift in Sources */,
 				41ADF3DC2444ADA0005426E5 /* CameraViewControllerCoordinator.swift in Sources */,
 				415724962442055100F4B7E0 /* Coordinator.swift in Sources */,
+				4125944F24630D3E004BEB05 /* CameraCaptureSession.swift in Sources */,
 				410FF642245B2CAC003747DF /* UIView+Utilities.swift in Sources */,
 				41259424245C7090004BEB05 /* SettingsModelFactory.swift in Sources */,
 				41376CCE2459A38E00FB6934 /* MFMailComposeViewControllerFactory.swift in Sources */,

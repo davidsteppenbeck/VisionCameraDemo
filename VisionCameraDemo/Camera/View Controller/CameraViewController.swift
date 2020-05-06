@@ -19,7 +19,7 @@ final class CameraViewController: UIViewController {
 
     private(set) lazy var captureSessionManager = CaptureSessionManager.makeForUserDefaults(delegate: self)
 
-    private(set) lazy var cameraView = CameraView(session: captureSessionManager?.session)
+    private(set) lazy var cameraView = CameraView(session: captureSessionManager?.captureSession)
 
     private(set) lazy var cameraGridView = CameraGridView()
 
@@ -46,6 +46,7 @@ final class CameraViewController: UIViewController {
         cameraGridView.embed(in: cameraView)
         cameraButton.embed(in: cameraView, using: cameraView.safeAreaLayoutGuide, insets: UIView.EmbedInsets(bottom: 20), width: 60, height: 60, centerXOffset: 0)
         addViewModelSubscribers()
+        addCaptureSessionSubscribers()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -63,6 +64,15 @@ final class CameraViewController: UIViewController {
     private func addViewModelSubscribers() {
         viewModel.$isCameraGridViewHidden
             .assign(to: \.isHidden, on: cameraGridView)
+            .store(in: &subscriptions)
+    }
+
+    private func addCaptureSessionSubscribers() {
+        captureSessionManager?.captureSession.$isUpdatingSession
+            .map { isUpdatingSession in
+                return !isUpdatingSession
+            }
+            .assign(to: \.isEnabled, on: cameraButton)
             .store(in: &subscriptions)
     }
 
