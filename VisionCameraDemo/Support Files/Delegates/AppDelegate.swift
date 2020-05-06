@@ -12,7 +12,9 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        UISwitch.appearance().onTintColor = .systemBlue
+        let tintColor = UIColor(named: "tintColor")
+        UIBarButtonItem.appearance().tintColor = tintColor
+        UISwitch.appearance().onTintColor = tintColor
         return true
     }
 
