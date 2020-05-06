@@ -100,8 +100,4 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
         UIApplication.openSettings()
     }
 
-    deinit {
-        // TODO: Delete deinit
-        print("coordinator deinit")
-    }
 }

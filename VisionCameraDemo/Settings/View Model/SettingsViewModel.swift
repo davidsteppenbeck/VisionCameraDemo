@@ -109,11 +109,4 @@ final class SettingsViewModel {
         addModelSubscribers()
     }
 
-    // MARK:- Deinitialization
-
-    deinit {
-        // TODO: Delete deinit
-        print("SettingsViewModel deinit")
-    }
-
 }

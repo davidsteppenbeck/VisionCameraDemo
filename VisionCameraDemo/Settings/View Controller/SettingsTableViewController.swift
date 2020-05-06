@@ -79,9 +79,4 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
         viewModel.isSaveSnapshotsSwitchOn = sender.isOn
     }
 
-    deinit {
-        // TODO: Delete deinit
-        print("controller deinit")
-    }
-
 }

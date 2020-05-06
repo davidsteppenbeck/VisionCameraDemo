@@ -33,9 +33,4 @@ final class SettingsModel: TitleConvertible {
         self.appearance = appearance
     }
 
-    deinit {
-        // TODO: Delete deinit
-        print("SettingsModel deinit")
-    }
-
 }
