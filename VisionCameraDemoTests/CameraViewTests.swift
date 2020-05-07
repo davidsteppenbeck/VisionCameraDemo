@@ -16,7 +16,7 @@ final class CameraViewTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        let session = CaptureSessionManager(videoResolution: .high, saveSnapshots: true)?.session
+        let session = CaptureSessionManager(videoResolution: .high, saveSnapshots: true)!.captureSession
         sut = CameraView(session: session)
     }
 

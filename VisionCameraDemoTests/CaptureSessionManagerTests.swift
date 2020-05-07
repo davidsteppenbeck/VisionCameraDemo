@@ -38,7 +38,7 @@ final class CaptureSessionManagerTests: XCTestCase {
     }
 
     func testSessionRunning() {
-        XCTAssertFalse(sut.session.isRunning)
+        XCTAssertFalse(sut.captureSession.isRunning)
     }
 
 }
