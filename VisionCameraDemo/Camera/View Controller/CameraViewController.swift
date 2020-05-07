@@ -17,7 +17,7 @@ final class CameraViewController: UIViewController {
 
     private(set) var viewModel = CameraViewModel.makeForUserDefaults()
 
-    private(set) lazy var captureSessionManager = CaptureSessionManager.makeForUserDefaults(delegate: self)
+    private(set) lazy var captureSessionManager: CameraCaptureSessionManagerConvertible? = CaptureSessionManager.makeForUserDefaults(delegate: self)
 
     private(set) lazy var cameraView = CameraView(session: captureSessionManager?.captureSession)
 
@@ -68,9 +68,9 @@ final class CameraViewController: UIViewController {
     }
 
     private func addCaptureSessionSubscribers() {
-        captureSessionManager?.captureSession.$isUpdatingSession
-            .map { isUpdatingSession in
-                return !isUpdatingSession
+        captureSessionManager?.captureSession.$isUpdatingCaptureSession
+            .map { isUpdating in
+                return !isUpdating
             }
             .assign(to: \.isEnabled, on: cameraButton)
             .store(in: &subscriptions)

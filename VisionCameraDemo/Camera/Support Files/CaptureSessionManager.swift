@@ -10,7 +10,7 @@ import AVFoundation
 import Combine
 
 /// A `CaptureSessionManager` is reponsible for setting up and managing the flow of an `AVCaptureSession` instance.
-final class CaptureSessionManager: NSObject {
+final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConvertible {
 
     // MARK:- Properties
 
@@ -98,14 +98,14 @@ final class CaptureSessionManager: NSObject {
         sessionQueue.async {
             if !self.captureSession.isRunning {
                 DispatchQueue.mainSyncSafe {
-                    self.captureSession.isUpdatingSession = true
+                    self.captureSession.isUpdatingCaptureSession = true
                 }
 
                 // This method is a blocking call that can take some time, the duration of which depends on the `AVCaptureSession.Preset` quality.
                 self.captureSession.startRunning()
 
                 DispatchQueue.mainSyncSafe {
-                    self.captureSession.isUpdatingSession = false
+                    self.captureSession.isUpdatingCaptureSession = false
                 }
             }
         }
@@ -116,14 +116,14 @@ final class CaptureSessionManager: NSObject {
         sessionQueue.async {
             if self.captureSession.isRunning {
                 DispatchQueue.mainSyncSafe {
-                    self.captureSession.isUpdatingSession = true
+                    self.captureSession.isUpdatingCaptureSession = true
                 }
 
                 // This method is a blocking call that can take some time, the duration of which depends on the `AVCaptureSession.Preset` quality.
                 self.captureSession.stopRunning()
 
                 DispatchQueue.mainSyncSafe {
-                    self.captureSession.isUpdatingSession = false
+                    self.captureSession.isUpdatingCaptureSession = false
                 }
             }
         }
@@ -143,7 +143,7 @@ final class CaptureSessionManager: NSObject {
     }
 
     /// Adds subscribers to `NotificationCenter` publishers.
-    func addNotificationCenterSubscribers() {
+    private func addNotificationCenterSubscribers() {
         NotificationCenter.Publisher(center: .default, name: .saveSnapshots)
             .compactMap { (notification) -> Bool? in
                 return notification.userInfo?[notification.name] as? Bool
@@ -168,14 +168,14 @@ final class CaptureSessionManager: NSObject {
     private func updateCaptureSessionPreset(_ preset: AVCaptureSession.Preset) {
         sessionQueue.async {
             DispatchQueue.mainSyncSafe {
-                self.captureSession.isUpdatingSession = true
+                self.captureSession.isUpdatingCaptureSession = true
             }
 
             // Assignment can take some time.
             self.captureSession.safeSetSessionPreset(preset)
 
             DispatchQueue.mainSyncSafe {
-                self.captureSession.isUpdatingSession = false
+                self.captureSession.isUpdatingCaptureSession = false
             }
         }
     }
