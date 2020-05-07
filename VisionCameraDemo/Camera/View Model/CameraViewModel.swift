@@ -13,11 +13,11 @@ final class CameraViewModel {
 
     // MARK:- Model
 
-    var model: CameraModel
+    private let model: CameraModel
 
     // MARK:- Properties
 
-    @Published var isCameraGridViewHidden: Bool
+    @Published private(set) var isCameraGridViewHidden: Bool
 
     /// An array to keep references to `AnyCancellable` subscribers.
     private var subscriptions = [AnyCancellable]()
@@ -50,6 +50,8 @@ final class CameraViewModel {
 
     // MARK:- Initialization
 
+    /// - Parameters:
+    ///   - model: The camera model from which the view model updates.
     init(model: CameraModel) {
         self.model = model
         self.isCameraGridViewHidden = !model.showCameraGrid

@@ -13,18 +13,18 @@ final class SettingsViewModel {
 
     // MARK:- Properties
 
-    let model: SettingsModel
+    private let model: SettingsModel
 
-    private let dataPersistenceManager: SettingsDataPersistenceManager
+    private let dataPersistenceManager: SettingsDataPersistenceManager?
 
     /// An array to keep references to `AnyCancellable` subscribers.
     private var subscriptions = [AnyCancellable]()
 
     /// Formatted text for the video resolution option label.
-    @Published var videoResolutionOptionText: String?
+    @Published private(set) var videoResolutionOptionText: String?
 
     /// Formatted text for the appearance option label.
-    @Published var appearanceOptionText: String?
+    @Published private(set) var appearanceOptionText: String?
 
     /// A formatted title to display to the user.
     var title: String {
@@ -80,30 +80,33 @@ final class SettingsViewModel {
     private func addModelSubscribers() {
         subscriptions += model.$showCameraGrid.sink { [weak self] showCameraGrid in
             NotificationCenter.default.post(name: .showCameraGrid, object: self, value: showCameraGrid)
-            self?.dataPersistenceManager.storeShowCameraGridSetting(showCameraGrid)
+            self?.dataPersistenceManager?.storeShowCameraGridSetting(showCameraGrid)
         }
 
         subscriptions += model.$saveSnapshots.sink { [weak self] saveSnapshots in
             NotificationCenter.default.post(name: .saveSnapshots, object: self, value: saveSnapshots)
-            self?.dataPersistenceManager.storeSaveSnapshotsSetting(saveSnapshots)
+            self?.dataPersistenceManager?.storeSaveSnapshotsSetting(saveSnapshots)
         }
 
         subscriptions += model.$videoResolution.sink { [weak self] videoResolution in
             NotificationCenter.default.post(name: .videoResolution, object: self, value: videoResolution)
             self?.videoResolutionOptionText = videoResolution.description.capitalized
-            self?.dataPersistenceManager.storeVideoResolutionSetting(videoResolution)
+            self?.dataPersistenceManager?.storeVideoResolutionSetting(videoResolution)
         }
 
         subscriptions += model.$appearance.sink { [weak self] appearance in
             AppearanceManager.updateUserInterfaceStyle(for: appearance)
             self?.appearanceOptionText = appearance.description.capitalized
-            self?.dataPersistenceManager.storeAppearanceSetting(appearance)
+            self?.dataPersistenceManager?.storeAppearanceSetting(appearance)
         }
     }
 
     // MARK:- Initialization
 
-    init(model: SettingsModel, dataPersistenceManager: SettingsDataPersistenceManager) {
+    /// - Parameters:
+    ///   - model: The settings model from which the view model updates.
+    ///   - dataPersistenceManager: The manager responsible for persisting the user's settings. Defaults to `nil`.
+    init(model: SettingsModel, dataPersistenceManager: SettingsDataPersistenceManager? = nil) {
         self.model = model
         self.dataPersistenceManager = dataPersistenceManager
         addModelSubscribers()
