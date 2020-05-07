@@ -23,7 +23,7 @@ final class CameraModelTests: XCTestCase {
         super.tearDown()
     }
 
-    func testShowCameraGrid() {
+    func testInit() {
         XCTAssertTrue(sut.showCameraGrid)
     }
 
