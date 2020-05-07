@@ -28,7 +28,7 @@ extension Appearance: TitleConvertible {
         switch self {
         case .dark: return "Always Dark"
         case .light: return "Always Light"
-        case .system: return "Match System Style"
+        case .system: return "System Appearance"
         }
     }
 
