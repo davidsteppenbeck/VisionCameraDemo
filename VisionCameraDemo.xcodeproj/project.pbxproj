@@ -46,6 +46,7 @@
 		4125945F2465A064004BEB05 /* VideoResolutionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4125945E2465A064004BEB05 /* VideoResolutionTests.swift */; };
 		412594632465A5CA004BEB05 /* UserDefaultsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594622465A5CA004BEB05 /* UserDefaultsTests.swift */; };
 		412594652465A8F7004BEB05 /* TitleConvertibleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594642465A8F7004BEB05 /* TitleConvertibleTests.swift */; };
+		412594672465AD63004BEB05 /* NotificationCenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594662465AD63004BEB05 /* NotificationCenterTests.swift */; };
 		41376C79244F86BC00FB6934 /* BundleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C78244F86BC00FB6934 /* BundleTests.swift */; };
 		41376C7D2450BB2C00FB6934 /* PhotoCaptureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */; };
 		41376C7F2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */; };
@@ -148,6 +149,7 @@
 		4125945E2465A064004BEB05 /* VideoResolutionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResolutionTests.swift; sourceTree = "<group>"; };
 		412594622465A5CA004BEB05 /* UserDefaultsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsTests.swift; sourceTree = "<group>"; };
 		412594642465A8F7004BEB05 /* TitleConvertibleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleConvertibleTests.swift; sourceTree = "<group>"; };
+		412594662465AD63004BEB05 /* NotificationCenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterTests.swift; sourceTree = "<group>"; };
 		41376C78244F86BC00FB6934 /* BundleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleTests.swift; sourceTree = "<group>"; };
 		41376C7C2450BB2C00FB6934 /* PhotoCaptureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureDelegate.swift; sourceTree = "<group>"; };
 		41376C7E2450F4D000FB6934 /* AVCaptureConnection+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureConnection+Utilities.swift"; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				41ADF3E92445E95D005426E5 /* CaptureSessionManagerTests.swift */,
 				41FB93212448D7040097F45E /* CGRectTests.swift */,
 				410FF63F245A3796003747DF /* ComparableTests.swift */,
+				412594662465AD63004BEB05 /* NotificationCenterTests.swift */,
 				4125945824649589004BEB05 /* SettingsModelTests.swift */,
 				4125945A24649B5D004BEB05 /* SettingsViewModelTests.swift */,
 				412594642465A8F7004BEB05 /* TitleConvertibleTests.swift */,
@@ -684,6 +687,7 @@
 			files = (
 				412594552464859E004BEB05 /* CameraViewModelTests.swift in Sources */,
 				41376C79244F86BC00FB6934 /* BundleTests.swift in Sources */,
+				412594672465AD63004BEB05 /* NotificationCenterTests.swift in Sources */,
 				410FF640245A3796003747DF /* ComparableTests.swift in Sources */,
 				4125944B2461A76C004BEB05 /* UIAlertActionTests.swift in Sources */,
 				412594652465A8F7004BEB05 /* TitleConvertibleTests.swift in Sources */,
