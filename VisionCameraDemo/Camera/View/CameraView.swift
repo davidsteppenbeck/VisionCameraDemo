@@ -44,7 +44,7 @@ final class CameraView: UIView {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("\(#file) \(#function) \(#line): init(coder:) has not been implemented")
+        fatalError("\(#file) \(#function) \(#line): init(coder:) has not been implemented.")
     }
 
 }

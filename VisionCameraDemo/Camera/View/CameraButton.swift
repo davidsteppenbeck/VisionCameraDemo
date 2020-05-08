@@ -154,7 +154,7 @@ final class CameraButton: UIControl {
     }
 
     required init?(coder: NSCoder) {
-        fatalError("\(#file) \(#function) \(#line): init(coder:) has not been implemented")
+        fatalError("\(#file) \(#function) \(#line): init(coder:) has not been implemented.")
     }
 
 }
