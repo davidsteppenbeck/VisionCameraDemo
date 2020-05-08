@@ -16,4 +16,14 @@ final class BundleTests: XCTestCase {
         XCTAssertFalse(appName.isEmpty)
     }
 
+    func testAppVersion() throws {
+        let appVersion = try XCTUnwrap(Bundle.main.appVersion)
+        XCTAssertFalse(appVersion.isEmpty)
+    }
+
+    func testAppBuildNumber() throws {
+        let appBuildNumber = try XCTUnwrap(Bundle.main.appBuildNumber)
+        XCTAssertFalse(appBuildNumber.isEmpty)
+    }
+
 }

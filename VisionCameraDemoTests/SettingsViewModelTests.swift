@@ -65,21 +65,13 @@ final class SettingsViewModelTests: XCTestCase {
     }
 
     func testVideoResolutionOptionText() throws {
-        do {
-            let text = try XCTUnwrap(sut.videoResolutionOptionText)
-            XCTAssertEqual(text, sut.videoResolution.description.capitalized)
-        } catch {
-            throw error
-        }
+        let text = try XCTUnwrap(sut.videoResolutionOptionText)
+        XCTAssertEqual(text, sut.videoResolution.description.capitalized)
     }
 
     func testAppearanceOptionText() throws {
-        do {
-            let text = try XCTUnwrap(sut.appearanceOptionText)
-            XCTAssertEqual(text, sut.appearance.description.capitalized)
-        } catch {
-            throw error
-        }
+        let text = try XCTUnwrap(sut.appearanceOptionText)
+        XCTAssertEqual(text, sut.appearance.description.capitalized)
     }
 
     func testSubscriberShowCameraGridNotification() {
