@@ -11,6 +11,22 @@ import XCTest
 
 final class UserDefaultsTests: XCTestCase {
 
+    override func setUp() {
+        super.setUp()
+        clearUserDefaultsTestValues()
+    }
+
+    override func tearDown() {
+        clearUserDefaultsTestValues()
+        super.tearDown()
+    }
+
+    private func clearUserDefaultsTestValues() {
+        UserDefaults.standard.set(nil, forKey: "test_bool")
+        UserDefaults.standard.set(nil, forKey: "test_string")
+        UserDefaults.standard.set(nil, forKey: "test_raw_representable_enum")
+    }
+
     func testUserDefaultPropertyWrapper() {
         XCTAssertTrue(MockUserDefaults.testBool)
         MockUserDefaults.testBool = false
