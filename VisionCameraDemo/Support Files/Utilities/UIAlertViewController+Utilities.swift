@@ -35,7 +35,7 @@ extension UIAlertController {
     /// - Parameters:
     ///   - lhs: The alert controller to add the action to.
     ///   - rhs: The alert action to add.
-    static func += (_ lhs: UIAlertController, _ rhs: UIAlertAction) {
+    static func +=(_ lhs: UIAlertController, _ rhs: UIAlertAction) {
         lhs.addAction(rhs)
     }
 
