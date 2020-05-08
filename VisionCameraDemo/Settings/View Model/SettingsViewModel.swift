@@ -13,9 +13,9 @@ final class SettingsViewModel {
 
     // MARK:- Properties
 
-    private let model: SettingsModel
+    private(set) var model: SettingsModel
 
-    private let dataPersistenceManager: SettingsDataPersistenceManager?
+    private(set) var dataPersistenceManager: SettingsDataPersistenceManager?
 
     /// An array to keep references to `AnyCancellable` subscribers.
     private var subscriptions = [AnyCancellable]()

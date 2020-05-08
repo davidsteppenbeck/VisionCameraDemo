@@ -13,7 +13,7 @@ final class CameraViewModel {
 
     // MARK:- Model
 
-    private let model: CameraModel
+    private(set) var model: CameraModel
 
     // MARK:- Properties
 
