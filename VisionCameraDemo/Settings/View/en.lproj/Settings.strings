@@ -1,0 +1,30 @@
+
+/* Class = "UILabel"; text = "System Settings"; ObjectID = "8uE-ey-bXM"; */
+"8uE-ey-bXM.text" = "System Settings";
+
+/* Class = "UILabel"; text = "Send Feedback"; ObjectID = "KdE-Xj-Re4"; */
+"KdE-Xj-Re4.text" = "Send Feedback";
+
+/* Class = "UILabel"; text = "Show Camera Grid"; ObjectID = "L3u-9x-RcG"; */
+"L3u-9x-RcG.text" = "Show Camera Grid";
+
+/* Class = "UILabel"; text = "Twitter"; ObjectID = "OvB-aQ-nLx"; */
+"OvB-aQ-nLx.text" = "Twitter";
+
+/* Class = "UILabel"; text = "Save Snapshots"; ObjectID = "P0o-CC-maA"; */
+"P0o-CC-maA.text" = "Save Snapshots";
+
+/* Class = "UILabel"; text = "High"; ObjectID = "Tk3-lJ-7jT"; */
+"Tk3-lJ-7jT.text" = "High";
+
+/* Class = "UILabel"; text = "Appearance"; ObjectID = "VCH-6I-9HG"; */
+"VCH-6I-9HG.text" = "Appearance";
+
+/* Class = "UILabel"; text = "@dsteppenbeck"; ObjectID = "jpt-Qb-WXP"; */
+"jpt-Qb-WXP.text" = "@dsteppenbeck";
+
+/* Class = "UILabel"; text = "System"; ObjectID = "kzc-5G-57h"; */
+"kzc-5G-57h.text" = "System";
+
+/* Class = "UILabel"; text = "Video Resolution"; ObjectID = "m1D-pK-XDO"; */
+"m1D-pK-XDO.text" = "Video Resolution";
