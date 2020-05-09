@@ -25,7 +25,8 @@ protocol ErrorHandlerCoordinator: class {
 extension ErrorHandlerCoordinator {
 
     func handleError(_ error: Error, fromViewController vc: UIViewController) {
-        let alert = UIAlertController.simpleAlertController(title: "Unresolved Error", message: error.localizedDescription)
+        let title = NSLocalizedString("UNRESOLVED_ERROR", comment: "Unresolved error.")
+        let alert = UIAlertController.simpleAlertController(title: title, message: error.localizedDescription)
         vc.present(alert, animated: true)
     }
 

@@ -1,0 +1,79 @@
+/* 
+  Localizable.strings
+  VisionCameraDemo
+
+  Created by David Steppenbeck on 2020/05/09.
+  Copyright © 2020 David Steppenbeck. All rights reserved.
+*/
+
+/* The title for the alerts presenting unresolved errors. */
+"UNRESOLVED_ERROR" = "Unresolved Error";
+
+/* The title for the action sheet button presented from the options button for sharing the project's GitHub repository. */
+"SHARE_GITHUB_REPO_ALERT_ACTION_TITLE" = "Share GitHub Repo Via…";
+
+/* The error description for failing to either find or set up the device camera. Text is used as an alert title. */
+"NO_DEVICE_CAMERA_ERROR_DESCRIPTION" = "Unable to find or set up the device camera.";
+
+/* The error description for unauthorized access to the device camera. */
+"UNAUTHORIZED_ACCESS_DEVICE_CAMERA_ERROR_DESCRIPTION" = "The app is not authorized to access the device camera.";
+
+/* The title for the action sheet presented in settings for selecting the preferred video resolution. */
+"PREFERRED_VIDEO_RESOLUTION_ALERT_TITLE" = "Preferred Video Resolution";
+
+/* Title for the settings table. */
+"SETTINGS" = "Settings";
+
+/* The title for the alert presented when in-app email is unavailable. */
+"UNABLE_TO_COMPOSE_MAIL_ALERT_TITLE" = "Unable To Compose Mail";
+
+/* The message for the alert presented when in-app email is unavailable. */
+"UNABLE_TO_COMPOSE_MAIL_ALERT_MESSAGE" = "The device is not configured to send email from this app.";
+
+/* The feedback email subject text. */
+"FEEDBACK_EMAIL_SUBJECT" = "VisionCameraDemo feedback";
+
+/* The feedback email message body text. */
+"FEEDBACK_EMAIL_MESSAGE_BODY" = "We'd love to know what you think of the demo!";
+
+/* The title to present for the "always use dark mode" appearance settings option. Presented as an alert action title. */
+"ALWAYS_USE_DARK_MODE_APPEARANCE_TITLE" = "Always Dark";
+
+/* The title to present for the "always use light mode" appearance settings option. Presented as an alert action title. */
+"ALWAYS_USE_LIGHT_MODE_APPEARANCE_TITLE" = "Always Light";
+
+/* The title to present for the "use system appearance" appearance settings option. Presented as an alert action title. */
+"USE_SYSTEM_APPEARANCE_TITLE" = "System Appearance";
+
+/* The concise title to show in settings after the "always use dark mode" appearance option was selected. Presented as label text. */
+"ALWAYS_USE_DARK_MODE_APPEARANCE_DESCRIPTION" = "Dark";
+
+/* The concise title to show in settings after the "always use light mode" appearance option was selected. Presented as label text. */
+"ALWAYS_USE_LIGHT_MODE_APPEARANCE_DESCRIPTION" = "Light";
+
+/* The concise title to show in settings after the "use system appearance" appearance option was selected. Presented as label text. */
+"USE_SYSTEM_APPEARANCE_DESCRIPTION" = "System";
+
+/* The title to present for the "use photo quality" video resolution settings option. Presented as an alert action title. */
+"USE_PHOTO_QUALITY_RESOLUTION_TITLE" = "Photo Quality";
+
+/* The title to present for the "use high quality" video resolution settings option. Presented as an alert action title. */
+"USE_HIGH_QUALITY_RESOLUTION_TITLE" = "High Quality";
+
+/* The title to present for the "use medium quality" video resolution settings option. Presented as an alert action title. */
+"USE_MEDIUM_QUALITY_RESOLUTION_TITLE" = "Medium Quality";
+
+/* The concise title to show in settings after the "use photo quality" video resolution settings option was selected. Presented as label text. */
+"USE_PHOTO_QUALITY_RESOLUTION_DESCRIPTION" = "Photo";
+
+/* The concise title to show in settings after the "use photo quality" video resolution settings option was selected. Presented as label text. */
+"USE_HIGH_QUALITY_RESOLUTION_DESCRIPTION" = "High";
+
+/* The concise title to show in settings after the "use photo quality" video resolution settings option was selected. Presented as label text. */
+"USE_MEDIUM_QUALITY_RESOLUTION_DESCRIPTION" = "Medium";
+
+/* Cancel. Can be used throughout project in various buttons and actions, etc. */
+"CANCEL" = "Cancel";
+
+/* OK. Can be used throughout project in various buttons and actions, etc. */
+"OK" = "OK";
