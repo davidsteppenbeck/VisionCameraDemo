@@ -52,7 +52,9 @@ final class CameraCoordinator: NSObject, Coordinator, ParentCoordinator, ErrorHa
         let alert = UIAlertController.makeForActionSheet()
         alert.configurePopover(anchor: anchor)
 
-        alert += UIAlertAction(title: "Share GitHub Repo Via…", style: .default) { [weak self] _ in
+        let title = NSLocalizedString("SHARE_GITHUB_REPO_ALERT_ACTION_TITLE", comment: "Share github repo via.")
+
+        alert += UIAlertAction(title: title, style: .default) { [weak self] _ in
             self?.shareGitHubRepoURL(from: vc, anchor: anchor)
         }
 

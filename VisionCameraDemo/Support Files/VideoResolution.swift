@@ -38,9 +38,9 @@ extension VideoResolution: TitleConvertible {
 
     var title: String {
         switch self {
-        case .photo: return "Photo Quality"
-        case .high: return "High Quality"
-        case .medium: return "Medium Quality"
+        case .photo: return NSLocalizedString("USE_PHOTO_QUALITY_RESOLUTION_TITLE", comment: "Photo quality.")
+        case .high: return NSLocalizedString("USE_HIGH_QUALITY_RESOLUTION_TITLE", comment: "High quality.")
+        case .medium: return NSLocalizedString("USE_MEDIUM_QUALITY_RESOLUTION_TITLE", comment: "Medium quality.")
         }
     }
 
@@ -49,7 +49,11 @@ extension VideoResolution: TitleConvertible {
 extension VideoResolution: CustomStringConvertible {
 
     var description: String {
-        return rawValue
+        switch self {
+        case .photo: return NSLocalizedString("USE_PHOTO_QUALITY_RESOLUTION_DESCRIPTION", comment: "Photo.")
+        case .high: return NSLocalizedString("USE_HIGH_QUALITY_RESOLUTION_DESCRIPTION", comment: "High.")
+        case .medium: return NSLocalizedString("USE_MEDIUM_QUALITY_RESOLUTION_DESCRIPTION", comment: "Medium.")
+        }
     }
 
 }

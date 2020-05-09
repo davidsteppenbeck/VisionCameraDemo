@@ -18,7 +18,7 @@ extension UIAlertController {
     ///   - alertActionText: The title of the alert action button. Defaults to "OK".
     ///
     /// - Returns: A `UIAlertController` instance.
-    static func simpleAlertController(title: String, message: String?, alertActionText: String = "OK") -> UIAlertController {
+    static func simpleAlertController(title: String, message: String?, alertActionText: String = NSLocalizedString("OK", comment: "OK.")) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: alertActionText, style: .default, handler: nil)
         alert.addAction(action)

@@ -18,10 +18,4 @@ final class VideoResolutionTests: XCTestCase {
         XCTAssertEqual(VideoResolution.medium.preset, AVCaptureSession.Preset.medium)
     }
 
-    func testDescription() {
-        XCTAssertEqual(VideoResolution.photo.description, "photo")
-        XCTAssertEqual(VideoResolution.high.description, "high")
-        XCTAssertEqual(VideoResolution.medium.description, "medium")
-    }
-
 }

@@ -12,7 +12,8 @@ extension UIAlertAction {
 
     /// Creates and returns an alert action with the cancel title and style, and no completion handler.
     static func makeForCancel() -> UIAlertAction {
-        return UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let title = NSLocalizedString("CANCEL", comment: "Cancel.")
+        return UIAlertAction(title: title, style: .cancel, handler: nil)
     }
 
 }

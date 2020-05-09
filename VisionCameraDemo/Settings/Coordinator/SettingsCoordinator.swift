@@ -51,7 +51,9 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
     }
 
     func showVideoResolutionOptions(from vc: SettingsTableViewController, sourceView: UIView, sourceRect: CGRect?) {
-        let alert = UIAlertController.makeForActionSheet(title: "Preferred Video Resolution")
+        let title = NSLocalizedString("PREFERRED_VIDEO_RESOLUTION_ALERT_TITLE", comment: "Preferred Video Resolution.")
+
+        let alert = UIAlertController.makeForActionSheet(title: title)
         alert.configurePopover(sourceView: sourceView, sourceRect: sourceRect)
 
         for videoResolution in VideoResolution.allCases {
@@ -87,7 +89,9 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
 
     func provideFeedback(from vc: SettingsTableViewController) {
         guard let mailVC = MFMailComposeViewController.makeForFeedback(mailComposeDelegate: mailComposeDelegate) else {
-            let alert = UIAlertController.simpleAlertController(title: "Unable To Compose Mail", message: "The device is not configured to send email from this app.")
+            let title = NSLocalizedString("UNABLE_TO_COMPOSE_MAIL_ALERT_TITLE", comment: "Unable to compose mail.")
+            let message = NSLocalizedString("UNABLE_TO_COMPOSE_MAIL_ALERT_MESSAGE", comment: "The device is not configured to send email from this app.")
+            let alert = UIAlertController.simpleAlertController(title: title, message: message)
             vc.present(alert, animated: true)
             return
         }

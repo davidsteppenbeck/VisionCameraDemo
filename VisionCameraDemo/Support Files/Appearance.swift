@@ -26,9 +26,9 @@ extension Appearance: TitleConvertible {
 
     var title: String {
         switch self {
-        case .dark: return "Always Dark"
-        case .light: return "Always Light"
-        case .system: return "System Appearance"
+        case .dark: return NSLocalizedString("ALWAYS_USE_DARK_MODE_APPEARANCE_TITLE", comment: "Always dark.")
+        case .light: return NSLocalizedString("ALWAYS_USE_LIGHT_MODE_APPEARANCE_TITLE", comment: "Always light.")
+        case .system: return NSLocalizedString("USE_SYSTEM_APPEARANCE_TITLE", comment: "System appearance.")
         }
     }
 
@@ -37,7 +37,11 @@ extension Appearance: TitleConvertible {
 extension Appearance: CustomStringConvertible {
 
     var description: String {
-        return rawValue
+        switch self {
+        case .dark: return NSLocalizedString("ALWAYS_USE_DARK_MODE_APPEARANCE_DESCRIPTION", comment: "Dark.")
+        case .light: return NSLocalizedString("ALWAYS_USE_LIGHT_MODE_APPEARANCE_DESCRIPTION", comment: "Light.")
+        case .system: return NSLocalizedString("USE_SYSTEM_APPEARANCE_DESCRIPTION", comment: "System.")
+        }
     }
 
 }

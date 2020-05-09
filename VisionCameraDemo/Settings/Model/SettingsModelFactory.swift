@@ -11,7 +11,7 @@ import Foundation
 extension SettingsModel {
 
     /// Creates and returns an instance of `SettingsModel` by loading parameters from `UserDefaults`.
-    static func makeForUserDefaults(title: String = "Settings") -> SettingsModel {
+    static func makeForUserDefaults(title: String = NSLocalizedString("SETTINGS", comment: "Settings.")) -> SettingsModel {
         return SettingsModel(
             title: title,
             showCameraGrid: UserDefaults.showCameraGrid,

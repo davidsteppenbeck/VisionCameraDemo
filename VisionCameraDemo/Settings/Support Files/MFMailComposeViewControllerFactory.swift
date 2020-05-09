@@ -24,8 +24,12 @@ extension MFMailComposeViewController {
         let mailVC = MFMailComposeViewController()
         mailVC.mailComposeDelegate = mailComposeDelegate
         mailVC.setToRecipients(["LazyCatApps+VisionCameraDemo@gmail.com"])
-        mailVC.setSubject("VisionCameraDemo feedback")
-        mailVC.setMessageBody("We'd love to know what you think of the demo!", isHTML: false)
+
+        let subject = NSLocalizedString("FEEDBACK_EMAIL_SUBJECT", comment: "Vision camera demo feedback.")
+        mailVC.setSubject(subject)
+
+        let messageBody = NSLocalizedString("FEEDBACK_EMAIL_MESSAGE_BODY", comment: "We'd love to know what you think of the demo.")
+        mailVC.setMessageBody(messageBody, isHTML: false)
         return mailVC
     }
 
