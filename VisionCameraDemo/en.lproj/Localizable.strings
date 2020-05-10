@@ -31,7 +31,7 @@
 "UNABLE_TO_COMPOSE_MAIL_ALERT_MESSAGE" = "The device is not configured to send email from this app.";
 
 /* The feedback email subject text. */
-"FEEDBACK_EMAIL_SUBJECT" = "VisionCameraDemo feedback";
+"FEEDBACK_EMAIL_SUBJECT" = "Vision camera demo feedback";
 
 /* The feedback email message body text. */
 "FEEDBACK_EMAIL_MESSAGE_BODY" = "We'd love to know what you think of the demo!";

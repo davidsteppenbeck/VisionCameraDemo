@@ -7,73 +7,73 @@
 */
 
 /* The title for the alerts presenting unresolved errors. */
-"UNRESOLVED_ERROR" = "Unresolved Error";
+"UNRESOLVED_ERROR" = "Olöst Fel";
 
 /* The title for the action sheet button presented from the options button for sharing the project's GitHub repository. */
-"SHARE_GITHUB_REPO_ALERT_ACTION_TITLE" = "Share GitHub Repo Via…";
+"SHARE_GITHUB_REPO_ALERT_ACTION_TITLE" = "Dela GitHub Repo Via…";
 
 /* The error description for failing to either find or set up the device camera. Text is used as an alert title. */
-"NO_DEVICE_CAMERA_ERROR_DESCRIPTION" = "Unable to find or set up the device camera.";
+"NO_DEVICE_CAMERA_ERROR_DESCRIPTION" = "Kan inte hitta eller starta kamera.";
 
 /* The error description for unauthorized access to the device camera. */
-"UNAUTHORIZED_ACCESS_DEVICE_CAMERA_ERROR_DESCRIPTION" = "The app is not authorized to access the device camera.";
+"UNAUTHORIZED_ACCESS_DEVICE_CAMERA_ERROR_DESCRIPTION" = "Applikationen har inte tillgång till kameran.";
 
 /* The title for the action sheet presented in settings for selecting the preferred video resolution. */
-"PREFERRED_VIDEO_RESOLUTION_ALERT_TITLE" = "Preferred Video Resolution";
+"PREFERRED_VIDEO_RESOLUTION_ALERT_TITLE" = "Vald Videoupplösning";
 
 /* Title for the settings table. */
-"SETTINGS" = "Settings";
+"SETTINGS" = "Inställningar";
 
 /* The title for the alert presented when in-app email is unavailable. */
-"UNABLE_TO_COMPOSE_MAIL_ALERT_TITLE" = "Unable To Compose Mail";
+"UNABLE_TO_COMPOSE_MAIL_ALERT_TITLE" = "Kan Ej Skriva E-post";
 
 /* The message for the alert presented when in-app email is unavailable. */
-"UNABLE_TO_COMPOSE_MAIL_ALERT_MESSAGE" = "The device is not configured to send email from this app.";
+"UNABLE_TO_COMPOSE_MAIL_ALERT_MESSAGE" = "Enheten är inte konfigurerad för att kunna skicka e-post.";
 
 /* The feedback email subject text. */
-"FEEDBACK_EMAIL_SUBJECT" = "Vision camera demo feedback";
+"FEEDBACK_EMAIL_SUBJECT" = "Vision kamera demo feedback";
 
 /* The feedback email message body text. */
-"FEEDBACK_EMAIL_MESSAGE_BODY" = "We'd love to know what you think of the demo!";
+"FEEDBACK_EMAIL_MESSAGE_BODY" = "Låt oss gärna veta vad ni tycker om demon!";
 
 /* The title to present for the "always use dark mode" appearance settings option. Presented as an alert action title. */
-"ALWAYS_USE_DARK_MODE_APPEARANCE_TITLE" = "Always Dark";
+"ALWAYS_USE_DARK_MODE_APPEARANCE_TITLE" = "Alltid Mörk";
 
 /* The title to present for the "always use light mode" appearance settings option. Presented as an alert action title. */
-"ALWAYS_USE_LIGHT_MODE_APPEARANCE_TITLE" = "Always Light";
+"ALWAYS_USE_LIGHT_MODE_APPEARANCE_TITLE" = "Alltid Ljus";
 
 /* The title to present for the "use system appearance" appearance settings option. Presented as an alert action title. */
-"USE_SYSTEM_APPEARANCE_TITLE" = "System Appearance";
+"USE_SYSTEM_APPEARANCE_TITLE" = "Systemupplägg";
 
 /* The concise title to show in settings after the "always use dark mode" appearance option was selected. Presented as label text. */
-"ALWAYS_USE_DARK_MODE_APPEARANCE_DESCRIPTION" = "Dark";
+"ALWAYS_USE_DARK_MODE_APPEARANCE_DESCRIPTION" = "Mörk";
 
 /* The concise title to show in settings after the "always use light mode" appearance option was selected. Presented as label text. */
-"ALWAYS_USE_LIGHT_MODE_APPEARANCE_DESCRIPTION" = "Light";
+"ALWAYS_USE_LIGHT_MODE_APPEARANCE_DESCRIPTION" = "Ljus";
 
 /* The concise title to show in settings after the "use system appearance" appearance option was selected. Presented as label text. */
 "USE_SYSTEM_APPEARANCE_DESCRIPTION" = "System";
 
 /* The title to present for the "use photo quality" video resolution settings option. Presented as an alert action title. */
-"USE_PHOTO_QUALITY_RESOLUTION_TITLE" = "Photo Quality";
+"USE_PHOTO_QUALITY_RESOLUTION_TITLE" = "Fotokvalité";
 
 /* The title to present for the "use high quality" video resolution settings option. Presented as an alert action title. */
-"USE_HIGH_QUALITY_RESOLUTION_TITLE" = "High Quality";
+"USE_HIGH_QUALITY_RESOLUTION_TITLE" = "Hög Kvalité";
 
 /* The title to present for the "use medium quality" video resolution settings option. Presented as an alert action title. */
-"USE_MEDIUM_QUALITY_RESOLUTION_TITLE" = "Medium Quality";
+"USE_MEDIUM_QUALITY_RESOLUTION_TITLE" = "Medelkvalité";
 
 /* The concise title to show in settings after the "use photo quality" video resolution settings option was selected. Presented as label text. */
-"USE_PHOTO_QUALITY_RESOLUTION_DESCRIPTION" = "Photo";
+"USE_PHOTO_QUALITY_RESOLUTION_DESCRIPTION" = "Foto";
 
 /* The concise title to show in settings after the "use photo quality" video resolution settings option was selected. Presented as label text. */
-"USE_HIGH_QUALITY_RESOLUTION_DESCRIPTION" = "High";
+"USE_HIGH_QUALITY_RESOLUTION_DESCRIPTION" = "Hög";
 
 /* The concise title to show in settings after the "use photo quality" video resolution settings option was selected. Presented as label text. */
-"USE_MEDIUM_QUALITY_RESOLUTION_DESCRIPTION" = "Medium";
+"USE_MEDIUM_QUALITY_RESOLUTION_DESCRIPTION" = "Medel";
 
 /* Cancel. Can be used throughout project in various buttons and actions, etc. */
-"CANCEL" = "Cancel";
+"CANCEL" = "Ångra";
 
 /* OK. Can be used throughout project in various buttons and actions, etc. */
 "OK" = "OK";

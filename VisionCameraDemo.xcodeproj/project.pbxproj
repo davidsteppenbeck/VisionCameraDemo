@@ -120,6 +120,10 @@
 		4102613C2466FA310028C3EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4102613E2466FA450028C3EB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Settings.strings; sourceTree = "<group>"; };
 		410261402466FA470028C3EB /* en-GB */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-GB"; path = "en-GB.lproj/Settings.strings"; sourceTree = "<group>"; };
+		41026141246712540028C3EB /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Main.strings; sourceTree = "<group>"; };
+		41026142246712540028C3EB /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Settings.strings; sourceTree = "<group>"; };
+		41026143246712540028C3EB /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		41026144246712540028C3EB /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		410FF639245A0365003747DF /* CameraGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraGridView.swift; sourceTree = "<group>"; };
 		410FF63D245A329D003747DF /* Comparable+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparable+Utilities.swift"; sourceTree = "<group>"; };
 		410FF63F245A3796003747DF /* ComparableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparableTests.swift; sourceTree = "<group>"; };
@@ -586,6 +590,7 @@
 				en,
 				Base,
 				"en-GB",
+				sv,
 			);
 			mainGroup = 4157245F24411E7400F4B7E0;
 			productRefGroup = 4157246924411E7400F4B7E0 /* Products */;
@@ -737,6 +742,7 @@
 			children = (
 				410261332466F8F60028C3EB /* en */,
 				410261352466F91F0028C3EB /* en-GB */,
+				41026144246712540028C3EB /* sv */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -747,6 +753,7 @@
 				410261372466F9D00028C3EB /* Base */,
 				4102613E2466FA450028C3EB /* en */,
 				410261402466FA470028C3EB /* en-GB */,
+				41026142246712540028C3EB /* sv */,
 			);
 			name = Settings.storyboard;
 			sourceTree = "<group>";
@@ -757,6 +764,7 @@
 				4125943E24608944004BEB05 /* Base */,
 				410261302466F84A0028C3EB /* en-GB */,
 				4102613A2466FA1C0028C3EB /* en */,
+				41026141246712540028C3EB /* sv */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -767,6 +775,7 @@
 				4157247724411E7500F4B7E0 /* Base */,
 				410261312466F84A0028C3EB /* en-GB */,
 				4102613C2466FA310028C3EB /* en */,
+				41026143246712540028C3EB /* sv */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
