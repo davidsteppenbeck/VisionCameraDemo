@@ -11,7 +11,7 @@ import UIKit
 /// Transforms bounding boxes provided by the `Vision` framework.
 struct VisionBoundingBoxTransformManager: BoundingBoxTransformManager {
 
-    var portraitTransform: CGAffineTransform {
+    let portraitTransform: CGAffineTransform = {
 
         /// Transforms bottom left coordinates to top left.
         let inversionTransform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: -1)
@@ -22,6 +22,7 @@ struct VisionBoundingBoxTransformManager: BoundingBoxTransformManager {
         return CGAffineTransform.identity
             .concatenating(inversionTransform)
             .concatenating(rotationTransform)
-    }
+
+    }()
 
 }
