@@ -16,7 +16,7 @@ struct VisionBoundingBoxTransformManager: BoundingBoxTransformManager {
         /// Transforms bottom left coordinates to top left.
         let inversionTransform = CGAffineTransform(scaleX: 1, y: -1).translatedBy(x: 0, y: -1)
 
-        /// Transforms the user interface orientation to the sample buffer orientation.
+        /// Transforms user interface coordinates to the `AVCaptureMetadataOutput` coordinate system.
         let rotationTransform = CGAffineTransform(translationX: 0, y: 1).rotated(by: -CGFloat.pi / 2)
 
         return CGAffineTransform.identity

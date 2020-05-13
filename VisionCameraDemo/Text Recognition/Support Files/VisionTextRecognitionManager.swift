@@ -90,7 +90,6 @@ final class VisionTextRecognitionManager: NSObject, TextRecognitionManager {
                 // Calls the completion handler if image processing is successful.
                 try requestHandler.perform(requests)
             } catch {
-                // TODO: Check that the completion handler is not called if an error is thrown.
                 resetTextBoundingBoxFrames()
                 return
             }
