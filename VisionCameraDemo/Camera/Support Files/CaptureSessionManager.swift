@@ -26,24 +26,23 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
     /// Handles capturing images and saving them in the Photos app.
     private let photoCaptureDelegate: AVCapturePhotoCaptureDelegate = PhotoCaptureDelegate()
 
-    /// Keeps a strong reference to the sample buffer for snapshots.
-    private (set) var sampleBuffer: CMSampleBuffer?
-
-    /// Keeps track of the snapshot state: `false` when the video feed is running, otherwise `true`.
-    private (set) var didSnapPhoto: Bool = false {
+    /// Keeps track of the snapshot state. The value is `true` when the video feed has stopped running, otherwise `false`.
+    private(set) var didSnapPhoto: Bool = false {
         didSet {
             if didSnapPhoto {
                 capturePhoto()
+                stopVideoSession()
             } else {
-                sampleBuffer = nil
+                startVideoSession()
             }
-
-            startVideoSession()
         }
     }
 
-    /// The object that manages capture activity and coordinates the flow of data from input devices to capture outputs.
+    // Required for conformance to the `CameraCaptureSessionManagerConvertible` protocol.
     let captureSession = CameraCaptureSession()
+
+    // Required for conformance to the `CameraCaptureSessionManagerConvertible` protocol.
+    let videoOutput = AVCaptureVideoDataOutput()
 
     /// A capture output for still images.
     private let photoOutput = AVCapturePhotoOutput()
@@ -59,8 +58,8 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
 
     // MARK:- Methods
 
-    /// Toggles the snapshot state.
-    func toggle() {
+    // Required for conformance to the `CameraCaptureSessionManagerConvertible` protocol.
+    func toggleVideoSession() {
         didSnapPhoto.toggle()
     }
 
@@ -129,6 +128,11 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
         }
     }
 
+    // Required for conformance to the `CameraCaptureSessionManagerConvertible` protocol.
+    func setSampleBufferDelegate(_ sampleBufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate?) {
+        videoOutput.setSampleBufferDelegate(sampleBufferDelegate, queue: sampleBufferCallbackQueue)
+    }
+
     /// Initiates a photo capture using `AVCapturePhotoOutput`.
     private func capturePhoto() {
         guard saveSnapshots else {
@@ -182,7 +186,7 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
 
     // MARK:- Initialization
 
-    init?(videoResolution: VideoResolution, saveSnapshots: Bool, delegate: CaptureSessionManagerDelegate? = nil) {
+    init?(videoResolution: VideoResolution, saveSnapshots: Bool, delegate: CaptureSessionManagerDelegate? = nil, sampleBufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate? = nil) {
         self.saveSnapshots = saveSnapshots
         super.init()
 
@@ -203,10 +207,11 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
             return nil
         }
 
-        let videoOutput = AVCaptureVideoDataOutput()
         videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: Int(kCVPixelFormatType_32BGRA)]
-        videoOutput.setSampleBufferDelegate(self, queue: sampleBufferCallbackQueue)
         videoOutput.alwaysDiscardsLateVideoFrames = true
+
+        // Set the `videoOutput` sample buffer delegate.
+        setSampleBufferDelegate(sampleBufferDelegate)
 
         photoOutput.isHighResolutionCaptureEnabled = true
         photoOutput.isLivePhotoCaptureEnabled = false
@@ -218,7 +223,7 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
         captureSession.beginConfiguration()
 
         defer {
-            // No changes to `captureSession` are applied until calling this.
+            // No changes to `captureSession` are applied until commiting the configuration.
             captureSession.commitConfiguration()
         }
 
@@ -236,18 +241,4 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
         addNotificationCenterSubscribers()
     }
 
-}
-
-extension CaptureSessionManager: AVCaptureVideoDataOutputSampleBufferDelegate {
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        DispatchQueue.main.async {
-            if self.didSnapPhoto {
-                self.stopVideoSession()
-
-                if self.sampleBuffer == nil {
-                    self.sampleBuffer = sampleBuffer
-                }
-            }
-        }
-    }
 }

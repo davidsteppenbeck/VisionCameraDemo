@@ -5,7 +5,7 @@
 //  Created by David Steppenbeck on 2020/04/16.
 //  Copyright © 2020 David Steppenbeck. All rights reserved.
 //
-//  Code adapted from work of WeTransfer on 2020/04/16.
+//  Code adapted from WeTransfer [last accessed on 2020/04/16].
 //  https://github.com/WeTransfer/WeScan
 //
 

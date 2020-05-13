@@ -27,13 +27,9 @@ final class CaptureSessionManagerTests: XCTestCase {
         XCTAssertNotNil(sut, "Run the tests on a real device with a camera.")
     }
 
-    func testSampleBuffer() {
-        XCTAssertNil(sut.sampleBuffer)
-    }
-
     func testToggle() {
         XCTAssertFalse(sut.didSnapPhoto)
-        sut.toggle()
+        sut.toggleVideoSession()
         XCTAssertTrue(sut.didSnapPhoto)
     }
 

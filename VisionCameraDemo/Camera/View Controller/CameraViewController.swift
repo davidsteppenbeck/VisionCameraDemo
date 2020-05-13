@@ -9,7 +9,8 @@
 import UIKit
 import Combine
 
-final class CameraViewController: UIViewController {
+/// A class that handles and presents data streaming from the device camera.
+class CameraViewController: UIViewController {
 
     // MARK:- Properties
 
@@ -29,8 +30,11 @@ final class CameraViewController: UIViewController {
 
     private(set) lazy var optionsBarButton = UIBarButtonItem.makeForSystemImage("ellipsis", target: self, action: #selector(optionsBarButtonAction(_:)))
 
-    /// An array to keep references to `AnyCancellable` subscribers.
-    private var subscriptions = [AnyCancellable]()
+    /// An array to keep references to all `AnyCancellable` view model subscribers.
+    private var viewModelSubscriptions = [AnyCancellable]()
+
+    /// An array to keep references to all `AnyCancellable` capture session manager subscribers.
+    private var captureSessionManagerSubscriptions = [AnyCancellable]()
 
     // MARK:- View Lifecycle
 
@@ -46,7 +50,7 @@ final class CameraViewController: UIViewController {
         cameraGridView.embed(in: cameraView)
         cameraButton.embed(in: cameraView, using: cameraView.safeAreaLayoutGuide, insets: UIView.EmbedInsets(bottom: 20), width: 60, height: 60, centerXOffset: 0)
         addViewModelSubscribers()
-        addCaptureSessionSubscribers()
+        addCaptureSessionManagerSubscribers()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -64,22 +68,22 @@ final class CameraViewController: UIViewController {
     private func addViewModelSubscribers() {
         viewModel.$isCameraGridViewHidden
             .assign(to: \.isHidden, on: cameraGridView)
-            .store(in: &subscriptions)
+            .store(in: &viewModelSubscriptions)
     }
 
-    private func addCaptureSessionSubscribers() {
+    private func addCaptureSessionManagerSubscribers() {
         captureSessionManager?.captureSession.$isUpdatingCaptureSession
             .map { isUpdating in
                 return !isUpdating
             }
             .assign(to: \.isEnabled, on: cameraButton)
-            .store(in: &subscriptions)
+            .store(in: &captureSessionManagerSubscriptions)
     }
 
     // MARK:- Actions
 
     @objc private func cameraButtonAction(_ sender: UIControl) {
-        captureSessionManager?.toggle()
+        captureSessionManager?.toggleVideoSession()
     }
 
     @objc private func settingsBarButtonAction(_ sender: UIBarButtonItem) {
