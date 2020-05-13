@@ -48,8 +48,8 @@ final class VisionViewController: CameraViewController {
                     // Convert the frame from the preview layer’s coordinate system into the `textRecognitionResultsView` coordinate system.
                     let resultsViewFrame = self.textRecognitionResultsView.convert(previewLayerFrame, from: self.cameraView)
 
-                    // Create and return a new text bounding box.
-                    return CAShapeLayer.makeForTextBoundingBox(frame: resultsViewFrame)
+                    // Create and return a new text bounding box. Scale the frame up so it doesn't cover the text.
+                    return CAShapeLayer.makeForTextBoundingBox(frame: resultsViewFrame.scaledAndCentered(1.15))
                 }
             }
             .sink { [unowned self] boxes in

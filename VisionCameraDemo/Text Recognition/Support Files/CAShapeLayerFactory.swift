@@ -20,7 +20,7 @@ extension CAShapeLayer {
     /// - Returns: The text bounding box layer.
     static func makeForTextBoundingBox(frame: CGRect, borderColor: UIColor = .systemYellow, borderWidth: CGFloat = 2) -> TextBoundingBox {
         let layer = CAShapeLayer()
-        layer.frame = frame // TODO: enlarge frame by 10%
+        layer.frame = frame
         layer.borderColor = borderColor.cgColor
         layer.borderWidth = borderWidth
         return layer
