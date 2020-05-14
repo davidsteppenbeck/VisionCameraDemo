@@ -65,7 +65,7 @@ final class VisionTextRecognitionManager: NSObject, TextRecognitionManager {
         }
 
         // Mark the state as being actively processed.
-        imageProcessingState = .active
+        imageProcessingState = .processing
 
         // OCR text recognition can take some time. Ensure it's done off the main thread.
         DispatchQueue.global(qos: .userInitiated).async {

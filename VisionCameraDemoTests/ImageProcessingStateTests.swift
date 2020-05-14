@@ -11,16 +11,16 @@ import XCTest
 
 final class ImageProcessingStateTests: XCTestCase {
 
-    func testActive() {
-        let sut = ImageProcessingState.active
-        XCTAssertTrue(sut.isActive)
+    func testProcessing() {
+        let sut = ImageProcessingState.processing
+        XCTAssertTrue(sut.isProcessing)
         XCTAssertFalse(sut.isInactive)
     }
 
     func testInactive() {
         let sut = ImageProcessingState.inactive
         XCTAssertTrue(sut.isInactive)
-        XCTAssertFalse(sut.isActive)
+        XCTAssertFalse(sut.isProcessing)
     }
 
 }

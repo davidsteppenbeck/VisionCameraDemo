@@ -13,14 +13,14 @@ enum ImageProcessingState {
 
     /// The text recognition framework is currently processing an image.
     /// Use this state to prevent processing any other images until it's done.
-    case active
+    case processing
 
     /// The text recognition process is not currently processing an image.
     case inactive
 
     /// Whether the image processing state is currently active.
-    var isActive: Bool {
-        return self == .active
+    var isProcessing: Bool {
+        return self == .processing
     }
 
     /// Whether the image processing state is currently inactive.
