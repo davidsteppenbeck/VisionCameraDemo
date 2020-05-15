@@ -13,6 +13,8 @@ import AVFoundation
 final class PhotoCaptureDelegate: NSObject, AVCapturePhotoCaptureDelegate {
 
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        
+        // Ensure the image is handled off the main thread.
         DispatchQueue.global().async {
             guard let data = photo.fileDataRepresentation(), let image = UIImage(data: data) else { return }
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)

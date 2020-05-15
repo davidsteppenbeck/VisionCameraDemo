@@ -12,13 +12,19 @@ import XCTest
 final class AppearanceManagerTests: XCTestCase {
 
     func testUpdateUserInterfaceStyle() {
+        // Should assign dark user interface style to all application windows.
         AppearanceManager.updateUserInterfaceStyle(for: .dark)
+        // Check the actual value against the expected result.
         XCTAssertEqual(UIApplication.shared.windows.first!.overrideUserInterfaceStyle, UIUserInterfaceStyle.dark)
 
+        // Should assign light user interface style to all application windows.
         AppearanceManager.updateUserInterfaceStyle(for: .light)
+        // Check the actual value against the expected result.
         XCTAssertEqual(UIApplication.shared.windows.first!.overrideUserInterfaceStyle, UIUserInterfaceStyle.light)
 
+        // Should assign the system user interface style to all application windows.
         AppearanceManager.updateUserInterfaceStyle(for: .system)
+        // Check the actual value against the expected result.
         XCTAssertEqual(UIApplication.shared.windows.first!.overrideUserInterfaceStyle, UIUserInterfaceStyle.unspecified)
     }
 

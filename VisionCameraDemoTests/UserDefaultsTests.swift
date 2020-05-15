@@ -21,25 +21,36 @@ final class UserDefaultsTests: XCTestCase {
         super.tearDown()
     }
 
-    private func clearUserDefaultsTestValues() {
-        UserDefaults.standard.set(nil, forKey: "test_bool")
-        UserDefaults.standard.set(nil, forKey: "test_string")
-        UserDefaults.standard.set(nil, forKey: "test_raw_representable_enum")
+    func testUserDefaultPropertyWrapperForBool() {
+        // Check the default value.
+        XCTAssertTrue(MockUserDefaults.testBool)
+
+        // Should assign and store the new value.
+        MockUserDefaults.testBool = false
+
+        // Check the actual value against the expected result.
+        XCTAssertFalse(MockUserDefaults.testBool)
     }
 
-    func testUserDefaultPropertyWrapper() {
-        XCTAssertTrue(MockUserDefaults.testBool)
-        MockUserDefaults.testBool = false
-        XCTAssertFalse(MockUserDefaults.testBool)
-
+    func testUserDefaultPropertyWrapperForString() {
+        // Check the default value.
         XCTAssertEqual(MockUserDefaults.testString, "Test String")
+
+        // Should assign and store the new value.
         MockUserDefaults.testString = "A New String"
+
+        // Check the actual value against the expected result.
         XCTAssertEqual(MockUserDefaults.testString, "A New String")
     }
 
     func testRawRepresentableUserDefaultPropertyWrapper() {
+        // Check the default value.
         XCTAssertEqual(MockUserDefaults.testRawRepresentableEnum, RawRepresentableEnum.apple)
+
+        // Should assign and store the new value.
         MockUserDefaults.testRawRepresentableEnum = .banana
+
+        // Check the actual value against the expected result.
         XCTAssertEqual(MockUserDefaults.testRawRepresentableEnum, RawRepresentableEnum.banana)
     }
 }
@@ -60,4 +71,11 @@ fileprivate struct MockUserDefaults {
 fileprivate enum RawRepresentableEnum: Int {
     case apple
     case banana
+}
+
+// Call at tear down to remove test data from user defaults.
+fileprivate func clearUserDefaultsTestValues() {
+    UserDefaults.standard.set(nil, forKey: "test_bool")
+    UserDefaults.standard.set(nil, forKey: "test_string")
+    UserDefaults.standard.set(nil, forKey: "test_raw_representable_enum")
 }

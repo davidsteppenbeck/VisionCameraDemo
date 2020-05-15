@@ -26,10 +26,8 @@ final class CameraCoordinator: NSObject, Coordinator, ParentCoordinator, ErrorHa
     // MARK:- Methods
 
     func start() {
-
-        // A `CameraViewController` subclass that handles the all the OCR text recognition.
+        // Class `VisionViewController` is a `CameraViewController` subclass that handles the OCR text recognition.
         let vc = VisionViewController()
-
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }

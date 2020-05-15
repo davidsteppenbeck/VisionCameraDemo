@@ -24,19 +24,48 @@ final class TwitterManagerTests: XCTestCase {
     }
 
     func testScreenName() {
-        XCTAssertFalse(sut.screenName.isEmpty)
+        // The screen name property should provide a non-empty string.
+        let screenName = sut.screenName
+
+        // Check the actual value against the expected result.
+        XCTAssertFalse(screenName.isEmpty)
     }
 
     func testHandle() {
-        XCTAssertEqual(sut.handle, "@" + sut.screenName)
+        // The handle property should provide the screen name prefixed with the `@` symbol.
+        let handle = sut.handle
+
+        // Check the actual value against the expected result.
+        XCTAssertEqual(handle, "@" + sut.screenName)
     }
 
-    func testUrl() {
+    func testAppUrl() {
+        // The app URL should not be nil.
         let appUrl = sut.url(for: .app)
-        XCTAssertNotNil(appUrl)
 
-        let webUrl = sut.url(for: .web)
-        XCTAssertNotNil(webUrl)
+        // Check the actual value against the expected result.
+        XCTAssertNotNil(appUrl)
+    }
+
+    func testWebUrl() throws {
+        // The web URL should not be nil.
+        let webUrl = try XCTUnwrap(sut.url(for: .web))
+
+        // Create an expectation to fulfill.
+        let dataExpectation = expectation(description: "Data expectation.")
+
+        // Create a data task for the URL that allows the expectation to fulfill if successful.
+        let dataTask = URLSession.shared.dataTask(with: webUrl) { data, response, error in
+            if error == nil, data != nil {
+                dataExpectation.fulfill()
+            }
+        }
+
+        // Start the data task.
+        dataTask.resume()
+
+        // Wait for the expectation to fulfill.
+        waitForExpectations(timeout: 10)
     }
 
 }

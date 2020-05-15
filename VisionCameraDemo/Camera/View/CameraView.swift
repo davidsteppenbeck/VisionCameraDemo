@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-/// Provides `UIView` with `AVCaptureVideoPreviewLayer` as its main layer.
+/// A view with `AVCaptureVideoPreviewLayer` as its main layer.
 final class CameraView: UIView {
 
     // MARK:- Properties

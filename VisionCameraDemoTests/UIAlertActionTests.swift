@@ -12,8 +12,12 @@ import XCTest
 final class UIAlertActionTests: XCTestCase {
 
     func testMakeForCancel() {
+        // Should create an alert action with the cancel style.
         let sut = UIAlertAction.makeForCancel()
-        XCTAssertEqual(sut.style, UIAlertAction.Style.cancel)
+        let style = sut.style
+
+        // Check the actual value against the expected result.
+        XCTAssertEqual(style, UIAlertAction.Style.cancel)
     }
 
 }

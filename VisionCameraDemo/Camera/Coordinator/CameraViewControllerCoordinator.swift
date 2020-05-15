@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A delegate that can be called from the `CameraViewController` class.
 protocol CameraViewControllerCoordinator: class {
 
     /// Call to present the settings table view controller.

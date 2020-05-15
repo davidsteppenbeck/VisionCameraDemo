@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Satisfy conformance to the `CaptureSessionManagerDelegate` protocol.
 extension CameraViewController: CaptureSessionManagerDelegate {
 
     func captureSessionManager(_ captureSessionManager: CaptureSessionManager, didFailWithError error: Error) {

@@ -16,6 +16,8 @@ final class CameraViewTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+
+        // Create a session to inject into the camera view.
         let session = CaptureSessionManager(videoResolution: .high, saveSnapshots: true)!.captureSession
         sut = CameraView(session: session)
     }
@@ -26,26 +28,40 @@ final class CameraViewTests: XCTestCase {
     }
 
     func testSession() {
-        XCTAssertNotNil(sut.session, "Run the tests on a real device with a camera.")
+        // The capture session manager should not be nil. This test will fail if the tests run on the simulator.
+        let session = sut.session
+
+        // Check the actual value against the expected result.
+        XCTAssertNotNil(session, "Run the tests on a real device with a camera.")
     }
 
     func testPreview() {
-        XCTAssertNotNil(sut.preview)
+        // The view's preview layer should not be nil.
+        let preview = sut.preview
+
+        // Check the actual value against the expected result.
+        XCTAssertNotNil(preview)
     }
 
     func testLayerType() {
-        let layer = sut.layer
-        XCTAssertTrue(layer is AVCaptureVideoPreviewLayer)
+        // The view's preview layer should be of type `AVCaptureVideoPreviewLayer`.
+        XCTAssertTrue(sut.layer is AVCaptureVideoPreviewLayer)
     }
 
     func testVideoGravity() {
-        let expected = AVLayerVideoGravity.resizeAspectFill
-        XCTAssertEqual(sut.preview?.videoGravity, expected)
+        // The video gravity should maintain the aspect ratio and fill the screen.
+        let videoGravity = sut.preview!.videoGravity
+
+        // Check the actual value against the expected result.
+        XCTAssertEqual(videoGravity, AVLayerVideoGravity.resizeAspectFill)
     }
 
     func testVideoOrientation() {
-        let expected = AVCaptureVideoOrientation.portrait
-        XCTAssertEqual(sut.preview?.connection?.videoOrientation, expected, "Run the tests on a real device with a camera.")
+        // The video orientation should be portrait.
+        let videoOrientation = sut.preview!.connection!.videoOrientation
+
+        // Check the actual value against the expected result.
+        XCTAssertEqual(videoOrientation, AVCaptureVideoOrientation.portrait)
     }
 
 }

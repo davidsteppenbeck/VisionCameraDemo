@@ -11,20 +11,20 @@ import XCTest
 
 final class CameraModelTests: XCTestCase {
 
-    var sut: CameraModel!
+    func testInitialization() {
+        // The stored values should be the same as the initialization parameters.
+        let sut = CameraModel(showCameraGrid: true)
 
-    override func setUp() {
-        super.setUp()
-        sut = CameraModel(showCameraGrid: true)
-    }
-
-    override func tearDown() {
-        sut = nil
-        super.tearDown()
-    }
-
-    func testInit() {
+        // Check the actual value against the expected result.
         XCTAssertTrue(sut.showCameraGrid)
+    }
+
+    func testCameraModelFactory() {
+        // The model values should be the same as those in `UserDefaults`.
+        let sut = CameraModel.makeForUserDefaults()
+
+        // Check the actual value against the expected result.
+        XCTAssertEqual(sut.showCameraGrid, UserDefaults.showCameraGrid)
     }
 
 }

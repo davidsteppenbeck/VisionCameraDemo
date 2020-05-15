@@ -18,7 +18,7 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
     weak var delegate: CaptureSessionManagerDelegate?
 
     /// Whether snapshots will be persisted using `AVCapturePhotoOutput`. The value is controlled by user settings.
-    private var saveSnapshots: Bool
+    private(set) var saveSnapshots: Bool
 
     /// Manages the authorization status of an `AVCaptureDevice` for video.
     private let cameraAuthorizationManager: MediaAuthorizationManager = CameraAuthorizationManager()
@@ -67,12 +67,15 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
     /// If authorized, it starts the `AVCaptureSession` iff it is not currently running
     /// and the snapshot state is `false`. Otherwise, does not start running the video.
     func startVideoSession() {
+        // Expect this method to be called on the main thread.
         assert(Thread.isMainThread)
 
+        // Do not start the session if in snapshot mode.
         guard !didSnapPhoto else {
             return
         }
 
+        // Ensure the user has given access to the camera for each call.
         switch cameraAuthorizationManager.status {
         case .authorized:
             authorizedStartVideoSession()
@@ -92,8 +95,11 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
     /// Starts the `AVCaptureSession` instance if it is not currently running.
     /// - Important: This method should only be called if video access has been authorized.
     private func authorizedStartVideoSession() {
+
+        // Expect this method to be called only if camera access was given by the user.
         assert(cameraAuthorizationManager.status == .authorized)
 
+        // Ensure the session is started off the main thread.
         sessionQueue.async {
             if !self.captureSession.isRunning {
                 DispatchQueue.mainSyncSafe {
@@ -112,6 +118,8 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
 
     /// Stops the `AVCaptureSession` instance if it is currently running.
     func stopVideoSession() {
+
+        // Ensure the session is stopped off the main thread.
         sessionQueue.async {
             if self.captureSession.isRunning {
                 DispatchQueue.mainSyncSafe {
@@ -136,7 +144,7 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
     /// Initiates a photo capture using `AVCapturePhotoOutput`.
     private func capturePhoto() {
         guard saveSnapshots else {
-            // Play sound manually because `AVCapturePhotoOutput` is denied.
+            // Play sound manually if `AVCapturePhotoOutput.capturePhoto` is denied.
             AudioSessionManager.playSound(withStyle: .cameraShutter)
             return
         }
@@ -148,6 +156,8 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
 
     /// Adds subscribers to `NotificationCenter` publishers.
     private func addNotificationCenterSubscribers() {
+        
+        // Add a subscriber for the save snapshots notification.
         NotificationCenter.Publisher(center: .default, name: .saveSnapshots)
             .compactMap { (notification) -> Bool? in
                 return notification.userInfo?[notification.name] as? Bool
@@ -155,6 +165,7 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
             .assign(to: \.saveSnapshots, on: self)
             .store(in: &subscriptions)
 
+        // Add a subscriber for the video resolution notification.
         NotificationCenter.Publisher(center: .default, name: .videoResolution)
             .compactMap { (notification) -> VideoResolution? in
                 return notification.userInfo?[notification.name] as? VideoResolution
@@ -170,6 +181,8 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
 
     /// Updates the `sessionPreset` property of the `AVCaptureSession` instance.
     private func updateCaptureSessionPreset(_ preset: AVCaptureSession.Preset) {
+        
+        // Ensure the session is updated off the main thread.
         sessionQueue.async {
             DispatchQueue.mainSyncSafe {
                 self.captureSession.isUpdatingCaptureSession = true
@@ -202,6 +215,7 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
             }
         }()
 
+        // Initialization should fail if there is no device camera. This will occur on the simulator.
         guard device != nil else {
             delegate?.captureSessionManager(self, didFailWithError: CaptureSessionManagerError.device)
             return nil
@@ -227,6 +241,7 @@ final class CaptureSessionManager: NSObject, CameraCaptureSessionManagerConverti
             captureSession.commitConfiguration()
         }
 
+        // Initialization should fail if the inputs and outputs cannot be added to the capture session.
         guard let deviceInput = try? AVCaptureDeviceInput(device: device!), captureSession.canAddInput(deviceInput), captureSession.canAddOutput(videoOutput), captureSession.canAddOutput(photoOutput) else {
             delegate?.captureSessionManager(self, didFailWithError: CaptureSessionManagerError.device)
             return nil

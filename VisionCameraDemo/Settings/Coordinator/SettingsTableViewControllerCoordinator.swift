@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A delegate that can be called from the `SettingsTableViewController` class.
 protocol SettingsTableViewControllerCoordinator: class {
 
     /// Call to dismiss the settings table view controller programatically.

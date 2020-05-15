@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// A protocol that is required for all coordinators.
 protocol Coordinator: class {
 
     /// The navigation controller associated with the coordinator.

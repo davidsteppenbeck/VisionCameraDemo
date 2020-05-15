@@ -13,23 +13,23 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
 
     // MARK:- IBOutlets
 
-    @IBOutlet private weak var showCameraGridSwitch: UISwitch! {
+    @IBOutlet private(set) weak var showCameraGridSwitch: UISwitch! {
         didSet {
             showCameraGridSwitch.addTarget(self, action: #selector(showCameraGridSwitchValueChanged(_:)), for: .valueChanged)
             showCameraGridSwitch.isOn = viewModel.isShowCameraGridSwitchOn
         }
     }
 
-    @IBOutlet private weak var saveSnapshotsSwitch: UISwitch! {
+    @IBOutlet private(set) weak var saveSnapshotsSwitch: UISwitch! {
         didSet {
             saveSnapshotsSwitch.addTarget(self, action: #selector(saveSnapshotsSwitchValueChanged(_:)), for: .valueChanged)
             saveSnapshotsSwitch.isOn = viewModel.isSaveSnapshotsSwitchOn
         }
     }
 
-    @IBOutlet private weak var videoResolutionOptionLabel: UILabel!
+    @IBOutlet private(set) weak var videoResolutionOptionLabel: UILabel!
 
-    @IBOutlet private weak var appearanceOptionLabel: UILabel!
+    @IBOutlet private(set) weak var appearanceOptionLabel: UILabel!
 
     // MARK:- Properties
 
@@ -67,14 +67,17 @@ final class SettingsTableViewController: UITableViewController, Storyboarded {
 
     // MARK:- Actions
 
+    /// The action to execute when `crossBarButton` is tapped.
     @objc private func crossBarButtonAction(_ sender: UIBarButtonItem) {
         coordinator?.dismiss()
     }
 
+    /// The action to execute when the `showCameraGridSwitch` value changes.
     @objc private func showCameraGridSwitchValueChanged(_ sender: UISwitch) {
         viewModel.isShowCameraGridSwitchOn = sender.isOn
     }
 
+    /// The action to execute when the `saveSnapshotsSwitch` value changes.
     @objc private func saveSnapshotsSwitchValueChanged(_ sender: UISwitch) {
         viewModel.isSaveSnapshotsSwitchOn = sender.isOn
     }

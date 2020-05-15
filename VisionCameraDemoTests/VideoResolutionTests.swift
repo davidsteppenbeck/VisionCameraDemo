@@ -12,10 +12,28 @@ import AVFoundation
 
 final class VideoResolutionTests: XCTestCase {
 
+    var sut: VideoResolution!
+
+    override func tearDown() {
+        sut = nil
+        super.tearDown()
+    }
+
     func testPreset() {
-        XCTAssertEqual(VideoResolution.photo.preset, AVCaptureSession.Preset.photo)
-        XCTAssertEqual(VideoResolution.high.preset, AVCaptureSession.Preset.high)
-        XCTAssertEqual(VideoResolution.medium.preset, AVCaptureSession.Preset.medium)
+        // Should provide the `photo` preset.
+        sut = VideoResolution.photo
+        // Check the actual value against the expected result.
+        XCTAssertEqual(sut.preset, AVCaptureSession.Preset.photo)
+
+        // Should provide the `high` preset.
+        sut = VideoResolution.high
+        // Check the actual value against the expected result.
+        XCTAssertEqual(sut.preset, AVCaptureSession.Preset.high)
+
+        // Should provide the `medium` preset.
+        sut = VideoResolution.medium
+        // Check the actual value against the expected result.
+        XCTAssertEqual(sut.preset, AVCaptureSession.Preset.medium)
     }
 
 }

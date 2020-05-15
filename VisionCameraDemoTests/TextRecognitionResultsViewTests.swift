@@ -24,23 +24,41 @@ final class TextRecognitionResultsViewTests: XCTestCase {
     }
 
     func testAllTextBoundingBoxes() {
-        XCTAssertTrue(sut.allTextBoundingBoxes.isEmpty)
+        // The text bounding boxes collection should be empty following initialization.
+        let allTextBoundingBoxes = sut.allTextBoundingBoxes
+
+        // Check the actual value against the expected result.
+        XCTAssertTrue(allTextBoundingBoxes.isEmpty)
+    }
+
+    func testSublayers() {
+        // There should be no sublayers following initialization.
+        let sublayers = sut.layer.sublayers
+
+        // Check the actual value against the expected result.
+        XCTAssertNil(sublayers)
     }
 
     func testAddBoxes() throws {
+        // Create a "box" to add to the view.
         let box = CAShapeLayer()
         let boxes: Set<TextBoundingBox> = [box]
+
+        // Should add the boxes in the collection to the view as sublayers.
         sut.add(boxes)
 
-        XCTAssertEqual(sut.allTextBoundingBoxes.count, 1)
-        XCTAssertEqual(sut.allTextBoundingBoxes.first, box)
-
+        // Check the actual value against the expected result.
         let sublayers = try XCTUnwrap(sut.layer.sublayers)
         XCTAssertEqual(sublayers.count, 1)
         XCTAssertEqual(sublayers.first, box)
+        XCTAssertEqual(sut.allTextBoundingBoxes.count, 1)
+        XCTAssertEqual(sut.allTextBoundingBoxes.first, box)
 
-        // Adding an empty array parameter should then clear the `allTextBoundingBoxes` array.
+        // Adding an empty set should then clear all the "boxes" from the collection and the view.
         sut.add([])
+
+        // Check the actual value against the expected result.
+        XCTAssertNil(sut.layer.sublayers)
         XCTAssertTrue(sut.allTextBoundingBoxes.isEmpty)
     }
 

@@ -41,7 +41,6 @@
 		4125943F24608944004BEB05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4125943D24608944004BEB05 /* Main.storyboard */; };
 		412594412460BAF0004BEB05 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594402460BAF0004BEB05 /* Appearance.swift */; };
 		412594432460BBC5004BEB05 /* AppearanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594422460BBC5004BEB05 /* AppearanceManager.swift */; };
-		4125944524619F4A004BEB05 /* UIAlertViewController+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4125944424619F4A004BEB05 /* UIAlertViewController+Utilities.swift */; };
 		412594472461A428004BEB05 /* UIAlertControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594462461A428004BEB05 /* UIAlertControllerTests.swift */; };
 		412594492461A6A3004BEB05 /* UIAlertAction+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 412594482461A6A3004BEB05 /* UIAlertAction+Utilities.swift */; };
 		4125944B2461A76C004BEB05 /* UIAlertActionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4125944A2461A76C004BEB05 /* UIAlertActionTests.swift */; };
@@ -74,6 +73,9 @@
 		41376CD02459AD6800FB6934 /* SettingsTableViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41376CCF2459AD6800FB6934 /* SettingsTableViewController+UITableViewDelegate.swift */; };
 		414C60DB246C593B002A1872 /* VisionTextRecognitionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414C60DA246C593B002A1872 /* VisionTextRecognitionManagerTests.swift */; };
 		414C60DD246C6036002A1872 /* TextRecognitionResultsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414C60DC246C6036002A1872 /* TextRecognitionResultsViewTests.swift */; };
+		414C60DF246D7B63002A1872 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414C60DE246D7B63002A1872 /* CoordinatorTests.swift */; };
+		414C60E1246D9FB3002A1872 /* CameraAuthorizationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414C60E0246D9FB3002A1872 /* CameraAuthorizationManagerTests.swift */; };
+		414C60E5246DA47D002A1872 /* CAShapeLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414C60E4246DA47D002A1872 /* CAShapeLayerTests.swift */; };
 		4157246C24411E7400F4B7E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157246B24411E7400F4B7E0 /* AppDelegate.swift */; };
 		4157246E24411E7400F4B7E0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157246D24411E7400F4B7E0 /* SceneDelegate.swift */; };
 		4157247024411E7400F4B7E0 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4157246F24411E7400F4B7E0 /* CameraViewController.swift */; };
@@ -167,7 +169,6 @@
 		4125943E24608944004BEB05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		412594402460BAF0004BEB05 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		412594422460BBC5004BEB05 /* AppearanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceManager.swift; sourceTree = "<group>"; };
-		4125944424619F4A004BEB05 /* UIAlertViewController+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertViewController+Utilities.swift"; sourceTree = "<group>"; };
 		412594462461A428004BEB05 /* UIAlertControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerTests.swift; sourceTree = "<group>"; };
 		412594482461A6A3004BEB05 /* UIAlertAction+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertAction+Utilities.swift"; sourceTree = "<group>"; };
 		4125944A2461A76C004BEB05 /* UIAlertActionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertActionTests.swift; sourceTree = "<group>"; };
@@ -200,6 +201,9 @@
 		41376CCF2459AD6800FB6934 /* SettingsTableViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsTableViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		414C60DA246C593B002A1872 /* VisionTextRecognitionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionTextRecognitionManagerTests.swift; sourceTree = "<group>"; };
 		414C60DC246C6036002A1872 /* TextRecognitionResultsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionResultsViewTests.swift; sourceTree = "<group>"; };
+		414C60DE246D7B63002A1872 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
+		414C60E0246D9FB3002A1872 /* CameraAuthorizationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraAuthorizationManagerTests.swift; sourceTree = "<group>"; };
+		414C60E4246DA47D002A1872 /* CAShapeLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAShapeLayerTests.swift; sourceTree = "<group>"; };
 		4157246824411E7400F4B7E0 /* VisionCameraDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionCameraDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4157246B24411E7400F4B7E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4157246D24411E7400F4B7E0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -493,13 +497,16 @@
 				41259427245DA3A3004BEB05 /* ArrayTests.swift */,
 				41FB93272449ED360097F45E /* AudioSessionManagerTests.swift */,
 				41376C78244F86BC00FB6934 /* BundleTests.swift */,
+				414C60E0246D9FB3002A1872 /* CameraAuthorizationManagerTests.swift */,
 				41FB932324490F560097F45E /* CameraButtonTests.swift */,
 				4125945624648ACD004BEB05 /* CameraModelTests.swift */,
 				41FB931B244894250097F45E /* CameraViewTests.swift */,
 				412594542464859E004BEB05 /* CameraViewModelTests.swift */,
 				41ADF3E92445E95D005426E5 /* CaptureSessionManagerTests.swift */,
+				414C60E4246DA47D002A1872 /* CAShapeLayerTests.swift */,
 				41FB93212448D7040097F45E /* CGRectTests.swift */,
 				410FF63F245A3796003747DF /* ComparableTests.swift */,
+				414C60DE246D7B63002A1872 /* CoordinatorTests.swift */,
 				41026159246C221A0028C3EB /* ImageProcessingStateTests.swift */,
 				412594662465AD63004BEB05 /* NotificationCenterTests.swift */,
 				4125945824649589004BEB05 /* SettingsModelTests.swift */,
@@ -580,7 +587,6 @@
 				4125942D245DE6C3004BEB05 /* NotificationCenter+Utilities.swift */,
 				412594482461A6A3004BEB05 /* UIAlertAction+Utilities.swift */,
 				41ADF3F5244638FB005426E5 /* UIAlertController+Utilities.swift */,
-				4125944424619F4A004BEB05 /* UIAlertViewController+Utilities.swift */,
 				41376C882453397F00FB6934 /* UIApplication+Utilities.swift */,
 				410FF645245B4DDF003747DF /* UIBarButtonItem+Utilities.swift */,
 				410FF641245B2CAC003747DF /* UIView+Utilities.swift */,
@@ -700,7 +706,6 @@
 				410FF652245B8983003747DF /* SettingsModel.swift in Sources */,
 				41FB9334244B77790097F45E /* ParentCoordinator.swift in Sources */,
 				41376C8B24533F9800FB6934 /* SocialMediaURLType.swift in Sources */,
-				4125944524619F4A004BEB05 /* UIAlertViewController+Utilities.swift in Sources */,
 				41376C962454CEB700FB6934 /* MediaAuthorizationManager.swift in Sources */,
 				410FF646245B4DDF003747DF /* UIBarButtonItem+Utilities.swift in Sources */,
 				41FB93262449E9180097F45E /* AudioSessionManager.swift in Sources */,
@@ -785,9 +790,11 @@
 				410FF644245B4967003747DF /* UIViewTests.swift in Sources */,
 				41ADF3EA2445E95D005426E5 /* CaptureSessionManagerTests.swift in Sources */,
 				4125945724648ACD004BEB05 /* CameraModelTests.swift in Sources */,
+				414C60E1246D9FB3002A1872 /* CameraAuthorizationManagerTests.swift in Sources */,
 				4125945B24649B5D004BEB05 /* SettingsViewModelTests.swift in Sources */,
 				4125945D24657AE2004BEB05 /* AppearanceManagerTests.swift in Sources */,
 				4125945924649589004BEB05 /* SettingsModelTests.swift in Sources */,
+				414C60E5246DA47D002A1872 /* CAShapeLayerTests.swift in Sources */,
 				41FB931C244894250097F45E /* CameraViewTests.swift in Sources */,
 				414C60DD246C6036002A1872 /* TextRecognitionResultsViewTests.swift in Sources */,
 				41259428245DA3A3004BEB05 /* ArrayTests.swift in Sources */,
@@ -796,6 +803,7 @@
 				41FB932424490F560097F45E /* CameraButtonTests.swift in Sources */,
 				414C60DB246C593B002A1872 /* VisionTextRecognitionManagerTests.swift in Sources */,
 				4125945F2465A064004BEB05 /* VideoResolutionTests.swift in Sources */,
+				414C60DF246D7B63002A1872 /* CoordinatorTests.swift in Sources */,
 				41FB93222448D7040097F45E /* CGRectTests.swift in Sources */,
 				4102615A246C221A0028C3EB /* ImageProcessingStateTests.swift in Sources */,
 				41FB93282449ED360097F45E /* AudioSessionManagerTests.swift in Sources */,

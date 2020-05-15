@@ -160,6 +160,7 @@ final class CameraButton: UIControl {
 }
 
 extension CameraButton {
+
     struct Constants {
         static let circleRadiusRatio: CGFloat = 0.775
         static let ringInnerRadiusRatio: CGFloat = 0.825 // should be greater than `circleRadiusRatio`
@@ -171,4 +172,5 @@ extension CameraButton {
         static let fillColor: UIColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         static let backgroundColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
+
 }

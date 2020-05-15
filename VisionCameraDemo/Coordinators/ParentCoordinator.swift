@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// A protocol that is required for parent coordinators.
 protocol ParentCoordinator: class {
 
     /// Keeps a reference to each of its child coordinators.
@@ -23,6 +24,7 @@ protocol ParentCoordinator: class {
 
 extension ParentCoordinator {
 
+    // Provides a default implementation.
     func childDidFinish(_ child: Coordinator?) {
         guard let child = child else {
             return

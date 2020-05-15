@@ -27,7 +27,7 @@ final class VisionViewController: CameraViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        textRecognitionResultsView.embed(in: cameraView, belowSubview: cameraGridView)
+        textRecognitionResultsView.embed(in: cameraView, belowSubview: cameraGridView) // Ensure the results view is below the grid and button.
         captureSessionManager?.setSampleBufferDelegate(textRecognitionManager)
         addTextRecognitionManagerSubscribers()
     }

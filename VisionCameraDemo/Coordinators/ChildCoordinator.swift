@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// A protocol that is required for child coordinators.
 protocol ChildCoordinator: class {
 
     /// Keeps a reference to its parent coordinator. Use `weak` to avoid retain cycles.

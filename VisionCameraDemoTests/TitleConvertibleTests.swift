@@ -12,13 +12,19 @@ import XCTest
 final class TitleConvertibleTests: XCTestCase {
 
     func testTitle() {
-        let testCase = TestCase()
-        XCTAssertEqual(testCase.title, "A Title")
+        // Create a title convertable instance.
+        let sut: TitleConvertible = MockTitleConvertible()
+
+        // Should be equal to the value returned by the `title` property.
+        let title = sut.title
+
+        // Check the actual value against the expected result.
+        XCTAssertEqual(title, "A Title")
     }
 
 }
 
-fileprivate struct TestCase: TitleConvertible {
+fileprivate struct MockTitleConvertible: TitleConvertible {
 
     var title: String {
         return "A Title"

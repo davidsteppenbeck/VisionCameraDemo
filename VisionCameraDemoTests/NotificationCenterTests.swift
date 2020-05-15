@@ -13,6 +13,11 @@ final class NotificationCenterTests: XCTestCase {
 
     var observers: [NSObjectProtocol]!
 
+    override func setUp() {
+        super.setUp()
+        observers = []
+    }
+
     override func tearDown() {
         if observers != nil {
             for observer in observers {
@@ -25,10 +30,13 @@ final class NotificationCenterTests: XCTestCase {
     }
 
     func testPostValue() {
+        // Create an expectation to fulfill.
         let notificationExpectation = expectation(description: "Post value notification.")
 
+        // Create a mock notification name.
         let testName = Notification.Name("test_name")
 
+        // Add an observer to the mock notification.
         let observer = NotificationCenter.default.addObserver(
             forName: testName,
             object: nil,
@@ -42,10 +50,13 @@ final class NotificationCenterTests: XCTestCase {
             }
         )
 
-        // Keep a reference so that it can be removed in the tear down method.
+        // Must keep a reference outside of the scopr so that the observer can be removed in the tear down method.
         observers = [observer]
 
+        // Posting a notification should fulfill the expectation.
         NotificationCenter.default.post(name: testName, object: nil, value: "value")
+
+        // Wait for the expectation to be fulfilled.
         waitForExpectations(timeout: 1)
     }
 

@@ -24,17 +24,40 @@ final class CaptureSessionManagerTests: XCTestCase {
     }
 
     func testCaptureSessionManager() {
+        // The capture session manager should not be nil. This test will fail if the tests run on the simulator.
         XCTAssertNotNil(sut, "Run the tests on a real device with a camera.")
     }
 
-    func testToggle() {
+    func testToggleVideoSession() {
+        // The initial value of `didSnapPhoto` should be `false`.
         XCTAssertFalse(sut.didSnapPhoto)
+
+        // Toggling the video session should toggle the value of `didSnapPhoto`.
         sut.toggleVideoSession()
+
+        // Check the actual value against the expected result.
         XCTAssertTrue(sut.didSnapPhoto)
     }
 
     func testSessionRunning() {
-        XCTAssertFalse(sut.captureSession.isRunning)
+        // The capture session should not start running by default.
+        let isRunning = sut.captureSession.isRunning
+
+        // Check the actual value against the expected result.
+        XCTAssertFalse(isRunning)
+    }
+
+    func testMakeForUserDefaults() throws {
+        // Create a new manager using initialization parameters from `UserDefaults`.
+        let sut = try XCTUnwrap(CaptureSessionManager.makeForUserDefaults())
+
+        // The delegate should not be set with the default initializer.
+        XCTAssertNil(sut.delegate)
+
+        // The capture session manager properties should be the same as those in `UserDefaults`.
+        let saveSnapshots = sut.saveSnapshots
+        // Check the actual value against the expected result.
+        XCTAssertEqual(saveSnapshots, UserDefaults.saveSnapshots)
     }
 
 }

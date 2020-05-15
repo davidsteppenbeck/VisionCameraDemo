@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Errors thrown by `CaptureSessionManager`.
+/// Errors that can be thrown by `CaptureSessionManager`.
 enum CaptureSessionManagerError: Error, LocalizedError {
 
     /// An error occurred whilst trying to set up the `AVCaptureDevice`.

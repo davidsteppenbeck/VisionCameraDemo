@@ -13,13 +13,19 @@ import AVFoundation
 final class AudioSessionManagerTests: XCTestCase {
 
     func testCameraShutterID() {
-        let expected: SystemSoundID = 1108
-        XCTAssertEqual(AudioSessionManager.Style.cameraShutter.rawValue, expected)
+        // The enum case raw value should be the system sound ID for the standard camera shutter.
+        let sut = AudioSessionManager.Style.cameraShutter.rawValue
+
+        // Check the actual value against the expected result.
+        XCTAssertEqual(sut, 1108)
     }
 
-    func testSentMail() {
-        let expected: SystemSoundID = 1001
-        XCTAssertEqual(AudioSessionManager.Style.sentMail.rawValue, expected)
+    func testSentMailID() {
+        // The enum case raw value should be the system sound ID for the standard camera shutter.
+        let sut = AudioSessionManager.Style.sentMail.rawValue
+
+        // Check the actual value against the expected result.
+        XCTAssertEqual(sut, 1001)
     }
 
 }

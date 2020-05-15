@@ -12,18 +12,27 @@ import XCTest
 final class BundleTests: XCTestCase {
 
     func testAppName() throws {
-        let appName = try XCTUnwrap(Bundle.main.appName)
-        XCTAssertFalse(appName.isEmpty)
+        // Should provide the app name as a string from the main bundle.
+        let sut = try XCTUnwrap(Bundle.main.appName)
+
+        // Check the actual value against the expected result.
+        XCTAssertFalse(sut.isEmpty)
     }
 
     func testAppVersion() throws {
-        let appVersion = try XCTUnwrap(Bundle.main.appVersion)
-        XCTAssertFalse(appVersion.isEmpty)
+        // Should provide the app version number as a string from the main bundle.
+        let sut = try XCTUnwrap(Bundle.main.appVersion)
+
+        // Check the actual value against the expected result.
+        XCTAssertFalse(sut.isEmpty)
     }
 
     func testAppBuildNumber() throws {
-        let appBuildNumber = try XCTUnwrap(Bundle.main.appBuildNumber)
-        XCTAssertFalse(appBuildNumber.isEmpty)
+        // Should provide the app build number as a string from the main bundle.
+        let sut = try XCTUnwrap(Bundle.main.appBuildNumber)
+
+        // Check the actual value against the expected result.
+        XCTAssertFalse(sut.isEmpty)
     }
 
 }

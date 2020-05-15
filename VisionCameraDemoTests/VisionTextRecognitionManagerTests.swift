@@ -24,14 +24,23 @@ final class VisionTextRecognitionManagerTests: XCTestCase {
     }
 
     func testTextBoundingBoxFrames() {
-        XCTAssertTrue(sut.textBoundingBoxFrames.isEmpty)
+        // The bounding box frames collection should be empty following initialization.
+        let isEmpty = sut.textBoundingBoxFrames.isEmpty
+
+        // Check the actual value against the expected result.
+        XCTAssertTrue(isEmpty)
     }
 
     func testImageProcessingState() {
-        XCTAssertEqual(sut.imageProcessingState, ImageProcessingState.inactive)
+        // The image processing state should be `inactive` following initialization.
+        let imageProcessingState = sut.imageProcessingState
+
+        // Check the actual value against the expected result.
+        XCTAssertEqual(imageProcessingState, ImageProcessingState.inactive)
     }
 
     func testSampleBuffer() {
+        // The sample buffer should not be set following initialization.
         XCTAssertNil(sut.sampleBuffer)
     }
 

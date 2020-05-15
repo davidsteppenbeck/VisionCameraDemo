@@ -12,9 +12,14 @@ import XCTest
 final class ArrayTests: XCTestCase {
 
     func testAppendElementOperator() {
-        var array = [0,1]
-        array += 2
-        XCTAssertEqual(array, [0,1,2])
+        // Create a mutable array.
+        var sut = [0, 1]
+
+        // The += operator should append the rhs as an element to the end of the array.
+        sut += 2
+
+        // Check the actual value against the expected result.
+        XCTAssertEqual(sut, [0, 1, 2])
     }
 
 }

@@ -27,12 +27,6 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
         super.init()
     }
 
-    // MARK:- UIAdaptivePresentationControllerDelegate
-
-    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-        parent?.childDidFinish(self)
-    }
-
     // MARK:- Methods
 
     func start() {
@@ -40,6 +34,12 @@ final class SettingsCoordinator: NSObject, UIAdaptivePresentationControllerDeleg
         vc.coordinator = self
         navigationController.presentationController?.delegate = self
         navigationController.pushViewController(vc, animated: false)
+    }
+
+    // MARK:- UIAdaptivePresentationControllerDelegate
+    
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        parent?.childDidFinish(self)
     }
 
     // MARK:- SettingsTableViewControllerCoordinator

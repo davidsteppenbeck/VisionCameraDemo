@@ -12,138 +12,152 @@ import XCTest
 final class UIViewTests: XCTestCase {
 
     func testEmbedInsets() {
+        // All insets should be nil.
         let none = UIView.EmbedInsets.none
+        // Check the actual value against the expected result.
         XCTAssertNil(none.top)
         XCTAssertNil(none.bottom)
         XCTAssertNil(none.leading)
         XCTAssertNil(none.trailing)
 
+        // All insets should be zero.
         let zero = UIView.EmbedInsets.zero
+        // Check the actual value against the expected result.
         XCTAssertEqual(zero.top, 0)
         XCTAssertEqual(zero.bottom, 0)
         XCTAssertEqual(zero.leading, 0)
         XCTAssertEqual(zero.trailing, 0)
 
+        // All insets should be set to the parameter provided.
         let all = UIView.EmbedInsets.all(50)
+        // Check the actual value against the expected result.
         XCTAssertEqual(all.top, 50)
         XCTAssertEqual(all.bottom, 50)
         XCTAssertEqual(all.leading, 50)
         XCTAssertEqual(all.trailing, 50)
     }
 
-    func testEmbed() {
+    func testEmbed() throws {
+        // Create a container view and subview to embed.
         let container = UIView()
         let testEmbeddedSubview = UIView()
 
-        // Should insert `testEmbeddedView` at index 0.
+        // Should insert the subview at index 0.
         testEmbeddedSubview.embed(in: container)
 
-        let testEmbeddedSubviewIndex = container.subviews.firstIndex(of: testEmbeddedSubview)!
-
+        // Check the actual value against the expected result.
+        let testEmbeddedSubviewIndex = try XCTUnwrap(container.subviews.firstIndex(of: testEmbeddedSubview))
         XCTAssertEqual(testEmbeddedSubviewIndex, 0)
         XCTAssertEqual(container.subviews.count, 1)
     }
 
-    func testEmbedAtIndexZero() {
+    func testEmbedAtIndexZero() throws {
+        // Create a container view and subview to embed.
         let container = UIView()
         let testEmbeddedSubview = UIView()
 
-        // Embed a subview at index 0.
+        // First, embed another subview at index 0.
         UIView().embed(in: container)
 
         // Index 0 already exists in the subviews property, so `testEmbeddedView` should be successfully inserted at index 0.
         testEmbeddedSubview.embed(in: container, at: 0)
 
-        let testEmbeddedSubviewIndex = container.subviews.firstIndex(of: testEmbeddedSubview)!
-
+        // Check the actual value against the expected result.
+        let testEmbeddedSubviewIndex = try XCTUnwrap(container.subviews.firstIndex(of: testEmbeddedSubview))
         XCTAssertEqual(testEmbeddedSubviewIndex, 0)
         XCTAssertEqual(container.subviews.count, 2)
     }
 
-    func testEmbedAtLargeIndex() {
+    func testEmbedAtLargeIndex() throws {
+        // Create a container view and subview to embed.
         let container = UIView()
         let testEmbeddedSubview = UIView()
 
-        // Embed a subview at index 0.
+        // First, embed another subview at index 0.
         let subview = UIView()
         subview.embed(in: container)
 
         // Index 10 does not exist in the subviews property, so `testEmbeddedView` should be inserted at index 1.
         testEmbeddedSubview.embed(in: container, at: 10)
 
-        let subviewIndex = container.subviews.firstIndex(of: subview)!
-        let testEmbeddedSubviewIndex = container.subviews.firstIndex(of: testEmbeddedSubview)!
-
-        XCTAssertEqual(subviewIndex, 0)
-        XCTAssertEqual(testEmbeddedSubviewIndex, 1)
+        // Check the actual value against the expected result.
         XCTAssertEqual(container.subviews.count, 2)
+        let subviewIndex = try XCTUnwrap(container.subviews.firstIndex(of: subview))
+        XCTAssertEqual(subviewIndex, 0)
+        let testEmbeddedSubviewIndex = try XCTUnwrap(container.subviews.firstIndex(of: testEmbeddedSubview))
+        XCTAssertEqual(testEmbeddedSubviewIndex, 1)
     }
 
-    func testEmbedBetweenIndices() {
+    func testEmbedBetweenIndices() throws {
+        // Create a container view and subview to embed.
         let container = UIView()
         let testEmbeddedSubview = UIView()
 
-        // Embed a subview at index 0.
+        // First, embed another subview at index 0.
         let firstSubview = UIView()
         firstSubview.embed(in: container)
 
-        // Embed a subview at index 1.
+        // Then embed another subview at index 1.
         let lastSubview = UIView()
         lastSubview.embed(in: container)
 
-        // Index 1 already exists in the subviews property, so `testEmbeddedView` should be successfully inserted at index 1.
-        // This shifts `lastSubview` to index 2.
+        // Indices 0 and 1 already exist in the subviews property, so `testEmbeddedView` should be successfully inserted at index 1.
+        // This should shift `lastSubview` to index 2.
         testEmbeddedSubview.embed(in: container, at: 1)
 
-        let firstSubviewIndex = container.subviews.firstIndex(of: firstSubview)!
-        let lastSubviewIndex = container.subviews.firstIndex(of: lastSubview)!
-        let testEmbeddedSubviewIndex = container.subviews.firstIndex(of: testEmbeddedSubview)!
-
-        XCTAssertEqual(firstSubviewIndex, 0)
-        XCTAssertEqual(lastSubviewIndex, 2)
-        XCTAssertEqual(testEmbeddedSubviewIndex, 1)
+        // Check the actual value against the expected result.
         XCTAssertEqual(container.subviews.count, 3)
+        let firstSubviewIndex = try XCTUnwrap(container.subviews.firstIndex(of: firstSubview))
+        XCTAssertEqual(firstSubviewIndex, 0)
+        let lastSubviewIndex = try XCTUnwrap(container.subviews.firstIndex(of: lastSubview))
+        XCTAssertEqual(lastSubviewIndex, 2)
+        let testEmbeddedSubviewIndex = try XCTUnwrap(container.subviews.firstIndex(of: testEmbeddedSubview))
+        XCTAssertEqual(testEmbeddedSubviewIndex, 1)
     }
 
-    func testEmbedBelowSiblingSubview() {
+    func testEmbedBelowSiblingSubview() throws {
+        // Create a container view and subview to embed.
         let container = UIView()
         let testEmbeddedSubview = UIView()
 
-        // Embed a subview at index 0.
+        // First, embed another subview at index 0.
         let subview = UIView()
         subview.embed(in: container)
 
-        // Object `subview` already exists in the subviews property, so `testEmbeddedView` should be successfully inserted at index 0.
+        // The object named `subview` already exists in the subviews property.
+        // Therefore `testEmbeddedView` should be successfully inserted below it, at index 0.
         testEmbeddedSubview.embed(in: container, belowSubview: subview)
 
-        let subviewIndex = container.subviews.firstIndex(of: subview)!
-        let testEmbeddedSubviewIndex = container.subviews.firstIndex(of: testEmbeddedSubview)!
-
-        XCTAssertEqual(subviewIndex, 1)
-        XCTAssertEqual(testEmbeddedSubviewIndex, 0)
+        // Check the actual value against the expected result.
         XCTAssertEqual(container.subviews.count, 2)
+        let subviewIndex = try XCTUnwrap(container.subviews.firstIndex(of: subview))
+        XCTAssertEqual(subviewIndex, 1)
+        let testEmbeddedSubviewIndex = try XCTUnwrap(container.subviews.firstIndex(of: testEmbeddedSubview))
+        XCTAssertEqual(testEmbeddedSubviewIndex, 0)
     }
 
-    func testEmbedBelowNonSiblingSubview() {
+    func testEmbedBelowNonSiblingSubview() throws {
+        // Create a container view and subview to embed.
         let container = UIView()
         let testEmbeddedSubview = UIView()
 
-        // Embed a subview at index 0.
+        // First, embed another subview at index 0.
         let embeddedSubview = UIView()
         embeddedSubview.embed(in: container)
 
-        // Create a non-embedded subview.
+        // Create another subview that is not embedded in the container.
         let nonEmbeddedSubview = UIView()
 
-        // Object `nonEmbeddedSubview` does not exist in the subviews property, so `testEmbeddedView` should be successfully inserted at index 1.
+        // The object named `nonEmbeddedSubview` does not exist in the subviews property.
+        // By default, `testEmbeddedView` should be successfully inserted above all other subviews, at index 1.
         testEmbeddedSubview.embed(in: container, belowSubview: nonEmbeddedSubview)
 
-        let embeddedSubviewIndex = container.subviews.firstIndex(of: embeddedSubview)!
-        let testEmbeddedSubviewIndex = container.subviews.firstIndex(of: testEmbeddedSubview)!
-
-        XCTAssertEqual(embeddedSubviewIndex, 0)
-        XCTAssertEqual(testEmbeddedSubviewIndex, 1)
+        // Check the actual value against the expected result.
         XCTAssertEqual(container.subviews.count, 2)
+        let embeddedSubviewIndex = try XCTUnwrap(container.subviews.firstIndex(of: embeddedSubview))
+        XCTAssertEqual(embeddedSubviewIndex, 0)
+        let testEmbeddedSubviewIndex = try XCTUnwrap(container.subviews.firstIndex(of: testEmbeddedSubview))
+        XCTAssertEqual(testEmbeddedSubviewIndex, 1)
     }
 
 }

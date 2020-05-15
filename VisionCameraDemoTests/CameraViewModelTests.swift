@@ -25,15 +25,33 @@ final class CameraViewModelTests: XCTestCase {
     }
 
     func testAddModelSubscribers() {
+        // The value returned by the view model should be compatible with the initialization parameter.
         XCTAssertFalse(sut.isCameraGridViewHidden)
+
+        // Update the model value to trigger the publisher and subscriber for the `showCameraGrid` model property.
         sut.model.showCameraGrid = false
+
+        // Check the actual value against the expected result.
         XCTAssertTrue(sut.isCameraGridViewHidden)
     }
 
     func testAddNotificationCenterSubscribers() {
+        // The value returned by the view model should be compatible with the initialization parameter.
         XCTAssertFalse(sut.isCameraGridViewHidden)
-        NotificationCenter.default.post(name: .showCameraGrid, object: nil, value: false)
+
+        // Post a notification to trigger updates to the model.
+        NotificationCenter.default.post(name: Notification.Name.showCameraGrid, object: nil, value: false)
+
+        // Check the actual value against the expected result.
         XCTAssertTrue(sut.isCameraGridViewHidden)
+    }
+
+    func testCameraViewModelFactory() {
+        // The view model values should be the same as those in `UserDefaults`.
+        let sut = CameraViewModel.makeForUserDefaults()
+
+        // Check the actual value against the expected result.
+        XCTAssertEqual(sut.isCameraGridViewHidden, !UserDefaults.showCameraGrid)
     }
 
 }
